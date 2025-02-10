@@ -18,7 +18,7 @@
 // Nested Includes
 //========================================
 #include <stddef.h>
-
+#include <memory/srrmemory.h>
 
 
 template <class T> class s2alloc
@@ -71,7 +71,7 @@ template <class T> class s2alloc
         // allocate but don't initialize num elemetns of type T
         pointer allocate( size_type n, const void* hint = 0 )
         {
-            return (pointer) ::operator new(( n*sizeof(T) ));
+            return (pointer) ::operator new(( n*sizeof(T) ), HeapMgr()->GetCurrentHeap());
         }
         
         // initialize elements of allocated storage p with value val

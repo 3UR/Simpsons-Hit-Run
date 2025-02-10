@@ -1058,7 +1058,7 @@ void CGuiScreenMainMenu::UpdateGags( unsigned int elapsedTime )
 #endif
             if( m_nextGagIndex != 0 )
             {
-                GetEventManager()->TriggerEvent( EVENT_FE_GAG_INIT, reinterpret_cast<void*>( FE_GAGS[ m_nextGagIndex ] ) );
+                GetEventManager()->TriggerEvent( EVENT_FE_GAG_INIT, reinterpret_cast<void*>((uintptr_t)FE_GAGS[ m_nextGagIndex ] ) );
             }
             else // multiple homer gags
             {
@@ -1076,7 +1076,7 @@ void CGuiScreenMainMenu::UpdateGags( unsigned int elapsedTime )
                 }
 #endif
 
-                GetEventManager()->TriggerEvent( EVENT_FE_GAG_INIT, reinterpret_cast<void*>( FE_GAGS_FOR_HOMER[ m_nextHomerGagIndex ] ) );
+                GetEventManager()->TriggerEvent( EVENT_FE_GAG_INIT, reinterpret_cast<void*>( (uintptr_t)FE_GAGS_FOR_HOMER[ m_nextHomerGagIndex ] ) );
             }
         }
     }

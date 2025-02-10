@@ -965,8 +965,7 @@ BEGIN_PROFILE( "Mission Update" );
                 //We need to delay the mission stage change to prevent weirdness.
                 mCompleteDelay = COMPLETE_DELAY;
 
-                GetEventManager()->TriggerEvent( EVENT_STAGE_COMPLETE,
-                    reinterpret_cast<void*>( (uintptr_t)showStageComplete ) );
+                GetEventManager()->TriggerEvent( EVENT_STAGE_COMPLETE, reinterpret_cast<void*>( (uintptr_t)showStageComplete ) );
 
                 if( stage->GetObjective()->GetObjectiveType() == MissionObjective::OBJ_LOSETAIL )
                 {

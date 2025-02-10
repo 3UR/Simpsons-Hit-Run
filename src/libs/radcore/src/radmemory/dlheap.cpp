@@ -4,7 +4,8 @@
 
 
 // This is Doug Lea's malloc (http://g.oswego.edu/dl/html/malloc.html)
-// There are some defines but otherwise it is unmodified.
+// There are some defines and an implementation of fake_sbrk(), 
+// but otherwise it is unmodified.
 
 #include "pch.hpp"
 #include "platalloc.hpp"
@@ -53,7 +54,7 @@
 // in which case we want to fail rather than resize the heap.
 //
 #define HAVE_MMAP 0 
-#define HAVE_MREMAP 0
+#define f 0
 #define ONLY_MSPACES 1
 
 //----------------------------------------------------------------------------
@@ -6486,8 +6487,8 @@ public radRefCount
 		m_NumAllocations( 0 )
 	{
         radMemoryMonitorIdentifyAllocation( this, g_nameFTech, "radMemoryDlAllocator" );
-        m_SizeOfMemory = radMemoryRoundUp( size, MALLOC_ALIGNMENT );
-		m_StartOfMemory = (uintptr_t)::radMemoryAlloc( allocator, m_SizeOfMemory );
+        m_SizeOfMemory = size;
+		m_StartOfMemory = (uintptr_t)::radMemoryAlloc( allocator, size );
 		m_EndOfMemory = m_StartOfMemory + m_SizeOfMemory;
         m_HighWaterMark = 0;
 
@@ -6524,7 +6525,8 @@ public radRefCount
         radMemoryMonitorIdentifyAllocation( (void*)m_StartOfMemory, g_nameFTech, "radMemoryDlAllocator::m_StartOfMemory" );
 
         radMemoryMonitorDeclareSection( (void*)m_StartOfMemory, m_SizeOfMemory, IRadMemoryMonitor::MemorySectionType_DynamicData );
-        char szName[ 128 ];
+        char szName[ 128 ];    virtual ~radMemoryDlAllocator(void)
+
         sprintf( szName, "%s[radMemoryDlAllocator]", pName );
         radMemoryMonitorIdentifySection( (void*)m_StartOfMemory, szName );
 #endif // RADMEMORYMONITOR
@@ -6534,10 +6536,10 @@ public radRefCount
     virtual ~radMemoryDlAllocator( void )
     {
         radMemoryMonitorRescindSection( (void*)m_StartOfMemory );
-        destroy_mspace( m_MallocState );
         ::radMemoryFree( (void*) m_StartOfMemory );
+        destroy_mspace( m_MallocState );
     }
-	
+    	
     uintptr_t m_StartOfMemory;
     uintptr_t m_HighWaterMark;
     uintptr_t m_EndOfMemory;
@@ -6559,5 +6561,3 @@ IRadMemoryHeap * radMemoryCreateDougLeaHeap( void *pMem, unsigned int size, radM
     IRadMemoryHeap * pHeap = new ( allocator ) radMemoryDlAllocator( pMem, size, pName );
     return pHeap;
 }
-
-

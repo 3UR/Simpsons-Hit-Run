@@ -1068,9 +1068,9 @@ void PresentationManager::AddToQueue( PresentationEvent* pEvent )
 void PresentationManager::ReturnToPool( PresentationEvent* presevent )
 {
     // change to use appropriate pool without doing it the dumb way
-    mFMVPool->ReturnToPool( (unsigned int)presevent );
-    mNISPool->ReturnToPool( (unsigned int)presevent );
-    mTransitionPool->ReturnToPool( (unsigned int)presevent );
+    mFMVPool->ReturnToPool( presevent );
+    mNISPool->ReturnToPool( presevent );
+    mTransitionPool->ReturnToPool( presevent );
 }
 
 //=============================================================================

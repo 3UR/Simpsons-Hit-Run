@@ -298,6 +298,7 @@ enum EventEnum
     EVENT_GUI_FADE_OUT_DONE,    // fade to black completed
     EVENT_GUI_FADE_IN_DONE,     // fade to game completed
     EVENT_LETTERBOX_CLOSED,     // the letter box has completely closed on the screen
+    EVENT_DEATH_VOLUME_START,
     EVENT_DEATH_VOLUME_SCREEN_BLANK,
     EVENT_GUI_ENTERING_MISSION_SUCCESS_SCREEN,
     EVENT_GUI_TRIGGER_PATTY_AND_SELMA_SCREEN,

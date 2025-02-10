@@ -148,6 +148,7 @@ radCementLibrary::radCementLibrary( radDrive* pDrive, radFile* pDataFile, radCem
     m_pDataFile( pDataFile ),
     m_CurrentStatus( CementLibraryPending ),
     m_Header( NULL ),
+    m_pHashedFileEntries( NULL ),
     m_pNext( NULL ),
     m_Priority( priority ),
     m_pCallback( NULL ),
@@ -347,7 +348,7 @@ void radCementLibrary::OnFileOperationsComplete( void* pUserData )
     //
     // Get the action to perform
     //
-    unsigned int whatToDo = ( unsigned int ) pUserData;
+    unsigned int whatToDo = ( uintptr_t ) pUserData;
 
     //
     // Check out what we should do
@@ -489,7 +490,7 @@ void radCementLibrary::OnFileOperationsComplete( void* pUserData )
         // Set the internal pointer, and read in the rest.
         //
         char* headPtr = (char*) m_Header;
-        m_Header->m_pHashedFileEntries = ( radCFHeader::HFE* ) &headPtr[ sizeof( radCFHeader ) ];
+        m_pHashedFileEntries = ( radCFHeader::HFE* ) &headPtr[ sizeof( radCFHeader ) ];
 
         unsigned int bytesToRead = totalSize - bytesRead;
         if ( bytesToRead > 0 )
@@ -554,13 +555,13 @@ radFile* radCementLibrary::OpenFile
         // Find the given file in the hash table
         //
         radCFHeader::HFE* hashEntry =
-            radCFHeader::FindFile( m_Header, radCFHeader::HashFunction( fileName ) );
+            radCFHeader::FindFile( m_Header, m_pHashedFileEntries, radCFHeader::HashFunction( fileName ) );
             
         if ( hashEntry == NULL )
         {
             radKey32 key = StringKeyToKey32( (char*) fileName );
             
-            hashEntry = radCFHeader::FindFile( m_Header, key );
+            hashEntry = radCFHeader::FindFile( m_Header, m_pHashedFileEntries, key );
         }
 
         if( hashEntry != NULL )

@@ -1203,7 +1203,7 @@ CGuiManagerInGame::HandleEvent( EventEnum id, void* pEventData )
                 if( s_currentHUD != NULL && s_currentHUD->IsActive() )
                 {
                     //This is a player who triggered this.
-                    s_currentHUD->HandleMessage( GUI_MSG_DEATH_VOLUME_START, reinterpret_cast< unsigned int >( pEventData ) );
+                    s_currentHUD->HandleEvent( EVENT_DEATH_VOLUME_START, pEventData );
                 }
                 else
                 {

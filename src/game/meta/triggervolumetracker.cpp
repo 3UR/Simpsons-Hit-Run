@@ -1323,7 +1323,7 @@ void TriggerVolumeTracker::TestVolume( TriggerVolume* vol,
             }
         }
 
-        vol->SetFrameUsed( time, (int)this );
+        vol->SetFrameUsed( time, this );
     }
 //END_PROFILE( "Test Volume" );
 }

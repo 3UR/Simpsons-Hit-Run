@@ -234,8 +234,8 @@ void CollisionAnalyser::RemoveSimState(SimState *simState)
         return;
     CollisionAnalyserDataIndex *p = mIndexBoundLo;
     do {
-        if(p->mUID.mSimStateA == (unsigned)simState ||
-            p->mUID.mSimStateB == (unsigned)simState)
+        if(p->mUID.mSimStateA == (uintptr_t)simState ||
+            p->mUID.mSimStateB == (uintptr_t)simState)
             p->mData->NotifyShutdown();
     } while(p++ != mIndexBoundHi);
 }

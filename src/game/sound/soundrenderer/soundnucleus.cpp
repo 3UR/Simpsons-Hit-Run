@@ -20,7 +20,11 @@ const unsigned int MUSIC_NUM_CLIP_PLAYERS = 2;
 const unsigned int MUSIC_NUM_CHANNELS = 2;
 const unsigned int MUSIC_SAMPLING_RATE = 24000;
 
+#ifdef RAD_DEBUG
+const unsigned int TOTAL_PS2_FREE_UNCOMPRESSED_CLIP_BYTES = ( 1624 * 1024 * 7 );
+#else
 const unsigned int TOTAL_PS2_FREE_UNCOMPRESSED_CLIP_BYTES = ( 1624 * 1024 * 7 ) / 2;
+#endif
 
 #if defined RAD_XBOX || defined RAD_WIN32
     

@@ -35,7 +35,7 @@ template <class T> class AllocPool
         virtual ~AllocPool();
 
         T* AllocateFromPool();
-        void ReturnToPool( unsigned int pItem );
+        void ReturnToPool( void* pItem );
         
     protected:
         // override initialize if you have a different constructor
@@ -100,11 +100,11 @@ T* AllocPool<T>::AllocateFromPool()
 }
 
 template <class T>
-void AllocPool<T>::ReturnToPool( unsigned int pItem )
+void AllocPool<T>::ReturnToPool( void* pItem )
 {
     for( unsigned int i = 0; i < miPoolSize; i++ )
     {
-        if( (unsigned int)&mPool[ i ] == pItem )
+        if( &mPool[ i ] == pItem )
         {
             mUsed[ i ] = false;
             if( i < mPoolIndex )

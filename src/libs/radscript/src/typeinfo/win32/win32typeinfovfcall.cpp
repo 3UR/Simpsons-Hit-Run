@@ -15,6 +15,7 @@
 
 int InvokeVf( void * pThat, unsigned int vtbloffset, void * pParams, int numParams )
 {
+#if defined(WIN32) && !defined(_WIN64)
     __asm
     {
 
@@ -45,4 +46,9 @@ int InvokeVf( void * pThat, unsigned int vtbloffset, void * pParams, int numPara
 
             call dword ptr [edx]               ; ok, do it, return ( if any ) will be in eax.
     }
+#else
+    // TODO(3ur): how hard would this be?
+    #pragma message("NOTE: InvokeVf is unsupported on x64")
+    return 0;
+#endif
 }

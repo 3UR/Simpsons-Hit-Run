@@ -96,8 +96,7 @@ enum eHudOverlay
     NUM_HUD_OVERLAYS
 };
 
-class CGuiScreenHud : public CGuiScreenMultiHud,
-                      public EventListener
+class CGuiScreenHud : public CGuiScreenMultiHud
 {
 public:
     CGuiScreenHud( Scrooby::Screen* pScreen, CGuiEntity* pParent );

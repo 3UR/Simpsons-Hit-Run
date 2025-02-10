@@ -2132,7 +2132,7 @@ void Spin::Update( const float deltaT )
 //
 //==============================================================================
 Transition::Transition():
-#ifdef RAD_DEBUG
+#ifdef DEBUGWATCH
     m_Name( "NONE" ),
 #endif
     m_Active( false ),
@@ -2140,7 +2140,7 @@ Transition::Transition():
     m_Drawable( NULL ),
     m_ElapsedTime( 0.0f )
 {
-#ifdef RAD_DEBUG
+#ifdef DEBUGWATCH
     static int count = 0;
     m_Id = count;
     ++count;
@@ -2163,7 +2163,7 @@ Transition::Transition( const tName& name ):
     m_Drawable( NULL ),
     m_ElapsedTime( 0.0f )    
 {
-#ifdef RAD_DEBUG
+#ifdef DEBUGWATCH
     m_Name = name;
 #endif
 }
@@ -2180,7 +2180,7 @@ Transition::Transition( const tName& name ):
 //==============================================================================
 void Transition::Activate()
 {
-    #ifdef RAD_DEBUG
+    #ifdef DEBUGWATCH
         //rAssert( m_Name != "NONE" );
         if( m_Name.GetUID() != static_cast< tUID >( 0 ) )
         {

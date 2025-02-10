@@ -79,8 +79,6 @@ bool rDebugAssertFail_Implementation( const char* condition, const char* filenam
 void rDebugHaltOnAsserts_Implementation( bool halt );
 void rDebugWarningFail_Implementation( const char* condition, const char* filename, unsigned int linenum);
 void rDebugValidFail_Implementation( const char *condition, const char *filename, unsigned int linenum);
-int  rDebugValidPointer_Implementation( void *p );
-int  rDebugValidPointer32_Implementation( void *p );
 
 void rDebuggerString_Implementation( const char* string );
 void rDebugString_Implementation( const char * pString );
@@ -104,7 +102,7 @@ void rDebugSetOutputHandler     ( radDebugOutputHandler * pOutputProc );
 //
 
 #if defined (RAD_WIN32) || defined (RAD_XBOX)
-	#define rReleaseBreak() { __asm { int 3 } }
+	#define rReleaseBreak() { __debugbreak(); }
 #endif
 
 #ifdef RAD_PS2

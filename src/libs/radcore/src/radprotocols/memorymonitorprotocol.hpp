@@ -155,8 +155,8 @@ struct MM_RequestRefCountData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace    memorySpace;            // memory space of the memory
-    unsigned int            nObjectPtr;             // location to an object
-    unsigned int            nRefCountPtr;           // cast to ( unsigned int * )
+    void*                   nObjectPtr;             // location to an object
+    unsigned int*           nRefCountPtr;
 };
 
 //
@@ -166,8 +166,8 @@ struct MM_ReportRefCountData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace    memorySpace;            // memory space of the memory
-    unsigned int            nObjectPtr;             // location to an object
-    unsigned int            nRefCountPtr;           // cast to ( unsigned int * )
+    void*                   nObjectPtr;             // location to an object
+    unsigned int*           nRefCountPtr;
     unsigned int            nRefCount;              // ref count value
 };
 
@@ -194,7 +194,7 @@ struct MM_RequestMemoryBlockData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace      memorySpace;          // memory space of the memory
-    unsigned int        memStartPos;                // starting memory address
+    uintptr_t           memStartPos;                // starting memory address
     unsigned int        memLength;                  // length of memory address, must less than MM_MAX_MEMORY_BLOCK_SIZE
 };
 
@@ -205,7 +205,7 @@ struct MM_SendMemoryBlockData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace      memorySpace;          // memory space of the memory
-    unsigned int        memStartPos;                // starting memory address
+    uintptr_t           memStartPos;                // starting memory address
     unsigned int        memLength;                  // length of memory address
     char                memBlock[ MM_MAX_MEMORY_BLOCK_SIZE ];   // memory block
 };
@@ -235,7 +235,7 @@ struct MM_RequestStackUsageData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace      memorySpace;          // memory space of the memory
-    unsigned int        address;                    // start address of the stack
+    uintptr_t           address;                    // start address of the stack
 };
 
 //
@@ -245,7 +245,7 @@ struct MM_ReportStackUsageData :
     public MM_DataPacket
 {
     MM_ClientMemorySpace      memorySpace;          // memory space of the memory
-    unsigned int        address;                    // start address of the stack
+    uintptr_t           address;                    // start address of the stack
     unsigned int        highWaterMark;              // current stack High water mark,
                                                     // if highWaterMark == -1,
                                                     // then there's an error while determine stack usage
@@ -258,7 +258,7 @@ struct MM_DeclarePlatformData :
     public MM_DataPacketTimeStamped
 {
     MM_ClientPlatform   platform;
-    unsigned int        userData;                   // used to store address of main( ) in XBox
+    uintptr_t           userData;                   // used to store address of main( ) in XBox
 };
 
 //
@@ -267,7 +267,7 @@ struct MM_DeclarePlatformData :
 struct MM_DeclareSpaceData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        addrStart;
+    uintptr_t           addrStart;
     unsigned int        size;                       // size of section
     MM_ClientMemorySpace      memorySpace;          // memory space type
 };
@@ -278,7 +278,7 @@ struct MM_DeclareSpaceData :
 struct MM_DeclareSectionData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of section
+    uintptr_t           address;                    // address of section
     unsigned int        size;                       // size of section
     IRadMemoryMonitor::MemorySectionType sectionType;        // section type
     MM_ClientMemorySpace      memorySpace;          // memory space type
@@ -290,7 +290,7 @@ struct MM_DeclareSectionData :
 struct MM_IdenitfySectionData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of section
+    uintptr_t           address;                    // address of section
     MM_ClientMemorySpace      memorySpace;          // memory space type
     char                name[MM_MAX_NAMELENGTH];    // name of the section
 };
@@ -302,7 +302,7 @@ struct MM_IdenitfySectionData :
 struct MM_RescindSectionData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of section
+    uintptr_t           address;                    // address of section
     MM_ClientMemorySpace      memorySpace;          // memory space type
 };
 
@@ -312,12 +312,12 @@ struct MM_RescindSectionData :
 struct MM_DeclareAllocationData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of allocation see DeclareAllocation()
+    uintptr_t           address;                    // address of allocation see DeclareAllocation()
     unsigned int        size;                       // size of allocation see DeclareAllocation()
     MM_ClientMemorySpace      memorySpace;          // memory space used by allocation
 
     unsigned int        callStackDepth;             // call stack depth
-    unsigned int        callStack[MM_MAX_CALLSTACK_DEPTH];
+    uintptr_t           callStack[MM_MAX_CALLSTACK_DEPTH];
 };
 
 //
@@ -327,7 +327,7 @@ struct MM_DeclareAllocationData :
 struct MM_RescindAllocationData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of section
+    uintptr_t           address;                    // address of section
     MM_ClientMemorySpace      memorySpace;          // memory space type
 };
 
@@ -338,12 +338,12 @@ struct MM_RescindAllocationData :
 struct MM_IdentifyAllocationData :
     public MM_DataPacketTimeStamped
 {
-    unsigned int        address;                    // address of allocation see DeclareAllocation()
+    uintptr_t           address;                    // address of allocation see DeclareAllocation()
     MM_ClientMemorySpace      memorySpace;          // memory space used by allocation
     char                group[MM_MAX_NAMELENGTH/4]; // group id see DeclareAllocation()
     char                name[MM_MAX_NAMELENGTH];    // name of the allocation
     unsigned int        referenceCount;             // inital reference count
-    unsigned int        referenceCountPtr;          // reference counter pointer used by allocation
+    unsigned int*       referenceCountPtr;          // reference counter pointer used by allocation
 };
 
 //
@@ -362,11 +362,11 @@ struct MM_ReportAddRefData :
     public MM_DataPacketTimeStamped
 {
     MM_ClientMemorySpace    memorySpaceObject;   // memory space type
-    unsigned int            object;
+    uintptr_t               object;
     MM_ClientMemorySpace    memorySpaceRefObject;// memory space type
-    unsigned int            refObject;
+    uintptr_t               refObject;
     unsigned int            callStackDepth;             // call stack depth
-    unsigned int            callStack[MM_MAX_CALLSTACK_DEPTH];
+    uintptr_t               callStack[MM_MAX_CALLSTACK_DEPTH];
 };
 
 //
@@ -376,11 +376,11 @@ struct MM_ReportReleaseData :
     public MM_DataPacketTimeStamped
 {
     MM_ClientMemorySpace    memorySpaceObject;   // memory space type
-    unsigned int            object;
+    uintptr_t               object;
     MM_ClientMemorySpace    memorySpaceRefObject;// memory space type
-    unsigned int            refObject;
+    uintptr_t               refObject;
     unsigned int            callStackDepth;             // call stack depth
-    unsigned int            callStack[MM_MAX_CALLSTACK_DEPTH];
+    uintptr_t               callStack[MM_MAX_CALLSTACK_DEPTH];
 };
 
 union MM_DataPacketBlock

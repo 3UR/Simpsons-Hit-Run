@@ -1,3 +1,4 @@
+
 //=============================================================================
 // Copyright (c) 2002 Radical Games Ltd.  All rights reserved.
 //=============================================================================
@@ -43,15 +44,15 @@
 
 #include <stdlib.h>
 #include <radobject.hpp>
-#include <radmemory.hpp>                     
+#include <radmemory.hpp>
 
-#ifdef RAD_WIN32
+#ifdef WIN32
 //
 // windows.h must be included because radPlatformInitialize( ) need HWND and
 // HINSTANCE definition.
 //
 #include <windows.h>
-#endif 
+#endif
 
 //=============================================================================
 // Forward Declarations
@@ -82,9 +83,21 @@ IRadPlatform* radPlatformGet( void );
 //
 #define RAD_LITTLE_ENDIAN
 
-inline unsigned short radPlatformEndian16( unsigned short value ) { return( value ); }
-inline unsigned int radPlatformEndian32( unsigned int value ) { return( value ); }
-inline float radPlatformEndianFloat( float value ) { return( value ); }
+template<typename T>
+inline T radPlatformEndian( T value ) { return( value ); }
+
+template<>
+inline unsigned short radPlatformEndian<unsigned short>( unsigned short value ) { return(value); }
+template<>
+inline unsigned int radPlatformEndian<unsigned int>( unsigned int value ) { return( value ); }
+template<>
+inline float radPlatformEndian<float>( float value ) { return( value ); }
+
+#endif
+
+#define radPlatformEndian16     radPlatformEndian<unsigned short>
+#define radPlatformEndian32     radPlatformEndian<unsigned int>
+#define radPlatformEndianFloat  radPlatformEndian<float>
 
 
 //=============================================================================
@@ -115,8 +128,10 @@ struct IRadPlatformWin32MessageCallback
 //
 struct IRadPlatform : public IRefCount
 {
+#ifdef WIN32
     virtual HWND GetMainWindowHandle( void ) = 0;
     virtual HINSTANCE GetInstanceHandle( void ) = 0;
+#endif
     virtual void RegisterMainWindowCallback
     (
         IRadPlatformWin32MessageCallback* pICallback
@@ -126,7 +141,6 @@ struct IRadPlatform : public IRefCount
         IRadPlatformWin32MessageCallback* pICallback
     ) = 0;
 };
-#endif // RAD_WIN32
 
 //=============================================================================
 // XBOX Platform

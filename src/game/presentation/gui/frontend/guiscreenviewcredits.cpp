@@ -495,7 +495,7 @@ CGuiScreenViewCredits::OnNewLineDisplayed( int lineNumber )
     {
         // trigger this event for the sound manager to play line-specific dialog
         //
-        GetEventManager()->TriggerEvent( EVENT_FE_CREDITS_NEW_LINE, (void*)lineNumber );
+        GetEventManager()->TriggerEvent( EVENT_FE_CREDITS_NEW_LINE, (void*)(uintptr_t)lineNumber );
     }
 }
 

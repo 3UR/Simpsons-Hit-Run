@@ -27,25 +27,7 @@ namespace LocatorType
         NUM_TYPES
     };
 
-    const char* const Name[NUM_TYPES] = 
-    {
-        "Event",
-        "Script",
-        "Generic",
-        "Car Start",
-        "Spline",
-        "Dynamic Zone",
-        "Occlusion",
-        "Interior Entrance",
-        "Directional",
-        "Action",
-        "FOV",
-        "Breakable Camera",
-        "Static Camera",
-        "Ped Group",
-        "Coin",
-        "Spawn Point"
-    };
+    extern const char* const Name[NUM_TYPES];
 }
 
 #endif

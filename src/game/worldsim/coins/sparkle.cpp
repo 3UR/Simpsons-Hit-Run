@@ -338,7 +338,7 @@ the first bytes) we'd end up with a number between 0 and 15 which we could use
 as an index into some bits we are using to hold a counter controling when to
 spit out a sparkle. I think I'll try something along those lines.
 =============================================================================*/
-void Sparkle::AddGagSparkle(const rmt::Vector& Position, float Size, float Strength, unsigned int Caller)
+void Sparkle::AddGagSparkle(const rmt::Vector& Position, float Size, float Strength, uintptr_t Caller)
 {
     static unsigned int actionFlag = 0;
     if(GetGameFlow()->GetCurrentContext() == CONTEXT_PAUSE)

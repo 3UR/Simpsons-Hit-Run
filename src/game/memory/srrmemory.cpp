@@ -59,8 +59,8 @@ void MemoryHackCallback() { INIT_MEM() };
 #ifdef RAD_WIN32
 #include <main/win32platform.h>
 #define INIT_MEM()  Memory::InitializeMemoryUtilities();Win32Platform::InitializeMemory();
-void MemoryHackCallback() { INIT_MEM() };
 #define SHUTDOWN_MEM()  Win32Platform::ShutdownMemory();
+void MemoryHackCallback() { INIT_MEM() };
 #endif // RAD_WIN32
 
 //******************************************************************************
@@ -75,39 +75,46 @@ bool g_HeapManagerCreated   = false;
 //
 bool gMemorySystemInitialized = false;
 
+#ifdef OVERRIDE_BUILTIN_NEW
 // 
 // Temporarily disable allocation routing (to avoid infinite loops)
 //
 bool g_NoHeapRoute = false;
+#else
+// 
+// Permanently disable allocation routing (to avoid unrelated allocations)
+//
+const bool g_NoHeapRoute = true;
+#endif
 
 const char* HeapNames[] =
 {
     "Default Heap",
-        "Temp Heap",
-        "Persistent Heap",
-        "Level Heap",
-        "Movie Heap",
-        "Frontend Heap",
-        "Zone and Rail Heap",
-        "Level Other Heap",
-        "HUD Heap",
-        "Mission Heap",
-        "Audio Heap",
-        "Debug Heap",
-        "Special Heap",
-        "Music Heap",
-        "Audio Persistent",
-        "Small Alloc Heap",
+    "Temp Heap",
+    "Persistent Heap",
+    "Level Heap",
+    "Movie Heap",
+    "Frontend Heap",
+    "Zone and Rail Heap",
+    "Level Other Heap",
+    "HUD Heap",
+    "Mission Heap",
+    "Audio Heap",
+    "Debug Heap",
+    "Special Heap",
+    "Music Heap",
+    "Audio Persistent",
+    "Small Alloc Heap",
 #ifdef RAD_XBOX
-        "Xbox Sound Heap",
+    "Xbox Sound Heap",
 #endif
 #ifdef USE_CHAR_GAG_HEAP
-        "Character and Gag Heap",
+    "Character and Gag Heap",
 #endif
-        "Anywhere in Level",
-        "Anywhere in FE",
-        "Either Other or Zone",
-        "Allocator Search"
+    "Anywhere in Level",
+    "Anywhere in FE",
+    "Either Other or Zone",
+    "Allocator Search"
 };
 
 
@@ -149,6 +156,7 @@ inline void* AllocateThis( GameMemoryAllocator allocator, size_t size )
 
     return pMemory;
 }
+
 
 //==============================================================================
 // new
@@ -207,7 +215,7 @@ throw( std::bad_alloc )
 // Return:      
 //
 //==============================================================================
-void operator delete( void* pMemory )
+void operator delete(void* pMemory)
 #ifdef RAD_PS2
 #ifndef RAD_MW
 throw()
@@ -312,12 +320,9 @@ void* operator new( size_t size, GameMemoryAllocator allocator )
 
     void* pMemory = AllocateThis( allocator, size );
 
-    if (!g_NoHeapRoute)
-    {
 #ifdef MEMORYTRACKER_ENABLED
-        ::radMemoryMonitorIdentifyAllocation (pMemory, HeapMgr()->GetCurrentGroupID ());
+    ::radMemoryMonitorIdentifyAllocation (pMemory, HeapMgr()->GetCurrentGroupID ());
 #endif
-    }
 
     //MEMTRACK_ALLOC( pMemory, size, 0 );
 
@@ -369,12 +374,9 @@ void* operator new[]( size_t size, GameMemoryAllocator allocator )
 
     void* pMemory = AllocateThis( allocator, size );
 
-    if (!g_NoHeapRoute)
-    {
 #ifdef MEMORYTRACKER_ENABLED
-        ::radMemoryMonitorIdentifyAllocation (pMemory, HeapMgr()->GetCurrentGroupID ());
+    ::radMemoryMonitorIdentifyAllocation (pMemory, HeapMgr()->GetCurrentGroupID ());
 #endif
-    }
 
     //MEMTRACK_ALLOC( pMemory, size, ALLOC_ARRAY );
 
@@ -604,6 +606,8 @@ void PrintOutOfMemoryMessage( void* userData, radMemoryAllocator heap, const uns
 
     rReleaseBreak();
 
+    ::radMemoryMonitorSuspend();
+
     //Re-enable now that we're through
     ::radMemorySetOutOfMemoryCallback( PrintOutOfMemoryMessage, NULL );
 #endif
@@ -746,7 +750,9 @@ int HeapManager::s_NumInstances = 0;
 
 HeapManager* HeapManager::GetInstance ()
 {
+#ifdef OVERRIDE_BUILTIN_NEW
     g_NoHeapRoute = true;
+#endif
 
     // First check to see if the thread local storage object has been created
     //
@@ -774,7 +780,9 @@ HeapManager* HeapManager::GetInstance ()
 #endif
     }
 
+#ifdef OVERRIDE_BUILTIN_NEW
     g_NoHeapRoute = false;
+#endif
     g_HeapManagerCreated = true;
     return static_cast<HeapManager*>(p);
 }
@@ -1146,17 +1154,17 @@ void HeapManager::DumpHeapStats ( bool text )
         size_t allocatable  = 0;
         size_t largestBlock = Memory::GetLargestFreeBlock();
         char buffer[ 256 ];
-        sprintf( buffer, "Used: %d\n", used );
+        sprintf( buffer, "Used: %zu\n", used );
         rReleaseString( buffer );
-        sprintf( buffer, "Free: %d Free in Malloc: %d\n", freeInAllHeaps, available );
+        sprintf( buffer, "Free: %zu Free in Malloc: %zu\n", freeInAllHeaps, available );
         rReleaseString( buffer );
-        sprintf( buffer, "Unavailable: %d\n", unavailable );
+        sprintf( buffer, "Unavailable: %zu\n", unavailable );
         rReleaseString( buffer );
-        sprintf( buffer, "LargestFragment: %d\n", largestBlock );
+        sprintf( buffer, "LargestFragment: %zu\n", largestBlock );
         rReleaseString( buffer );
-        sprintf( buffer, "Allocatable: %d\n", allocatable );
+        sprintf( buffer, "Allocatable: %zu\n", allocatable );
         rReleaseString( buffer );
-        sprintf( buffer, "LowWater: %d\n", lowWater );
+        sprintf( buffer, "LowWater: %zu\n", lowWater );
         rReleaseString( buffer );
 
 
@@ -1242,17 +1250,17 @@ void HeapManager::DumpHeapStats ( bool text )
         size_t largestBlock = Memory::GetLargestFreeBlock();
         char buffer[ 256 ];
         int printLine = TOP - 10;
-        sprintf( buffer, "Used: %d", used );
+        sprintf( buffer, "Used: %zu", used );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
-        sprintf( buffer, "Free: %d Free in Malloc: %d", freeInAllHeaps, available );
+        sprintf( buffer, "Free: %zu Free in Malloc: %zu", freeInAllHeaps, available );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
-        sprintf( buffer, "Unavailable: %d", unavailable );
+        sprintf( buffer, "Unavailable: %zu", unavailable );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
-        sprintf( buffer, "LargestFragment: %d", largestBlock );
+        sprintf( buffer, "LargestFragment: %zu", largestBlock );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
-        sprintf( buffer, "Allocatable: %d", allocatable );
+        sprintf( buffer, "Allocatable: %zu", allocatable );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
-        sprintf( buffer, "LowWater: %d", lowWater );
+        sprintf( buffer, "LowWater: %zu", lowWater );
         p3d::pddi->DrawString( buffer, LEFT, printLine += 15 , BLACK );
         
 
@@ -1551,7 +1559,7 @@ void HeapManager::DumpArtStats ()
     //In-game Only
     const float HS_LEVEL_ZONE = 8.0f;
     //const float HS_LEVEL_OTHER = 5.0f;
-    const float HS_LEVEL_HUD = 5.0f;
+    const float HS_LEVEL_HUD = 2.5f;
     //const float HS_LEVEL_MISSION = 2.8f;
     const float HS_LEVEL_AUDIO_INGAME = 0.05f;
     //Mnigame Only

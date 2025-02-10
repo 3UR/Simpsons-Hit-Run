@@ -237,7 +237,7 @@ radFile::radFile
         {
             m_CacheAllocator = alloc;
             m_FileCache.InitCache( 
-                ( unsigned char* )::radMemoryRoundUp( (unsigned int ) m_CacheMemory, radFileOptimalMemoryAlignment ),
+                ( unsigned char* )::radMemoryRoundUp( (uintptr_t) m_CacheMemory, radFileOptimalMemoryAlignment ),
                 cacheSize, 
                 cacheSpace );
         }
@@ -836,8 +836,8 @@ void radFile::SetBufferedRead( BufferedReadState state )
 // Returns:    
 //------------------------------------------------------------------------------
 
-unsigned int radFile::GetHandle( void )
+void* radFile::GetHandle(void)
 {
     rAssert( m_IsOpen );
-    return (unsigned int) m_Handle;
+    return m_Handle;
 }

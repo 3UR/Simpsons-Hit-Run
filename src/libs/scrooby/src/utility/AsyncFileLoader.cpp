@@ -273,7 +273,7 @@ void AsyncFileLoader::OnFileOperationsComplete( void* pUserData )
     //
     // Check which operation completed.
     //
-    if( (unsigned int) pUserData == 0 )
+    if( pUserData == nullptr )
     {
         //
         // Here we know the callback was invoked after the file open completed. We 

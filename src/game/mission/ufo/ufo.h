@@ -20,6 +20,7 @@
 #include <p3d/refcounted.hpp>
 #include <radmath/radmath.hpp>
 #include <p3d/p3dtypes.hpp>
+#include <memory/stlallocators.h>
 
 #include <vector>
 #include <render/culling/ReserveArray.h>

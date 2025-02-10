@@ -77,7 +77,7 @@ struct HfpOpenCmd
 struct HfpOpenRpy
 {
     HfpCommand      m_Command;
-    unsigned int    m_Handle;               // 0 = open on target, 0xffffffff = failed, others are valid
+    void*           m_Handle;               // 0 = open on target, 0xffffffff = failed, others are valid
     unsigned int    m_Size;                 // Size of file
 };
 
@@ -87,7 +87,7 @@ struct HfpOpenRpy
 struct HfpCloseCmd
 {
     HfpCommand      m_Command;
-    unsigned int    m_Handle;               // File handle
+    void*           m_Handle;               // File handle
 };
 
 struct HfpCloseRpy
@@ -101,7 +101,7 @@ struct HfpCloseRpy
 struct HfpReadCmd
 {
     HfpCommand      m_Command;
-    unsigned int    m_Handle;               // File handle
+    void*           m_Handle;               // File handle
     unsigned int    m_Position;             // Where to read
     unsigned int    m_NumBytes;             // Number of bytes to read
 };
@@ -120,7 +120,7 @@ struct HfpReadRpy
 struct HfpWriteCmd
 {
     HfpCommand      m_Command;
-    unsigned int    m_Handle;               // File handle
+    void*           m_Handle;               // File handle
     unsigned int    m_Position;             // Where to Write
     unsigned int    m_NumBytes;             // Number of bytes to write
     unsigned char   m_Data[ HFP_MAX_READWRITE ]; // Data

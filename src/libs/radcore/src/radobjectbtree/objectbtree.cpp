@@ -755,7 +755,7 @@ void radObjectBTree::DisplayTree
     else
     {
         char buf[ 256 ];
-        sprintf( buf, "( %i, %#x )\n", pNode->m_key, reinterpret_cast< unsigned int >( static_cast< IRefCount* >( pNode->m_xIObject ) ) );
+        sprintf( buf, "( %i, %p )\n", pNode->m_key, static_cast< IRefCount* >( pNode->m_xIObject ) );
         rDebugString( buf );
 
         // Print subtrees

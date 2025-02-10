@@ -1466,7 +1466,8 @@ tEntity* tAnimationLoader::LoadObject(tChunkFile* f, tEntityStore* store)
                     #endif
                     if ((anim->numGroups==0)&&(animSize>0))
                     {
-                        anim->memoryBlock = new tAnimationMemoryBlock(animSize);
+                        unsigned int factor = sizeof(void*) / 4;
+                        anim->memoryBlock = new tAnimationMemoryBlock(animSize * factor);
                         anim->memoryBlock->AddRef();
                     }
                 }

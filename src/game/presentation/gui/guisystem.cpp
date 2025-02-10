@@ -706,7 +706,7 @@ void CGuiSystem::HandleMessage
         }
         case GUI_MSG_PROJECT_LOAD_COMPLETE:
         {
-            this->OnProjectLoadComplete( (Scrooby::Project*)param1 );
+            //this->OnProjectLoadComplete( (Scrooby::Project*)param1 );
 
             break;
         }

@@ -21,7 +21,7 @@ static inline p3d::AllocType GetCurrentAllocator(void)
         radThreadCreateLocalStorage(&gCurrentAllocType); // TODO : should delete at some point
     }
 
-    return (p3d::AllocType)((int )gCurrentAllocType->GetValue());
+    return (p3d::AllocType)((intptr_t )gCurrentAllocType->GetValue());
 }
 
 static inline void SetCurrentAllocator(p3d::AllocType a) 

@@ -137,7 +137,7 @@ private:
 
     unsigned int mFlags;
 
-    char mAllocated; //Slighty wasteful due to padding.
+    bool mAllocated; //Slighty wasteful due to padding.
 
     void SetFlag( Flag flag, bool value );
     bool GetFlag( Flag flag ) const;

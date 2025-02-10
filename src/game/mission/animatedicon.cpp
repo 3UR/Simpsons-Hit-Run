@@ -15,21 +15,24 @@
 // Foundation Tech
 #include <radtime.hpp>
 #include <raddebug.hpp>
+#include <p3d/anim/compositedrawable.hpp>
 #include <p3d/anim/multicontroller.hpp>
 #include <p3d/effects/particlesystem.hpp>
+#include <p3d/billboardobject.hpp>
+#include <p3d/camera.hpp>
 #include <p3d/view.hpp>
 
 //========================================
 // Project Includes
 //========================================
-#include <mission/AnimatedIcon.h>
+#include <mission/animatedicon.h>
 
 #include <memory/srrmemory.h>
 
 #include <mission/gameplaymanager.h>
-#include <render/rendermanager/rendermanager.h>
-#include <render/rendermanager/worldrenderlayer.h>
-#include <render/culling/worldscene.h>
+#include <render/RenderManager/RenderManager.h>
+#include <render/RenderManager/WorldRenderLayer.h>
+#include <render/Culling/WorldScene.h>
 
 #include <debug/profiler.h>
 
@@ -71,7 +74,8 @@ bool AnimatedIcon::sDbgEnableArrowScaling = false;
 AnimatedIcon::AnimatedIcon() :
     mDSGEntity( NULL ),
     mRenderLayer( RenderEnums::LevelSlot ),
-    mFlags( 0 )
+    mFlags( 0 ),
+    mAllocated( true )
 {
 #ifdef RAD_TUNE
     AttachWatcherVariables();
@@ -408,7 +412,6 @@ void* AnimatedIcon::operator new( size_t size )
     rAssert( sAnimatedIconPool != NULL );
     rAssert( sNumAllocated < MAX_ICONS );
 
-    void* data = NULL;
     if ( sNumAllocated < MAX_ICONS )
     {
         unsigned int i;
@@ -416,15 +419,13 @@ void* AnimatedIcon::operator new( size_t size )
         {
             if ( !sAnimatedIconPool[ i ].mAllocated )
             {
-                sAnimatedIconPool[ i ].mAllocated = true;
-                data = static_cast<void*>(&sAnimatedIconPool[ i ]);
                 ++sNumAllocated;
-                break;
+                return static_cast<void*>(&sAnimatedIconPool[i]);
             }
         }
     }
 
-    return data;
+    return NULL;
 }
 
 //=============================================================================

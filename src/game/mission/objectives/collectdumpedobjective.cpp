@@ -580,7 +580,7 @@ bool CollectDumpedObjective::OnCollection( unsigned int collectibleNum, bool &sh
     }
 
     mNumUncollected--;
-    GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)mNumUncollected);
+    GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)(uintptr_t)mNumUncollected);
 
     //Mark the collectible as collected.
     int i;
@@ -663,7 +663,7 @@ void CollectDumpedObjective::OnUpdateCollectibleObjective( unsigned int elapsedT
                 mDumpData[ i ].collected= false;
                 --mNumUncollected;
                 --mNumSpawned;
-                GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)mNumUncollected);
+                GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)(uintptr_t)mNumUncollected);
             }
             else
             {
@@ -731,7 +731,7 @@ void CollectDumpedObjective::OnUpdateCollectibleObjective( unsigned int elapsedT
             Uncollect( mWhatToDump );
 
             ++mNumUncollected;
-            GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)mNumUncollected);
+            GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)(uintptr_t)mNumUncollected);
 
             CGuiScreenHud* currentHud = GetCurrentHud();
             if( currentHud )
@@ -747,7 +747,7 @@ void CollectDumpedObjective::OnUpdateCollectibleObjective( unsigned int elapsedT
             mDumpData[ mWhatToDump ].lifetime = mDumpLifetime;
 
             ++mNumUncollected;
-            GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)mNumUncollected);
+            GetEventManager()->TriggerEvent(EVENT_DUMP_STATUS, (void*)(uintptr_t)mNumUncollected);
         }
         mDumpTimeout = -1;
     }

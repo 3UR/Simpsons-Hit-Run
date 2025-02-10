@@ -130,7 +130,7 @@ public:
 
     static int GetMaxCharacters();
 
-    static void Teleport(unsigned i) { DoTeleport((void*)i); } 
+    static void Teleport( unsigned i );
     static unsigned GetNumTeleportDests(void);
     static const char* GetTeleportDest(unsigned i);
 

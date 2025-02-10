@@ -181,7 +181,7 @@ void radBaseObject::RemoveFromList( void )
     }
 }
 
-unsigned int radBaseObject::GetObjectSize( void )
+size_t radBaseObject::GetObjectSize( void )
 {
 	return 0xFFFFFFFF;	
 }

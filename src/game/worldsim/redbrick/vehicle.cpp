@@ -2590,7 +2590,7 @@ void Vehicle::PostSubstepUpdate(float dt)
                 }
                 else
                 {
-                    GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, reinterpret_cast< unsigned int >(this) );                
+                    GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, GetVehicleCentral()->GetVehicleId( this ) );
                 }
                  
                 mAlreadyCalledAutoResetOnSpot = true;
@@ -2624,7 +2624,7 @@ void Vehicle::PostSubstepUpdate(float dt)
                     }
                     else
                     {
-                        GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, reinterpret_cast< unsigned int >(this) );                
+                        GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, GetVehicleCentral()->GetVehicleId( this ) );
                     }
                    
                     mAlreadyCalledAutoResetOnSpot = true;

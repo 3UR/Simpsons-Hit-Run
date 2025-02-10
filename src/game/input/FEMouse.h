@@ -11,6 +11,7 @@
 #define FEMOUSE_H
 
 #include <input/MouseCursor.h>
+#include <p3d/drawable.hpp>
 
 enum eFEMouseButton
 {

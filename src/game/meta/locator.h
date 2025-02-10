@@ -60,6 +60,9 @@ public:
     void            SetData( unsigned int data );
     unsigned int    GetData() const;
 
+    void            SetUserData( void* data );
+    void*           GetUserData() const;
+
     virtual LocatorType::Type GetDataType() const;  //MUST OVERRIDE THIS!
 
     void SetFlag( Flag flag, bool on );
@@ -78,6 +81,7 @@ public:
 private:
     unsigned int    mID;       // Used to number-id locators.
     unsigned int    mData;     // Here is the data in the locator
+    void*           mUserData; // Here is the user data in the locator
     unsigned int    mFlags;    // Flags, we don't need no... oh wait, maybe we do.
     
     rmt::Vector mLocation;  //Where am I?
@@ -177,12 +181,41 @@ inline void Locator::SetData( unsigned int data )
 //
 // Parameters:  ()
 //
-// Return:      unsigned 
+// Return:      unsigned int
 //
 //=============================================================================
 inline unsigned int Locator::GetData() const
 {
     return mData;
+}
+
+//=============================================================================
+// Locator::SetUserData
+//=============================================================================
+// Description: Comment
+//
+// Parameters:  ( void* data )
+//
+// Return:      void 
+//
+//=============================================================================
+inline void Locator::SetUserData( void* data )
+{
+    mUserData = data;
+}
+//=============================================================================
+// Locator::GetUserData
+//=============================================================================
+// Description: Comment
+//
+// Parameters:  ()
+//
+// Return:      void* 
+//
+//=============================================================================
+inline void* Locator::GetUserData() const
+{
+    return mUserData;
 }
 
 //=============================================================================

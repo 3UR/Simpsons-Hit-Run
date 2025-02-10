@@ -280,8 +280,8 @@ void radMemoryMonitorClient::Initialize( unsigned int BufferSize, bool SyncMode,
 
     m_uRxBufferSize         = MM_RX_BUFFER_SIZE;
     memset( m_pRxBuffer, 0, MM_RX_BUFFER_SIZE );
-    m_uRxBytesQueued        = NULL;
-    m_uRxBytesProcessed     = NULL;
+    m_uRxBytesQueued        = 0;
+    m_uRxBytesProcessed     = 0;
 
     m_pTxBuffer1            = NULL;
     m_pTxBuffer2            = NULL;
@@ -444,7 +444,7 @@ void radMemoryMonitorClient::Service( void )
     //
     while ( m_bSuspended && m_pChannel && m_bAttached )
     {
-#if defined RAD_WIN32
+#if defined WIN32
         ::Sleep( 5 );   // if on PC, don't take entire CPU cycle
 #endif
         radDbgComService( );
@@ -522,13 +522,13 @@ void radMemoryMonitorClient::DeclarePlatform( )
 
     pPlatform->eventID  = radPlatformEndian32( m_uCurrEventID ); m_uCurrEventID ++;
     pPlatform->timeStamp = radPlatformEndian32( GetTimeFrame( ) );
-#if defined(RAD_PS2)
+#if defined RAD_PS2
 	pPlatform->platform = static_cast< MM_ClientPlatform >( radPlatformEndian32( MM_Platform_PS2 ) );
     pPlatform->userData = 0;
-#elif defined(RAD_XBOX)
+#elif defined RAD_XBOX
 	pPlatform->platform = static_cast< MM_ClientPlatform >( radPlatformEndian32( MM_Platform_XBOX ) );
     pPlatform->userData = ( unsigned int )( ( void * )&s_TheMemoryMonitorClient );
-#elif defined(RAD_WIN32)
+#elif defined RAD_WIN32
 	pPlatform->platform = static_cast< MM_ClientPlatform >( radPlatformEndian32( MM_Platform_WIN ) );
     pPlatform->userData = 0;
 #else
@@ -548,7 +548,7 @@ void radMemoryMonitorClient::DeclarePlatform( )
 // Parameters:  
 //
 //===========================================================================
-void radMemoryMonitorClient::DeclareMemSpaceInfo( radMemorySpace memSpace, unsigned int startAddr, unsigned int size )
+void radMemoryMonitorClient::DeclareMemSpaceInfo( radMemorySpace memSpace, uintptr_t startAddr, unsigned int size )
 {
     radSingleLock< radMemoryMonitorClient > singleLock( this, true );
     rAssertMsg( m_eInitialized == MM_Initialized, "radMemoryMonitor not initialized." );
@@ -561,11 +561,11 @@ void radMemoryMonitorClient::DeclareMemSpaceInfo( radMemorySpace memSpace, unsig
     MM_DeclareSpaceData * pData = NULL;
     AllocateMemoryForSendProtocal( & pData );
 
-    pData->timeStamp    = radPlatformEndian32( GetTimeFrame( ) );
-    pData->eventID      = radPlatformEndian32( m_uCurrEventID ); m_uCurrEventID ++;
-    pData->addrStart    = radPlatformEndian32( startAddr );
-    pData->size         = radPlatformEndian32( size );
-    pData->memorySpace  = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memSpace ) ) );
+    pData->timeStamp    = radPlatformEndian( GetTimeFrame( ) );
+    pData->eventID      = radPlatformEndian( m_uCurrEventID ); m_uCurrEventID ++;
+    pData->addrStart    = radPlatformEndian( startAddr );
+    pData->size         = radPlatformEndian( size );
+    pData->memorySpace  = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memSpace ) ) );
 
     InitiateTransmission( );
 }
@@ -670,17 +670,17 @@ void radMemoryMonitorClient::DeclarePreDefinedMemorySection( )
 #endif
 #ifdef RAD_WIN32
 
-    DeclareSection( (void*)0x00000000, 0xcfffffff, MemorySectionType_DynamicData, radMemorySpace_Main, NULL );
+    DeclareSection( (void*)(uintptr_t)0x00000000, 0xcfffffff, MemorySectionType_DynamicData, radMemorySpace_Main, NULL );
 
-    DeclareSection( (void*)0xd0000000, 0xffffffff - 0xd0000000, MemorySectionType_Stack, radMemorySpace_Main, NULL );
+    DeclareSection( (void*)(uintptr_t)0xd0000000, 0xffffffff - 0xd0000000, MemorySectionType_Stack, radMemorySpace_Main, NULL );
 
 #endif
 
 #ifdef RAD_XBOX
 
-    DeclareSection( (void*)0x00000000, (unsigned int)(radMemoryMonitorInitialize) + 192 * 1024 * 1024, MemorySectionType_DynamicData, radMemorySpace_Main, NULL );
+    DeclareSection( (void*)(uintptr_t)0x00000000, (unsigned int)(radMemoryMonitorInitialize) + 192 * 1024 * 1024, MemorySectionType_DynamicData, radMemorySpace_Main, NULL );
 
-    DeclareSection( (void*)0xd0000000, 0xffffffff - 0xd0000000, MemorySectionType_Stack, radMemorySpace_Main, NULL );
+    DeclareSection( (void*)(uintptr_t)0xd0000000, 0xffffffff - 0xd0000000, MemorySectionType_Stack, radMemorySpace_Main, NULL );
 
 #endif
 }
@@ -721,12 +721,12 @@ void radMemoryMonitorClient::DeclareSection( void* address, unsigned int size, M
     AllocateMemoryForSendProtocal( & pDeclareSectionData );
 
     // copy over all the data
-    pDeclareSectionData->eventID        = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pDeclareSectionData->timeStamp      = radPlatformEndian32( GetTimeFrame( ) );
-    pDeclareSectionData->address        = radPlatformEndian32( reinterpret_cast< unsigned int >( address ) );
-    pDeclareSectionData->size           = radPlatformEndian32( size );
-    pDeclareSectionData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
-    pDeclareSectionData->sectionType    = static_cast< MemorySectionType >( radPlatformEndian32( sectionType ) );
+    pDeclareSectionData->eventID        = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pDeclareSectionData->timeStamp      = radPlatformEndian( GetTimeFrame( ) );
+    pDeclareSectionData->address        = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
+    pDeclareSectionData->size           = radPlatformEndian( size );
+    pDeclareSectionData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
+    pDeclareSectionData->sectionType    = static_cast< MemorySectionType >( radPlatformEndian( sectionType ) );
 
     InitiateTransmission( );
 
@@ -789,10 +789,10 @@ void radMemoryMonitorClient::RescindSection( void* address, radMemorySpace memor
     MM_RescindSectionData * pRescindSectionData = NULL;
     AllocateMemoryForSendProtocal( & pRescindSectionData );
 
-    pRescindSectionData->eventID        = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pRescindSectionData->timeStamp      = radPlatformEndian32( GetTimeFrame( ) );
-    pRescindSectionData->address        = radPlatformEndian32( reinterpret_cast< unsigned int >( address ) );
-    pRescindSectionData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
+    pRescindSectionData->eventID        = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pRescindSectionData->timeStamp      = radPlatformEndian( GetTimeFrame( ) );
+    pRescindSectionData->address        = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
+    pRescindSectionData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
 
     RemoveSection( address, memorySpace );
 
@@ -838,9 +838,9 @@ void radMemoryMonitorClient::IdentifySection( void* address, const char* name, r
     MM_IdenitfySectionData * pIdentifySectionData = NULL;
     AllocateMemoryForSendProtocal( & pIdentifySectionData );
 
-    pIdentifySectionData->eventID   = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pIdentifySectionData->timeStamp = radPlatformEndian32( GetTimeFrame( ) );
-    pIdentifySectionData->address   = radPlatformEndian32( (unsigned int)address );
+    pIdentifySectionData->eventID   = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pIdentifySectionData->timeStamp = radPlatformEndian( GetTimeFrame( ) );
+    pIdentifySectionData->address   = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
     pIdentifySectionData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
     
     if ( name != NULL )
@@ -877,7 +877,7 @@ void radMemoryMonitorClient::IdentifySection( void* address, const char* name, r
 void radMemoryMonitorClient::DeclareAllocation( void* address, unsigned int size,
                                 unsigned int callStackDepth, radMemorySpace memorySpace )
 {
-    rAssert( reinterpret_cast< unsigned int >( address ) != 0x1d0228a );
+    rAssert( reinterpret_cast< uintptr_t >( address ) != 0x1d0228a );
 
     radSingleLock< radMemoryMonitorClient > singleLock( this, true );
     Service( );
@@ -909,26 +909,26 @@ void radMemoryMonitorClient::DeclareAllocation( void* address, unsigned int size
     MM_DeclareAllocationData * pDeclareAllocationData = NULL;
     AllocateMemoryForSendProtocal( & pDeclareAllocationData );
 
-    pDeclareAllocationData->eventID         = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pDeclareAllocationData->timeStamp       = radPlatformEndian32( GetTimeFrame( ) );
-    pDeclareAllocationData->address         = radPlatformEndian32( reinterpret_cast< unsigned int >( address ) );
-    pDeclareAllocationData->size            = radPlatformEndian32( size );
-    pDeclareAllocationData->callStackDepth  = radPlatformEndian32( callStackDepth );
-    pDeclareAllocationData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
+    pDeclareAllocationData->eventID         = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pDeclareAllocationData->timeStamp       = radPlatformEndian( GetTimeFrame( ) );
+    pDeclareAllocationData->address         = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
+    pDeclareAllocationData->size            = radPlatformEndian( size );
+    pDeclareAllocationData->callStackDepth  = radPlatformEndian( callStackDepth );
+    pDeclareAllocationData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
     
     if ( callStackDepth > MM_MAX_CALLSTACK_DEPTH )
     {
         callStackDepth = MM_MAX_CALLSTACK_DEPTH;
     }
 
-    unsigned int uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
+    uintptr_t uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
 
     // copy call stack over to the buffer
     radStackTraceGet( uCallStack, callStackDepth + 2 );
     
     for ( unsigned int i = 0; i < callStackDepth; i ++ )
     {
-    	pDeclareAllocationData->callStack[ i ] = radPlatformEndian32( uCallStack[ i + 2 ] );
+    	pDeclareAllocationData->callStack[ i ] = radPlatformEndian( uCallStack[ i + 2 ] );
     }
 
     InitiateTransmission( );
@@ -978,10 +978,10 @@ void radMemoryMonitorClient::RescindAllocation( void* address, radMemorySpace me
     MM_RescindAllocationData * pRescindAllocationData = NULL;
     AllocateMemoryForSendProtocal( & pRescindAllocationData );
 
-    pRescindAllocationData->eventID         = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pRescindAllocationData->timeStamp       = radPlatformEndian32( GetTimeFrame( ) );
-    pRescindAllocationData->address         = radPlatformEndian32( reinterpret_cast< unsigned int >( address ) );
-    pRescindAllocationData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
+    pRescindAllocationData->eventID         = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pRescindAllocationData->timeStamp       = radPlatformEndian( GetTimeFrame( ) );
+    pRescindAllocationData->address         = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
+    pRescindAllocationData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
 
     InitiateTransmission( );
 
@@ -1034,10 +1034,10 @@ void radMemoryMonitorClient::IdentifyAllocation( void* address, const char * gro
     MM_IdentifyAllocationData * pData = NULL;
     AllocateMemoryForSendProtocal( & pData );
 
-    pData->eventID         = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pData->timeStamp       = radPlatformEndian32( GetTimeFrame( ) );
-    pData->address         = radPlatformEndian32( (unsigned int)address );
-    pData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
+    pData->eventID         = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pData->timeStamp       = radPlatformEndian( GetTimeFrame( ) );
+    pData->address         = radPlatformEndian( reinterpret_cast< uintptr_t >( address ) );
+    pData->memorySpace     = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
     if ( pReferenceCount == NULL )
     {
         pData->referenceCount     = 0;
@@ -1045,8 +1045,8 @@ void radMemoryMonitorClient::IdentifyAllocation( void* address, const char * gro
     }
     else
     {
-        pData->referenceCount     = radPlatformEndian32( * pReferenceCount );
-        pData->referenceCountPtr  = radPlatformEndian32( (unsigned int)pReferenceCount );
+        pData->referenceCount     = radPlatformEndian( * pReferenceCount );
+        pData->referenceCountPtr  = radPlatformEndian( pReferenceCount );
     }
 
     if ( name == NULL )
@@ -1163,31 +1163,31 @@ void radMemoryMonitorClient::ReportAddRef( void* pObject, void* pReference, radM
     }
     else
     {
-        uObjectPtr  = reinterpret_cast< unsigned int >( pObject );
+        uObjectPtr  = reinterpret_cast< uintptr_t >( pObject );
     }
 
     MM_ReportAddRefData * pReportAddRefData = NULL;
     AllocateMemoryForSendProtocal( & pReportAddRefData );
 
-    pReportAddRefData->eventID      = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pReportAddRefData->timeStamp    = radPlatformEndian32( GetTimeFrame( ) );
-    pReportAddRefData->memorySpaceRefObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
-    pReportAddRefData->refObject    = radPlatformEndian32( reinterpret_cast< unsigned int >( pReference ) );
-    pReportAddRefData->memorySpaceObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
-    pReportAddRefData->object       = radPlatformEndian32( uObjectPtr );
+    pReportAddRefData->eventID      = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pReportAddRefData->timeStamp    = radPlatformEndian( GetTimeFrame( ) );
+    pReportAddRefData->memorySpaceRefObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
+    pReportAddRefData->refObject    = radPlatformEndian( reinterpret_cast< uintptr_t >( pReference ) );
+    pReportAddRefData->memorySpaceObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
+    pReportAddRefData->object       = radPlatformEndian( uObjectPtr );
 
-    pReportAddRefData->callStackDepth = radPlatformEndian32( MM_MAX_CALLSTACK_DEPTH );
+    pReportAddRefData->callStackDepth = radPlatformEndian( MM_MAX_CALLSTACK_DEPTH );
     //
     // get call stack from addref, and see who called addref
     //
-    unsigned int uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
+    uintptr_t uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
 
     // copy call stack over to the buffer, 2 offset is used so we don't include radMemoryMonitorXxxx functions
     radStackTraceGet( uCallStack, MM_MAX_CALLSTACK_DEPTH + 2 );
 
     for ( unsigned int i = 0; i < MM_MAX_CALLSTACK_DEPTH; i ++ )
     {
-    	pReportAddRefData->callStack[ i ] = radPlatformEndian32( uCallStack[ i + 2 ] );
+    	pReportAddRefData->callStack[ i ] = radPlatformEndian( uCallStack[ i + 2 ] );
     }
 
     InitiateTransmission( );
@@ -1249,7 +1249,7 @@ void radMemoryMonitorClient::ReportRelease( void* pObject, void* pReference, rad
     }
     else
     {
-        uObjectPtr  = reinterpret_cast< unsigned int >( pObject );
+        uObjectPtr  = reinterpret_cast< uintptr_t >( pObject );
     }
 
     //
@@ -1263,25 +1263,25 @@ void radMemoryMonitorClient::ReportRelease( void* pObject, void* pReference, rad
     MM_ReportReleaseData * pReportReleaseData = NULL;
     AllocateMemoryForSendProtocal( & pReportReleaseData );
 
-    pReportReleaseData->eventID      = radPlatformEndian32( m_uCurrEventID );   m_uCurrEventID++;
-    pReportReleaseData->timeStamp    = radPlatformEndian32( GetTimeFrame( ) );
-    pReportReleaseData->memorySpaceRefObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
-    pReportReleaseData->refObject    = radPlatformEndian32( reinterpret_cast< unsigned int >( pReference ) );
-    pReportReleaseData->memorySpaceObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
-    pReportReleaseData->object       = radPlatformEndian32( uObjectPtr );
-    pReportReleaseData->callStackDepth = radPlatformEndian32( MM_MAX_CALLSTACK_DEPTH );
+    pReportReleaseData->eventID      = radPlatformEndian( m_uCurrEventID );   m_uCurrEventID++;
+    pReportReleaseData->timeStamp    = radPlatformEndian( GetTimeFrame( ) );
+    pReportReleaseData->memorySpaceRefObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
+    pReportReleaseData->refObject    = radPlatformEndian( reinterpret_cast< uintptr_t >( pReference ) );
+    pReportReleaseData->memorySpaceObject = static_cast< MM_ClientMemorySpace >( radPlatformEndian( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) );
+    pReportReleaseData->object       = radPlatformEndian( uObjectPtr );
+    pReportReleaseData->callStackDepth = radPlatformEndian( MM_MAX_CALLSTACK_DEPTH );
 
     //
     // get call stack from addref, and see who called addref
     //
-    unsigned int uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
+    uintptr_t uCallStack[ MM_MAX_CALLSTACK_DEPTH + 2 ] = { 0 };
 
     // copy call stack over to the buffer
     radStackTraceGet( uCallStack, MM_MAX_CALLSTACK_DEPTH + 2 );
 
     for ( unsigned int i = 0; i < MM_MAX_CALLSTACK_DEPTH; i ++ )
     {
-    	pReportReleaseData->callStack[ i ] = radPlatformEndian32( uCallStack[ i + 2 ] );
+    	pReportReleaseData->callStack[ i ] = radPlatformEndian( uCallStack[ i + 2 ] );
     }
 
     InitiateTransmission( );
@@ -1647,4 +1647,3 @@ unsigned int radMemoryMonitorGetPacketSize( const MM_DataHeader header )
     }
     return 0;
 }
-

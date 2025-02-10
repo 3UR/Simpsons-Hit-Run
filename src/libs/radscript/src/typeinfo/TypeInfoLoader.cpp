@@ -147,7 +147,7 @@ struct radTypeInfoLoader
 
         radRef< IRadTypeInfo > xIRadTypeInfo;
 
-		switch( (FileLoadState) (int) pUserData )
+		switch( (FileLoadState) (intptr_t) pUserData )
 		{
 			case GetSize:
 			{

@@ -19,7 +19,7 @@ static bool initialized = false;
 
 unsigned int HashPointer( const void* ptr )
 {
-    unsigned int hash = (unsigned)ptr;
+    unsigned int hash = (uintptr_t)ptr;
     hash = (hash & 0x0000FFFF) ^ ((hash >> 16) & 0x0000FFFF);
     hash = (hash & 0x000000FF) ^ ((hash >> 8) & 0x000000FF);
     return hash;
@@ -160,7 +160,7 @@ void radLoadObject::ReleaseVerified()
 
 void* radLoadObject::operator new( size_t size )
 {
-    void* mem = new unsigned char[size];
+    void* mem = radMemoryAlloc( radMemoryGetCurrentAllocator(), size );
 
 #ifdef RADLOAD_USE_RADMEMORYMONITOR
     radMemoryMonitorIdentifyAllocation( mem, "radLoad", "radLoadObject" );
@@ -173,7 +173,7 @@ void* radLoadObject::operator new( size_t size )
 
 void* radLoadObject::operator new( size_t size, radMemoryAllocator alloc )
 {
-    void* mem = new unsigned char[size];
+    void* mem = radMemoryAlloc( radMemoryGetCurrentAllocator(), size );
 
 #ifdef RADLOAD_USE_RADMEMORYMONITOR
     radMemoryMonitorIdentifyAllocation( mem, "radLoad", "radLoadObject" );
@@ -186,7 +186,7 @@ void* radLoadObject::operator new( size_t size, radMemoryAllocator alloc )
 
 void* radLoadObject::operator new[]( size_t size )
 {
-    void* mem = new unsigned char[size];
+    void* mem = radMemoryAlloc( radMemoryGetCurrentAllocator(), size );
 
 #ifdef RADLOAD_USE_RADMEMORYMONITOR
     radMemoryMonitorIdentifyAllocation( mem, "radLoad", "radLoadObject" );
@@ -199,7 +199,7 @@ void* radLoadObject::operator new[]( size_t size )
 
 void* radLoadObject::operator new[]( size_t size, radMemoryAllocator alloc )
 {
-    void* mem = new unsigned char[size];
+    void* mem = radMemoryAlloc( radMemoryGetCurrentAllocator(), size );
 
 #ifdef RADLOAD_USE_RADMEMORYMONITOR
     radMemoryMonitorIdentifyAllocation( mem, "radLoad", "radLoadObject" );
@@ -219,8 +219,7 @@ void radLoadObject::operator delete( void* ptr )
     rAssertMsg( !ValidAddress( ptr ), "Failed to verify address in radLoadObject::delete.\nObject was probably directly deleted\n");
 #endif
 
-//    radMemoryFree( ptr );
-    ::operator delete( ptr );
+    radMemoryFree( ptr );
 }
 
 void radLoadObject::operator delete[]( void* ptr )
@@ -231,6 +230,5 @@ void radLoadObject::operator delete[]( void* ptr )
 #ifdef RADLOAD_HEAP_DEBUGGING
     rAssertMsg( !ValidAddress( ptr ), "Failed to verify address in radLoadObject::delete.\nObject was probably directly deleted\n");
 #endif
-//    radMemoryFree( ptr );
-    ::operator delete( ptr );
+    radMemoryFree( ptr );
 }

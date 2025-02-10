@@ -116,7 +116,7 @@ enum eGuiMessage
     GUI_MSG_MENU_PROMPT_RESPONSE,           // Prompt Screen -> Screen
     GUI_MSG_ERROR_PROMPT_RESPONSE,           // Prompt Screen -> Screen
     GUI_MSG_PROMPT_START_RESPONSE,          // Prompt Screen -> Screen, only on ps2
-    GUI_MSG_DEATH_VOLUME_START,             // Play the death volume transition
+    //GUI_MSG_DEATH_VOLUME_START,             // Play the death volume transition
     GUI_MSG_MANUAL_RESET,                   // Play the death volume transition
     GUI_MSG_START_IRIS_WIPE_CLOSE,          // Do an iris wipe closing
     GUI_MSG_START_IRIS_WIPE_OPEN,           // Do an iris wipe opening

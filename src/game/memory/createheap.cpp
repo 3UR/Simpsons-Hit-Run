@@ -33,11 +33,10 @@ struct HeapCreationData
     char                name[ 256 ];
 };
 
-HeapCreationData g_HeapCreationData[] = 
+HeapCreationData g_HeapCreationData[] =
 {
-    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Default"              },      
-    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Temp"                 },      
-    { HEAP_TYPE_NONE,     GMA_DEFAULT, "Gamecube VMM"         }, // wtf is this TODO(3ur): can this be removed?
+    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Default"              },
+    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Temp"                 }, 
 #ifdef RAD_WIN32
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Persistent"           },  // no static heap for pc
 #else
@@ -48,14 +47,14 @@ HeapCreationData g_HeapCreationData[] =
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level FE"             },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level Zone"           },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level Other"          },
-    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Level Hud"            },
+    { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level Hud"            },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level Mission"        },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Level Audio"          },
     { HEAP_TYPE_NONE,     GMA_DEFAULT, "Debug"                },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Special"              },
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Music"                },
-    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Audio Persistent"     },
-    { HEAP_TYPE_DOUG_LEA, GMA_DEFAULT, "Small Alloc"          },
+    { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Audio Persistent"     },
+    { HEAP_TYPE_TRACKING, GMA_DEFAULT, "Small Alloc"          },
 #ifdef RAD_XBOX
     { HEAP_TYPE_TRACKING, GMA_DEFAULT, "XBOX Sound"           },
 #endif

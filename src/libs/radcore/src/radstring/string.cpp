@@ -369,7 +369,11 @@ class radString
 
     virtual void Append( const void * pPointer )
     {
-        Append( ( unsigned int ) pPointer );
+        char string[256];
+
+        sprintf( string, "%p", pPointer );
+
+        Append( string );
     }
     //========================================================================
     // radString::Append

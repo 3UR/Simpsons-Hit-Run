@@ -508,7 +508,7 @@ static unsigned int FindConversationCam( const tName& name )
         InitializeCameraNames();
     }
     const tName* foundname = std::find( &sCamNames[ 0 ], &sCamNames[ sMaxCameras ], name );
-    const unsigned int offset = reinterpret_cast< unsigned int >( foundname ) - reinterpret_cast< unsigned int >( &sCamNames[ 0 ] );
+    const ptrdiff_t offset = reinterpret_cast< ptrdiff_t >( foundname ) - reinterpret_cast< ptrdiff_t >( &sCamNames[ 0 ] );
     const unsigned int index = offset / sizeof( tName );
 #ifdef RAD_DEBUG
     if( index >= sMaxCameras )

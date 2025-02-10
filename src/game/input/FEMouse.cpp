@@ -325,6 +325,7 @@ void FEMouse::SetupInGameMode()
         // Center the cursor.
         SDL_WarpMouseInWindow( wnd, w / 2, h / 2 );
 
+#if SDL_VERSION_ATLEAST(2, 0, 18)
         // Set up the clipping rectangle.
         SDL_Rect windowRect;
         windowRect.y = 30;
@@ -332,11 +333,14 @@ void FEMouse::SetupInGameMode()
         windowRect.x = 10;
         windowRect.w = w - 10;
         SDL_SetWindowMouseRect( wnd, &windowRect );
+#endif
     }
     else
     {
+#if SDL_VERSION_ATLEAST(2, 0, 18)
         // Remove the clipping rectangle.
         SDL_SetWindowMouseRect( wnd, NULL );
+#endif
 
         // Restore the old cursor position.
         if( m_inGamePosX != -1 )

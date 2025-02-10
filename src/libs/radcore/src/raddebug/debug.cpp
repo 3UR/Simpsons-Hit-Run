@@ -304,11 +304,7 @@ void rDebugValidFail_Implementation
         }
         else if( retval == IDRETRY )
         {
-           //
-           // Issue an int 3 instead of DebugBreak. MSDEV 5.0 does not
-           // work correctly when DebugBreak is used.
-           //
-          __asm { int 3 };
+            __debugbreak();
         }
         else
         {
@@ -316,80 +312,6 @@ void rDebugValidFail_Implementation
         }
     }
     #endif // WIN32
-}
-
-//=============================================================================
-// Function:    rDebugValidPointer
-//=============================================================================
-// Description: This is used to validate that the pointer is valid
-//
-// Parameters:  p   - input -  pointer to check
-//
-// Returns:     1 if valid, 0 if not
-//
-// Notes:
-//------------------------------------------------------------------------------
-
-int rDebugValidPointer_Implementation
-(
-    void *p
-)
-{
-    #if defined( WIN32 ) || defined( RAD_XBOX )
-
-	return( !( IsBadReadPtr( p, 1) || IsBadWritePtr( p,1) ) );
-
-    #else
-
-        (void)p;
-        return true;
-
-    #endif
-}
-
-//=============================================================================
-// Function:    rDebugValidPointer32
-//=============================================================================
-// Description: This is used to validate that the pointer is valid and aligned
-//              to 32 bits
-//
-// Parameters:  p   - input -  pointer to check
-//
-// Returns:     1 if valid, 0 if not
-//
-// Notes:
-//------------------------------------------------------------------------------
-
-int rDebugValidPointer32_Implementation
-(
-    void *p
-)
-{
-    if( !p )
-    {
-        //
-        // Null pointer is considered invalid
-        //
-        return( 0 );
-    }
-
-    if( (unsigned int) p & 3 )
-    {
-        //
-        // Must be 32 bit aligned
-        //
-        return( 0 );
-    }
-
-#if defined( WIN32 ) || defined( RAD_XBOX )
-
-    return !(IsBadReadPtr(p,1) || IsBadWritePtr(p,1));
-
-#else
-
-    return true;
-
-#endif
 }
 
 //=============================================================================

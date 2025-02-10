@@ -696,7 +696,7 @@ bool ScriptReader::HandleError()
 static void choreoBreakToDebugger()
 {
 #if defined(RAD_WIN32) || defined(RAD_XBOX)
-    __asm { int 3 }
+    __debugbreak();
 #elif defined(RAD_PS2)
     asm( ".word 0x0000004d"); // break instruction on PS2
 #else

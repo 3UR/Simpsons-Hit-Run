@@ -28,7 +28,7 @@
 #include <worldsim/character/character.h>
 #include <worldsim/avatarmanager.h>
 #include <worldsim/redbrick/vehicle.h>
-#include <worldsim/coins/coinmanager.h>
+#include <worldsim/vehiclecentral.h>
 #include <memory/srrmemory.h>
 #include <events/eventmanager.h>
 #include <render/intersectmanager/intersectmanager.h>
@@ -53,6 +53,7 @@
 #include <raddebug.hpp>
 #include <raddebugwatch.hpp>
 #endif
+
 //******************************************************************************
 //
 // Global Data, Local Data, Local Classes
@@ -968,7 +969,7 @@ void HitnRunManager::Update( int elapsedMS )
             {
                 Vehicle* playerVehicle = player->GetVehicle();
                 playerVehicle->SetDisableGasAndBrake(false);
-                GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, reinterpret_cast< unsigned int >(playerVehicle) );
+                GetGuiSystem()->HandleMessage( GUI_MSG_MANUAL_RESET, GetVehicleCentral()->GetVehicleId( playerVehicle ) );
                 GameplayManager* gameplayManager = GetGameplayManager();
                 if ( gameplayManager != NULL )
                 {

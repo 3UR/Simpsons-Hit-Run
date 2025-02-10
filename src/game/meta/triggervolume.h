@@ -72,9 +72,9 @@ public:
     TriggerLocator* GetLocator();
     void            SetLocator( TriggerLocator* locator );
     
-    void    SetFrameUsed( unsigned int frame, int user );
+    void    SetFrameUsed( unsigned int frame, void* user );
     unsigned int GetFrameUsed() const;
-    int     GetUser() const;
+    void*    GetUser() const;
 
     virtual void Trigger( unsigned int playerID, bool bActive );
     bool IsActive();
@@ -127,7 +127,7 @@ private:
 
     //I think these will go away.
     unsigned int    mFrameUsed;
-    int             mUser;
+    void*           mUser;
 
     //Prevent wasteful constructor creation.
     TriggerVolume( const TriggerVolume& triggervolume );
@@ -165,7 +165,7 @@ inline TriggerLocator* TriggerVolume::GetLocator()
 // Return:      void 
 //
 //=============================================================================
-inline void TriggerVolume::SetFrameUsed( unsigned int frame, int user )
+inline void TriggerVolume::SetFrameUsed( unsigned int frame, void* user )
 {
     mFrameUsed = frame;
     mUser  = user;
@@ -193,10 +193,10 @@ inline unsigned int TriggerVolume::GetFrameUsed() const
 //
 // Parameters:  ()
 //
-// Return:      int 
+// Return:      void* 
 //
 //=============================================================================
-inline int TriggerVolume::GetUser() const
+inline void* TriggerVolume::GetUser() const
 {
     return mUser;
 }

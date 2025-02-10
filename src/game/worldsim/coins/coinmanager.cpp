@@ -411,7 +411,7 @@ void CoinManager::SpawnCoins( int Count, const rmt::Vector& Position, float Grou
         SpawnCoin( *c, Position, GroundY + COIN_HOVER, Direction, instaCollect );
     }
     HeapMgr()->PushHeap( GMA_LEVEL_ZONE );
-    GetEventManager()->TriggerEvent( EVENT_SPAWNED_COINS, reinterpret_cast<void*>( Count ) );
+    GetEventManager()->TriggerEvent( EVENT_SPAWNED_COINS, reinterpret_cast<void*>( (uintptr_t)Count ) );
     HeapMgr()->PopHeap( GMA_LEVEL_ZONE );
 }
 
@@ -442,7 +442,7 @@ void CoinManager::SpawnInstantCoins(int Count, const rmt::Vector& Position)
         SpawnCoin(*c, Position, Position.y + COIN_HOVER, 0, true);
     }
     HeapMgr()->PushHeap( GMA_LEVEL_ZONE );
-    GetEventManager()->TriggerEvent( EVENT_SPAWNED_COINS, reinterpret_cast<void*>( Count ) );
+    GetEventManager()->TriggerEvent( EVENT_SPAWNED_COINS, reinterpret_cast<void*>( (uintptr_t)Count ) );
     HeapMgr()->PopHeap( GMA_LEVEL_ZONE );
 }
 
@@ -629,7 +629,7 @@ void CoinManager::CollectCoins( int Count )
 {
 	AdjustBankValue( Count );
     HeapMgr()->PushHeap( GMA_LEVEL_ZONE );
-    GetEventManager()->TriggerEvent( EVENT_COLLECTED_COINS, reinterpret_cast<void*>( Count ) );
+    GetEventManager()->TriggerEvent( EVENT_COLLECTED_COINS, reinterpret_cast<void*>( (uintptr_t)Count ) );
     HeapMgr()->PopHeap( GMA_LEVEL_ZONE );
 }
 
@@ -650,7 +650,7 @@ void CoinManager::LoseCoins( int Count, const rmt::Vector* Position )
         SpawnCoins( count, rmt::Vector(Position->x, Position->y + 0.25f, Position->z), Position->y, 0, true );
     }
     HeapMgr()->PushHeap( GMA_LEVEL_ZONE );
-    GetEventManager()->TriggerEvent( EVENT_LOST_COINS, reinterpret_cast<void*>( count ) );
+    GetEventManager()->TriggerEvent( EVENT_LOST_COINS, reinterpret_cast<void*>( (uintptr_t)count ) );
     HeapMgr()->PopHeap( GMA_LEVEL_ZONE );
 }
 

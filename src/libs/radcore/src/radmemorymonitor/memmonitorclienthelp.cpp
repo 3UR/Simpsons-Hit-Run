@@ -134,7 +134,7 @@ void radMemoryMonitorClient::InitiateTransmission( )
     m_bInTransmitting = false;
 }
 
-void radMemoryMonitorClient::SendStackUsageData( radMemorySpace memSpace, unsigned int uAddress )
+void radMemoryMonitorClient::SendStackUsageData( radMemorySpace memSpace, uintptr_t uAddress )
 {
 #if defined RAD_PS2
     rAssert( memSpace == radMemorySpace_Ee || memSpace == radMemorySpace_Iop || memSpace == radMemorySpace_Sound );
@@ -143,7 +143,7 @@ void radMemoryMonitorClient::SendStackUsageData( radMemorySpace memSpace, unsign
     rAssert( memSpace == radMemorySpace_Main );
 #endif
 
-    unsigned int uStackPos = 0xffffffff;        // if we cannot find stack section specified, use -1
+    uintptr_t uStackPos = -1;        // if we cannot find stack section specified, use -1
     //
     // find out the section host requested, only report if host stack section specified exists
     //
@@ -154,15 +154,15 @@ void radMemoryMonitorClient::SendStackUsageData( radMemorySpace memSpace, unsign
             if (
                 ( m_SectionData[ nSectionIdx ].memorySpace == memSpace ) &&
                 ( m_SectionData[ nSectionIdx ].sectionType == MemorySectionType_Stack ) && 
-                ( m_SectionData[ nSectionIdx ].address == (void*)uAddress )
+                ( m_SectionData[ nSectionIdx ].address == reinterpret_cast< void * >( uAddress ) )
                )
             {
                 //
                 // after we found the memory section host requested, let's do search
                 //
-                unsigned int uStackEndPos = (unsigned int)m_SectionData[ nSectionIdx ].address + m_SectionData[ nSectionIdx ].size;
+                uintptr_t uStackEndPos = (uintptr_t)m_SectionData[ nSectionIdx ].address + m_SectionData[ nSectionIdx ].size;
                 unsigned char * pStackData = NULL;
-                for ( uStackPos = (unsigned int)m_SectionData[ nSectionIdx ].address; uStackPos < uStackEndPos; uStackPos ++ )
+                for ( uStackPos = (uintptr_t)m_SectionData[ nSectionIdx ].address; uStackPos < uStackEndPos; uStackPos ++ )
                 {
                     pStackData = reinterpret_cast< unsigned char * >( reinterpret_cast< void * >( uStackPos ) );
                     if ( * pStackData != m_cStackInitFillChar )
@@ -179,8 +179,8 @@ void radMemoryMonitorClient::SendStackUsageData( radMemorySpace memSpace, unsign
     AllocateMemoryForSendProtocal( & pData );
 
     pData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memSpace ) ) );
-    pData->address        = radPlatformEndian32( uAddress );
-    pData->highWaterMark  = radPlatformEndian32( uStackPos );
+    pData->address        = radPlatformEndian( uAddress );
+    pData->highWaterMark  = radPlatformEndian( uStackPos );
 
     InitiateTransmission( );
 }
@@ -258,7 +258,7 @@ void radMemoryMonitorClient::SendSuspendState( )
 // Notes:
 //------------------------------------------------------------------------------
 
-bool radMemoryMonitorClient::IsMemoryBlockValid( radMemorySpace memorySpace, unsigned int memStartPos, unsigned int memLength )
+bool radMemoryMonitorClient::IsMemoryBlockValid( radMemorySpace memorySpace, uintptr_t memStartPos, unsigned int memLength )
 {
     //
     // we use per-recorded section to know if memory address is readable.
@@ -267,7 +267,7 @@ bool radMemoryMonitorClient::IsMemoryBlockValid( radMemorySpace memorySpace, uns
     {
         if ( m_bSectionDataInUse[ i ] == true )
         {
-            if ( m_SectionData[ i ].memorySpace == memorySpace && memStartPos >= (unsigned int)m_SectionData[ i ].address && ( memStartPos + memLength ) < ( (unsigned int)m_SectionData[ i ].address + m_SectionData[ i ].size ) )
+            if ( m_SectionData[ i ].memorySpace == memorySpace && memStartPos >= (uintptr_t)m_SectionData[ i ].address && ( memStartPos + memLength ) < ( (uintptr_t)m_SectionData[ i ].address + m_SectionData[ i ].size ) )
             {
                 return true;
             }
@@ -290,7 +290,7 @@ bool radMemoryMonitorClient::IsMemoryBlockValid( radMemorySpace memorySpace, uns
 // Notes:
 //------------------------------------------------------------------------------
 
-void radMemoryMonitorClient::SendMemoryBlock128Byte( radMemorySpace memorySpace, unsigned int memStartPos, unsigned int memLength )
+void radMemoryMonitorClient::SendMemoryBlock128Byte( radMemorySpace memorySpace, uintptr_t memStartPos, unsigned int memLength )
 {
     rAssert( memLength <= 128 );
 
@@ -314,10 +314,10 @@ void radMemoryMonitorClient::SendMemoryBlock128Byte( radMemorySpace memorySpace,
 
     pData->header         = static_cast< MM_DataHeader >( radPlatformEndian32( MemoryBlockType ) );
     pData->memorySpace    = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
-    pData->memStartPos    = radPlatformEndian32( memStartPos );
-    pData->memLength      = radPlatformEndian32( memLength );
+    pData->memStartPos    = radPlatformEndian( memStartPos );
+    pData->memLength      = radPlatformEndian( memLength );
 
-    radRef< IRadMemorySpaceCopyRequest > pCopy = ::radMemorySpaceCopyAsync( pData->memBlock, radMemorySpace_Local, reinterpret_cast< void * >( memStartPos ), memorySpace, memLength );
+    ref< IRadMemorySpaceCopyRequest > pCopy = ::radMemorySpaceCopyAsync( pData->memBlock, radMemorySpace_Local, reinterpret_cast< void * >( memStartPos ), memorySpace, memLength );
 
     if ( pCopy != NULL )
     {
@@ -347,7 +347,7 @@ void radMemoryMonitorClient::SendMemoryBlock128Byte( radMemorySpace memorySpace,
 // Notes:
 //------------------------------------------------------------------------------
 
-void radMemoryMonitorClient::SendMemoryBlock( radMemorySpace memorySpace, unsigned int memStartPos, unsigned int memLength )
+void radMemoryMonitorClient::SendMemoryBlock( radMemorySpace memorySpace, uintptr_t memStartPos, unsigned int memLength )
 {
     //
     // divide memory block into chunck of 128 bytes each, and send one chunck at a time
@@ -389,9 +389,9 @@ void radMemoryMonitorClient::SendObjectRefount( radMemorySpace memorySpace, void
     AllocateMemoryForSendProtocal( & pData );
 
     pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpace ) ) );
-    pData->nObjectPtr = radPlatformEndian32( (unsigned int)pObjectPtr );
-    pData->nRefCountPtr = radPlatformEndian32( (unsigned int)pRefCount );
-    pData->nRefCount = radPlatformEndian32( * pRefCount );
+    pData->nObjectPtr = radPlatformEndian( pObjectPtr );
+    pData->nRefCountPtr = radPlatformEndian( pRefCount );
+    pData->nRefCount = radPlatformEndian( * pRefCount );
 
     InitiateTransmission( );
 }
@@ -670,26 +670,26 @@ void radMemoryMonitorClient::DeclareStoredMemorySection( )
 
 void radMemoryMonitorClient::OnRecieveProtocal( MM_RequestRefCountData * pData )
 {
-    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( pData->memorySpace ) );
-    pData->nObjectPtr = radPlatformEndian32( pData->nObjectPtr );
-    pData->nRefCountPtr = radPlatformEndian32( pData->nRefCountPtr );
+    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian( pData->memorySpace ) );
+    pData->nObjectPtr = radPlatformEndian( pData->nObjectPtr );
+    pData->nRefCountPtr = radPlatformEndian( pData->nRefCountPtr );
 
     SendObjectRefount( ConvertClientMemSpc2MemSpc( pData->memorySpace ), (void*)pData->nObjectPtr, reinterpret_cast< unsigned int * >( pData->nRefCountPtr ) );
 }
 
 void radMemoryMonitorClient::OnRecieveProtocal( MM_RequestMemoryBlockData * pData )
 {
-    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( pData->memorySpace ) );
-    pData->memStartPos = radPlatformEndian32( pData->memStartPos );
-    pData->memLength = radPlatformEndian32( pData->memLength );
+    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian( pData->memorySpace ) );
+    pData->memStartPos = radPlatformEndian( pData->memStartPos );
+    pData->memLength = radPlatformEndian( pData->memLength );
 
     SendMemoryBlock( ConvertClientMemSpc2MemSpc( pData->memorySpace ), pData->memStartPos, pData->memLength );
 }
 
 void radMemoryMonitorClient::OnRecieveProtocal( MM_RequestStackUsageData * pData )
 {
-    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian32( pData->memorySpace ) );
-    pData->address = radPlatformEndian32( pData->address );
+    pData->memorySpace = static_cast< MM_ClientMemorySpace >( radPlatformEndian( pData->memorySpace ) );
+    pData->address = radPlatformEndian( pData->address );
 
     SendStackUsageData( ConvertClientMemSpc2MemSpc( pData->memorySpace ), pData->address );
 }
@@ -878,8 +878,8 @@ bool radMemoryMonitorClient::RemoveCorrespondingAddRefInBuffer( void* pObject, v
         {
             MM_ReportAddRefData * pAddRefPacket = static_cast< MM_ReportAddRefData * >( pPacket );
             if ( ( pAddRefPacket->memorySpaceObject == static_cast< MM_ClientMemorySpace >( radPlatformEndian32( ConvertMemSpc2ClientMemSpc( memorySpaceObject ) ) ) ) &&
-                 ( pAddRefPacket->object == radPlatformEndian32( reinterpret_cast< unsigned int >( pObject ) ) ) &&
-                 ( pAddRefPacket->refObject == radPlatformEndian32( reinterpret_cast< unsigned int >( pReference ) ) ) )
+                 ( pAddRefPacket->object == radPlatformEndian( reinterpret_cast< uintptr_t >( pObject ) ) ) &&
+                 ( pAddRefPacket->refObject == radPlatformEndian( reinterpret_cast< uintptr_t >( pReference ) ) ) )
             {
                 bFoundMatch = true;
                 break;
@@ -901,7 +901,7 @@ bool radMemoryMonitorClient::RemoveCorrespondingAddRefInBuffer( void* pObject, v
 
     MM_DataPacketBlock tempBuffer;
 
-    while( (unsigned int)pBufferSour < (unsigned int)pBufferEnd )
+    while( (uintptr_t)pBufferSour < (uintptr_t)pBufferEnd )
     {
         uSizeToCopy = radMemoryMonitorGetPacketSize( (MM_DataHeader)( radPlatformEndian32( reinterpret_cast< MM_DataPacket * >( pBufferSour )->header ) ) );
         rAssert( uSizeToCopy <= sizeof( tempBuffer ) );

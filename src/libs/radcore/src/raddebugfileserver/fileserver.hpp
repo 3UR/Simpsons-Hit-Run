@@ -138,7 +138,7 @@ class rDebugFileServer : public IRadDebugFileServer,
     struct TargetFileList                 // tracks file opened by target
     {                                     // this is a basic linked list
         FILE* m_LocalHandle;              // local open file handle
-        unsigned int m_RemoteHandle;      // target's file handle
+        void* m_RemoteHandle;      // target's file handle
         char m_FileName[ 512 + 1 ];       // name the file was opened with
         bool m_WasOverride;               // true if path override was needed
         char m_Flags[ 16 ];               // file open permissions

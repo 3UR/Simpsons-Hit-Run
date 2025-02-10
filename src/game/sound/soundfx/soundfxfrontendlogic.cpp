@@ -120,7 +120,7 @@ void SoundFXFrontEndLogic::HandleEvent( EventEnum id, void* pEventData )
             break;
 
         case EVENT_FE_CREDITS_NEW_LINE:
-            playCreditLine( reinterpret_cast<int>(pEventData) );
+            playCreditLine( reinterpret_cast<intptr_t>(pEventData) );
             break;
             
         default:

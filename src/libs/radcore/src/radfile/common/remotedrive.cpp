@@ -180,7 +180,7 @@ radRemoteDrive::radRemoteDrive
     rAssert( radMemorySpace_OptimalAlignment <= REMOTE_DRIVE_ALIGNMENT );
     rAssert( radFileOptimalMemoryAlignment <= REMOTE_DRIVE_ALIGNMENT );
 
-    m_TransferBuffer = (unsigned char*) ::radMemoryRoundUp( (unsigned int) m_TransferBufferSpace, REMOTE_DRIVE_ALIGNMENT );
+    m_TransferBuffer = (unsigned char*) ::radMemoryRoundUp( (uintptr_t) m_TransferBufferSpace, REMOTE_DRIVE_ALIGNMENT );
 
     //
     // Attach 
@@ -441,8 +441,8 @@ void radRemoteDrive::ReceiveOpen( unsigned int numBytes )
     m_RequestData.m_OpenData.m_Size = radPlatformEndian32( pReply->m_Size );
    
     if( 
-        radPlatformEndian32( pReply->m_Handle ) == 0xffffffff ||
-        radPlatformEndian32( pReply->m_Handle) == 0
+        radPlatformEndian( pReply->m_Handle ) == (void*)(-1) ||
+        radPlatformEndian( pReply->m_Handle) == 0
       )
     {
         //
@@ -453,7 +453,7 @@ void radRemoteDrive::ReceiveOpen( unsigned int numBytes )
     }
     else
     {
-        m_RequestData.m_OpenData.m_Handle = (radFileHandle) radPlatformEndian32( pReply->m_Handle );
+        m_RequestData.m_OpenData.m_Handle = (radFileHandle) radPlatformEndian( pReply->m_Handle );
         m_LastError = Success;
     }
 
@@ -487,7 +487,7 @@ void radRemoteDrive::DoClose( void )
     HfpCloseCmd* pCommand = (HfpCloseCmd*) m_TransferBuffer;
        
     pCommand->m_Command = (HfpCommand) radPlatformEndian32( HfsClose );
-    pCommand->m_Handle = radPlatformEndian32( (unsigned int) m_RequestData.m_CloseData.m_Handle );
+    pCommand->m_Handle = radPlatformEndian( m_RequestData.m_CloseData.m_Handle );
     
     //
     // Lets issue the send and receive. We use the same buffer but this will not
@@ -659,7 +659,7 @@ void radRemoteDrive::DoRead( void )
     HfpReadCmd* pCommand = (HfpReadCmd*) m_TransferBuffer;
         
     pCommand->m_Command = (HfpCommand) radPlatformEndian32( HfsRead );
-    pCommand->m_Handle =  radPlatformEndian32( (unsigned int) m_RequestData.m_ReadData.m_Handle );
+    pCommand->m_Handle =  radPlatformEndian( m_RequestData.m_ReadData.m_Handle );
     pCommand->m_Position = radPlatformEndian32( m_RequestData.m_ReadData.m_Position );
     pCommand->m_NumBytes = radPlatformEndian32( readSize );
 
@@ -763,7 +763,7 @@ void radRemoteDrive::DoWrite( void )
 
     HfpWriteCmd* pCommand = (HfpWriteCmd*) m_TransferBuffer;
     pCommand->m_Command = (HfpCommand) radPlatformEndian32( HfsWrite );
-    pCommand->m_Handle = radPlatformEndian32( (unsigned int) m_RequestData.m_WriteData.m_Handle );
+    pCommand->m_Handle = radPlatformEndian( m_RequestData.m_WriteData.m_Handle );
     pCommand->m_Position = radPlatformEndian32( m_RequestData.m_WriteData.m_Position );
     pCommand->m_NumBytes = radPlatformEndian32( writeSize );
     memcpy( &pCommand->m_Data[0], m_RequestData.m_WriteData.m_pData, writeSize );

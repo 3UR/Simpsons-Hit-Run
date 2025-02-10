@@ -142,11 +142,11 @@ TutorialManager::TutorialManager() :
     m_tutorialsSeen( 0 )
 {
 #ifndef FINAL
-    // We're going to be passing enums in void* messages - they'd better be the
-    // same size or else we're in big trouble
+    // We're going to be passing enums in void* messages - they'd better be big
+    // enough or else we're in big trouble
     size_t sizeOfEnum = sizeof( TutorialMode );
     size_t sizeOfVoid = sizeof( void* );
-    rReleaseAssert( sizeOfEnum == sizeOfVoid );
+    rReleaseAssert( sizeOfEnum <= sizeOfVoid );
 #endif
     m_Queue.reserve( 16 );
 
@@ -264,8 +264,7 @@ void TutorialManager::HandleEvent( EventEnum id, void* pEventData )
         }
         case EVENT_BONUS_MISSION_CHARACTER_APPROACHED:
         {
-            int missionNum = reinterpret_cast< int >( pEventData );
-            Mission* mission = GetMissionManager()->GetMission( missionNum );
+            Mission* mission = reinterpret_cast< Mission* >( pEventData );
             bool raceMission = mission->IsRaceMission();
             bool wagerMission = mission->IsWagerMission();
 

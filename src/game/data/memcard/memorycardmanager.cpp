@@ -316,7 +316,7 @@ MemoryCardManager::Init( IRadDriveErrorCallback* radDriveErrorCallback )
 
         radDriveOpenAsync( &m_pDrives[ i ], SAVE_GAME_DRIVE[ i ] );
         rAssert( m_pDrives[ i ] );
-        m_pDrives[ i ]->AddCompletionCallback( this, reinterpret_cast<void*>( i ) );
+        m_pDrives[ i ]->AddCompletionCallback( this, reinterpret_cast<void*>( (uintptr_t)i ) );
 
         // register error handler
         //
@@ -754,7 +754,7 @@ MemoryCardManager::OnDriveOperationsComplete( void* pUserData )
 	}
     else if( m_currentState == STATE_OPENING_DRIVES )
     {
-        unsigned int driveIndex = reinterpret_cast<unsigned int>( pUserData );
+        unsigned int driveIndex = reinterpret_cast<uintptr_t>( pUserData );
         rAssert( driveIndex < NUM_SAVE_GAME_DRIVES );
 
         m_numDrivesOpened++;

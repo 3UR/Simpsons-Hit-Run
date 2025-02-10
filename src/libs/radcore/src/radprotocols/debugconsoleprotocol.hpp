@@ -64,33 +64,33 @@ enum HdcpCommand
 struct HdcpCreateCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
 };	
 
 struct HdcpTitleCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
     char            m_Title[ 256 ];    // Title of window, null terminated.
 };
 
 struct HdcpBackgroundColorCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
     unsigned int    m_BackgroundColor;                
 };
 
 struct HdcpClearCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
 };
 
 struct HdcpCursorPositionCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
 	unsigned int    m_XPosition;
 	unsigned int    m_YPosition;
 };
@@ -98,14 +98,14 @@ struct HdcpCursorPositionCmd
 struct HdcpKeyboardInputCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
 	unsigned int    m_AsciiKey;
 };
 
 struct HdcpVirtualKeyInputCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;
+    void*           m_ConsoleId;
 	unsigned int    m_VirtualKey;
     char            m_Ctrl;
     char            m_Shift;
@@ -123,7 +123,7 @@ enum HdcpInputMouseEventType
 struct HdcpPointerInputCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;              
+    void*           m_ConsoleId;              
 	unsigned int    m_XTextPixels;
 	unsigned int    m_YTextPixels;
 	unsigned int    m_XScreenPixels;
@@ -138,14 +138,14 @@ struct HdcpPointerInputCmd
 struct HdcpTextColorCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;              
+    void*           m_ConsoleId;              
     unsigned int    m_TextColor;                
 };
 
 struct HdcpTextOutAtCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;              
+    void*           m_ConsoleId;              
     unsigned int    m_XPosition;
 	unsigned int    m_YPosition;
 	char            m_Text[ 84 ];
@@ -154,14 +154,14 @@ struct HdcpTextOutAtCmd
 struct HdcpTextOutCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;              
+    void*           m_ConsoleId;              
 	char            m_Text[ 84 ];
 };
 
 struct HdcpCloseCmd
 {
     HdcpCommand     m_Command; 
-    unsigned int    m_ConsoleId;              
+    void*           m_ConsoleId;              
 };
 
 struct HdcpClientRecvReadyCmd

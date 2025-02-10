@@ -87,9 +87,9 @@ protected:
     float mAnimSpeed;
     float mTime;
     float mFrame;
-    char mRWingIndex;
-    char mLWingIndex;
-    char mNumKeys;
+    int mRWingIndex;
+    int mLWingIndex;
+    int mNumKeys;
 };
 
 #endif

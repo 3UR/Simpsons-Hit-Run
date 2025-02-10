@@ -19,8 +19,8 @@
 #ifdef RAD_DEBUG
 #ifndef TOOLS
 #ifndef RAD_PS2  // SIMPSONS: PS2 debug is already stinky slow, this isn't helping
-#define RADLOAD_HEAP_DEBUGGING
-#define RADLOAD_HEAP_DEBUGGING_PARANOID
+//#define RADLOAD_HEAP_DEBUGGING
+//#define RADLOAD_HEAP_DEBUGGING_PARANOID
 #endif
 #endif
 #endif

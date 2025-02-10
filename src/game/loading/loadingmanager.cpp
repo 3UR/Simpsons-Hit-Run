@@ -281,11 +281,10 @@ void LoadingManager::AddRequest
 //==============================================================================
 void LoadingManager::OnLoadFileComplete( void* pUserData )
 {
-    rAssert( (int)pUserData == mRequestHead );
-
     // Display some debug info.
     LoadingRequest& request = mRequests[mRequestHead ];
-    
+    rAssert(pUserData == &request);
+
     extern bool gLoadingSpew;
     
     if ( !(CommandLineOptions::Get( CLO_NO_LOADING_SPEW )) )
@@ -616,7 +615,7 @@ void LoadingManager::ProcessNextRequest()
 
                 request.pFileHandler->LoadFile( request.filename, 
                     this, 
-                    (void*)mRequestHead,
+                    &request,
                     heap );
             }
             else

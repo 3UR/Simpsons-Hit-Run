@@ -1,7 +1,7 @@
 # SRR2
 
 > [!WARNING]  
-> THIS DOES NOT YET SUPPORT UWP (ALL OF THE GUIDES BELOW ARE FOR WINDOWS ONLY AND WILL CHANGE WHENEVER UWP SUPPORT IS FINISHED)
+> THIS DOES NOT YET SUPPORT UWP
 
 SRR2 is a cleaner version of *The Simpsons Hit & Run* with several changes, including C++ 17 support, x64 (WIP), and VCPkg for easier third party library installation. This is based on the source code that leaked in 2021, the end goal is to add more feature, improvements, and UWP support.
 
@@ -12,12 +12,12 @@ SRR2 is a cleaner version of *The Simpsons Hit & Run* with several changes, incl
 
 ### I dont want to mess around with code I just want a build
 
-The latest build for Windows can be found in the [Releases](https://github.com/3UR/Simpsons-Hit-Run/releases) page.
-
-So visit the releases page and download the latest build it will be named something like `SRR2-Debug-x86-2025.02.09-15.21.49-07cbce9.zip`, 
-The zip you downloaded will have one file inside it named something like `SRR2-Debug-x86-2025.02.09-15.21.49-07cbce9` you will have to open this inside 7zip (or something else) too (dont ask why the workflow is WIP) once opened you should see `bin-Win32-Debug` this is where the main binaries are this can be extracted anywhere just make sure that you extract assets wherever you extract this.
-
-tldr; download latest release, extract then extract assets over the build
+1. Download the latest build [Here](https://github.com/3UR/Simpsons-Hit-Run/releases/latest).
+2. You will see a zip similar to `SRR2-Debug-x86-2025.02.09-15.21.49-07cbce9.zip` download it.
+3. Open the zip and then open the file named the same with no extension (this is also a zip the workflow for releases is still WIP so its structured bad) extract it anywhere you want.
+4. Go to where you extracted the zip and find `SRR2.exe`.
+5. Download the assets from above and drag and drop them where `SRR2.exe` is.
+6. You can run the game now. It may crash often though as it is unstable as of `2/11/2025`.
 
 
 ### I want to work on the code and create my own builds
@@ -37,7 +37,7 @@ Once you have the dev environment you will have to
 1. Open command prompt where you want to clone the source code and run `git clone https://github.com/3UR/Simpsons-Hit-Run`
 2. Open `SRR2.sln` with Visual Studio
 3. Once in Visual Studio press `Tools -> Command Line -> Developer Command Prompt`
-4. A Developer Command Prompt will open enter the following `vcpkg.exe install --triplet x86-windows` (Wait for this to finish it will install all required dependencies)
+4. A Developer Command Prompt will open enter the following `vcpkg.exe install` (Wait for this to finish it will install all required dependencies)
 5. Once that is done you may need to run `vcpkg integrate install`
 
 #### Building

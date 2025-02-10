@@ -19,7 +19,7 @@
 // Nested Includes
 //===========================================================================
 #include <presentation/gui/guimanager.h>
-#include <memory/srrmemory.h> // Needed for my STL allocations to go on the right heap
+#include <memory/stlallocators.h> // Needed for my STL allocations to go on the right heap
 
 #include <queue>
 

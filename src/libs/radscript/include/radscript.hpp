@@ -628,11 +628,16 @@ inline bool IRadScript::OnBeginMethod(
         {
             *((int*)&(nInvokeParams[ nParamIndex ])) = strcmp( pParamString, "true" ) == 0 ? 1 : 0;
         }
+#if defined(WIN32) && !defined(_WIN64)
         else if ( strncmp( pParamString, "ref:", 4 ) == 0 )
         {
             IRefCount * pIRefCount = m_xIRadNameSpace_Context->GetInstance( pParamString + 4 );
             *((int*) &(nInvokeParams[ nParamIndex ]) ) = (int) pIRefCount;
         }
+#else
+        // TODO(3ur): how hard would this be?
+        #pragma message("NOTE: InvokeVf is unsupported on x64")
+#endif
     }
 
     //================================================

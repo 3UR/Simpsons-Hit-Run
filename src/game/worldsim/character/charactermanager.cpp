@@ -581,7 +581,7 @@ unsigned CharacterManager::LoadModel(const char* model, LoadingManager::ProcessR
         HeapMgr()->PopHeap( GMA_LEVEL_OTHER );
 
         GetLoadingManager()->AddRequest( FILEHANDLER_PURE3D, modelName, GMA_CHARS_AND_GAGS, modelSection);
-        GetLoadingManager()->AddCallback(this, (void*)loadIndex);
+        GetLoadingManager()->AddCallback(this, (void*)(uintptr_t)loadIndex);
     }
 
     return loadIndex;
@@ -626,7 +626,7 @@ unsigned CharacterManager::LoadAnimation(const char* anim)
         HeapMgr()->PopHeap( GMA_TEMP );
         GetLoadingManager()->AddRequest( FILEHANDLER_PURE3D, animName, GMA_LEVEL_OTHER, animSection);
         GetLoadingManager()->AddRequest( FILEHANDLER_CHOREO, choreoName, GMA_LEVEL_OTHER, animSection);
-        GetLoadingManager()->AddCallback(this, (void*)(0x10000000 | loadIndex));
+        GetLoadingManager()->AddCallback(this, (void*)(uintptr_t)(0x10000000 | loadIndex));
     }
 
     return loadIndex;
@@ -1506,7 +1506,7 @@ int CharacterManager::AddCharacter( Character* pCharacter, CharacterType type )
 
 void CharacterManager::OnProcessRequestsComplete( void* pUserData )
 {
-    unsigned index = (unsigned)pUserData;
+    unsigned index = reinterpret_cast<uintptr_t>(pUserData);
 
 
     if(index & 0x10000000)
@@ -2358,6 +2358,11 @@ struct TeleportDest
     char zone[64];
 } s_teleportDests[MAX_TELEPORT_DESTS];
 
+void CharacterManager::Teleport(unsigned i)
+{
+    DoTeleport(&s_teleportDests[i]);
+}
+
 unsigned CharacterManager::GetNumTeleportDests(void)
 {
     return s_numTeleportDests;
@@ -2402,25 +2407,25 @@ void CharacterManager::AddTeleportDest(int argc, const char** argv)
         strcpy(s_teleportDests[s_numTeleportDests].zone, argv[5]);
         s_teleportDests[s_numTeleportDests].useLoc = false;
     }
-    radDbgWatchAddFunction( argv[1], &DoTeleport, (void*)s_numTeleportDests, "Teleport");
+    radDbgWatchAddFunction( argv[1], &DoTeleport, &s_teleportDests[s_numTeleportDests], "Teleport");
     s_numTeleportDests++;
 }
 
 void CharacterManager::DoTeleport(void* data)
 {
-    int which = (int)data; 
+    TeleportDest& tp = *reinterpret_cast<TeleportDest*>( data );
     GetRenderManager()->mpLayer( RenderEnums::LevelSlot )->DumpAllDynaLoads(1, GetRenderManager()->mEntityDeletionList );
 
     tRefCounted::Assign(s_dynaloadLoc,new(GetGameplayManager()->GetCurrentMissionHeap()) ZoneEventLocator);
-    s_dynaloadLoc->SetZoneSize( strlen(s_teleportDests[which].zone) + 1 );
-    s_dynaloadLoc->SetZone( s_teleportDests[which].zone );
+    s_dynaloadLoc->SetZoneSize( strlen(tp.zone) + 1 );
+    s_dynaloadLoc->SetZone( tp.zone );
     s_dynaloadLoc->SetPlayerEntered();
     GetEventManager()->TriggerEvent( EVENT_FIRST_DYNAMIC_ZONE_START, s_dynaloadLoc );
 
-    rmt::Vector pos = s_teleportDests[which].pos;
-    if(s_teleportDests[which].useLoc)
+    rmt::Vector pos = tp.pos;
+    if(tp.useLoc)
     {
-        Locator* l = p3d::find<Locator>(s_teleportDests[which].loc);
+        Locator* l = p3d::find<Locator>(tp.loc);
         l->GetLocation(&pos);
     }
 

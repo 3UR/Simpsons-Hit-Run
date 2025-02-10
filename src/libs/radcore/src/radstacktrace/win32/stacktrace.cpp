@@ -11,27 +11,27 @@
 // Win32 Implementation
 //
 
-#define prev_fp_from_fp(fp)             (*((unsigned int *)fp))
-#define ret_addr_from_fp(fp)            (*((unsigned int *)(fp + 4)))
+#define prev_fp_from_fp(fp)             (*((uintptr_t *)fp))
+#define ret_addr_from_fp(fp)            (*((uintptr_t *)(fp + 4)))
 
 //=============================================================================
 // ::radStackTraceWin32Get
 //=============================================================================
 
-extern "C" void radStackTraceWin32Get( unsigned int * results, int max, const void * basePointer )
+extern "C" void radStackTraceWin32Get( uintptr_t * results, int max, const void * basePointer )
 {
-  unsigned int  prevfp;
-  unsigned int  curfp;
-  unsigned int  last;
+  uintptr_t prevfp;
+  uintptr_t curfp;
+  uintptr_t last;
 	
-  prevfp = 0x00000000;
+  prevfp = last = 0x00000000;
 
   //_asm
   //{
   //  mov   curfp, ebp
   //}
 
-  curfp = ( unsigned int ) basePointer;
+  curfp = ( uintptr_t ) basePointer;
 
   while (max--)
   {
@@ -58,7 +58,7 @@ extern "C" void radStackTraceWin32Get( unsigned int * results, int max, const vo
 // ::radStackTraceGet
 //=============================================================================
 
-extern "C" void radStackTraceGet( unsigned int *results, int max )
+extern "C" void radStackTraceGet( uintptr_t *results, int max )
 {
-    radStackTraceWin32Get( results, max, ( void * )( (unsigned int) & results - 8 ) );
+    radStackTraceWin32Get( results, max, ( void * )( (uintptr_t)&results - 8 ) );
 }

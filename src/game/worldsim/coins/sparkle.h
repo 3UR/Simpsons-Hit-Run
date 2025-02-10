@@ -76,7 +76,7 @@ public:
     };
 
     void AddSparkle( const rmt::Vector& Position, float Size, float Duration, const rmt::Vector& Velocity, eSparkleEffect Effect  );
-    void AddGagSparkle(const rmt::Vector& Position, float Size, float Strength, unsigned int Caller); // See notes for information on the Caller.
+    void AddGagSparkle(const rmt::Vector& Position, float Size, float Strength, uintptr_t Caller); // See notes for information on the Caller.
     void AddSparks( const rmt::Vector& Position, const rmt::Vector& Velocity, float Strength );
     void AddDash( const rmt::Vector& Position, const rmt::Vector& Velocity, float Strength ); // NOTE: Velocity is direction of character travel.
     void AddLanding( const rmt::Vector& Position, float Strength );

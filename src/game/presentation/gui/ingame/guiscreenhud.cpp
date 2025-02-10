@@ -1300,7 +1300,7 @@ CGuiScreenHud::HandleEvent( EventEnum id, void* pEventData )
         }
         case EVENT_STAGE_COMPLETE:
         {
-            unsigned int showStageComplete = reinterpret_cast<unsigned int>( pEventData );
+            unsigned int showStageComplete = reinterpret_cast<uintptr_t>( pEventData );
             if( showStageComplete > 0 )
             {
                 rAssert( m_hudEventHandlers[ HUD_EVENT_HANDLER_MISSION_PROGRESS ] != NULL );
@@ -1311,7 +1311,7 @@ CGuiScreenHud::HandleEvent( EventEnum id, void* pEventData )
         }
         case EVENT_SHOW_MISSION_OBJECTIVE:
         {
-            int messageID = reinterpret_cast<unsigned int>( pEventData );
+            int messageID = reinterpret_cast<intptr_t>( pEventData );
 
             HudMissionObjective* hudMissionObjective = static_cast<HudMissionObjective*>( m_hudEventHandlers[ HUD_EVENT_HANDLER_MISSION_OBJECTIVE ] );
             if( messageID != -1 )
@@ -1399,7 +1399,7 @@ CGuiScreenHud::HandleEvent( EventEnum id, void* pEventData )
         {
             rAssert( m_hudEventHandlers[ HUD_EVENT_HANDLER_ITEM_DROPPED ] != NULL );
 
-            int numActiveItems = reinterpret_cast<int>( pEventData );
+            int numActiveItems = reinterpret_cast<intptr_t>( pEventData );
             if( numActiveItems > 0 )
             {
                 m_hudEventHandlers[ HUD_EVENT_HANDLER_ITEM_DROPPED ]->Start();
@@ -1451,6 +1451,10 @@ CGuiScreenHud::HandleEvent( EventEnum id, void* pEventData )
             break;
         }
     }
+
+    // Propogate the event up the hierarchy.
+    //
+    CGuiScreenMultiHud::HandleEvent( id, pEventData );
 }
 
 void

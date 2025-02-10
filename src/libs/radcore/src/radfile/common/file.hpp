@@ -144,7 +144,7 @@ public:
 
     virtual void SetBufferedRead( BufferedReadState state );
 
-    virtual unsigned int GetHandle( void );
+    virtual void* GetHandle( void );
 
 private:
     //

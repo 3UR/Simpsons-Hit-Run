@@ -20,14 +20,15 @@ on:
       platform:
         description: 'Build platform'
         required: true
-        default: 'x86'
+        default: 'x64'
         type: choice
         options:
           - x86
+          - x64
       create_release:
         description: 'Should a release be created?'
         required: false
-        default: 'false'
+        default: false
         type: boolean
 
 permissions:
@@ -68,10 +69,10 @@ jobs:
         vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
         doNotCache: false
 
-    # TODO(3ur): in game-engine we only have x86-windows-static-md but in SRR2 we will also have x64 and x86 is vcpkg install by its self okay?
+    # TODO(3ur): in game-engine we only have x86-windows-static-md but in SRR2 we will also have x64 and x86 is vcpkg install by its self okay? - we will see if its not then thats sad
     - name: Install Dependencies (VCPKG)
       run: |
-        .\vcpkg\vcpkg.exe install --triplet x86-windows
+        .\vcpkg\vcpkg.exe install
     - name: Integrate (VCPKG)
       run: |
         .\vcpkg\vcpkg.exe integrate install

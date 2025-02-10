@@ -190,13 +190,9 @@ struct radCFHeader
     typedef HashedFileEntry HFE;
 
     //
-    // Store the hashed file information
-    // Note: There is m_NumFiles worth of data here
-    // Important: The hashed file entries are sorted
-    //            in increasing order by there hash
-    //            value.
+    // Previously m_pHashedFileEntries pointer
     //
-    HashedFileEntry* m_pHashedFileEntries;
+    unsigned int m_Reserved;
 
 
     //=========================================================================
@@ -233,6 +229,7 @@ struct radCFHeader
     static HashedFileEntry* FindFile
     (
         const radCFHeader* pHeader,
+        radCFHeader::HashedFileEntry* pHashedFileEntries,
         unsigned int hashValue
     )
     {
@@ -268,15 +265,15 @@ struct radCFHeader
             //
             // Do they match?
             //
-            if( pHeader->m_pHashedFileEntries[ mid ].m_HashValue == hashValue )
+            if( pHashedFileEntries[ mid ].m_HashValue == hashValue )
             {
-                return pHeader->m_pHashedFileEntries + mid;
+                return pHashedFileEntries + mid;
             }
 
             //
             // Update the search
             //
-            if( pHeader->m_pHashedFileEntries[ mid ].m_HashValue < hashValue )
+            if( pHashedFileEntries[ mid ].m_HashValue < hashValue )
             {
                 low = mid + 1;
             }

@@ -148,6 +148,15 @@ private:
     radCFHeader*        m_Header;
 
     //
+    // Store the hashed file information
+    // Note: There is m_NumFiles worth of data here
+    // Important: The hashed file entries are sorted
+    //            in increasing order by there hash
+    //            value.
+    //
+    radCFHeader::HashedFileEntry* m_pHashedFileEntries;
+
+    //
     // Pointer to the next library. Used by the library list.
     //
     radCementLibrary*   m_pNext;

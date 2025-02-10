@@ -402,8 +402,10 @@ void BonusMissionInfo::Update( unsigned int milliseconds )
         float distSquared = ( charPos - avatarPosition ).MagnitudeSqr();
         if( distSquared < 5.0f *5.0f )
         {
-            int missionNum = GetMissionNum();
-            GetEventManager()->TriggerEvent( EVENT_BONUS_MISSION_CHARACTER_APPROACHED, reinterpret_cast< void* >( missionNum ) );
+            GetEventManager()->TriggerEvent( 
+                EVENT_BONUS_MISSION_CHARACTER_APPROACHED, 
+                GetMissionManager()->GetMission(GetMissionNum()) 
+            );
         }
 
         if ( mIcon )

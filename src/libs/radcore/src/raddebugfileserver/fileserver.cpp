@@ -438,7 +438,7 @@ void rDebugFileServer::RemoveException( char *pString )
             int index = 0;
             while( !found && index < m_ExceptionCount )
             {
-                if( stricmp( m_Exceptions[ index ], pString ) == 0 )
+                if( _stricmp( m_Exceptions[ index ], pString ) == 0 )
                 {
                     found = true;
                     m_Exceptions[ index ][ 0 ] = '\0';
@@ -1063,7 +1063,7 @@ bool rDebugFileServer::CheckIfFileOnHost( char* filename )
     //
     // HACK: Say bootload.cfg is always on host.
     //
-    if( stricmp( filename, "bootload.cfg") == 0 )
+    if( _stricmp( filename, "bootload.cfg") == 0 )
     {
         return( true );
     }
@@ -1253,7 +1253,7 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                 // HACK for bootload.cfg: "open" virtual file, and embeding argc and argv
                 // for that executable.
                 //
-                if( stricmp( pCmd->m_FileName, "bootload.cfg" ) == 0 ) 
+                if( _stricmp( pCmd->m_FileName, "bootload.cfg" ) == 0 ) 
                 {
 	                LogMessage( "Virtual file opened OK." );
                     LogMessage( "File handle is DEADBEEF." );
@@ -1266,7 +1266,7 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                     // and most memory alloc routines return a word boundary 
                     // aligned address, this value should present no problems.
                     //
-                    pRpy->m_Handle = 0xDEADBEEF;  
+                    pRpy->m_Handle = (void*)0xDEADBEEF;  
                     pRpy->m_Size = m_BootDataSize;
 
                     //
@@ -1313,13 +1313,13 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                     // Success - log the event.
                     //
 	                LogMessage( "File opened OK." );
-                    wsprintf( buf, "File handle is %X.", (unsigned int)pFile );
+                    wsprintf( buf, "File handle is %p.", pFile );
                     LogMessage( buf );
 
                     //
                     // Return file object pointer and add file to open list.
                     //
-                    pRpy->m_Handle = (unsigned int) pFile;
+                    pRpy->m_Handle = pFile;
                     pRpy->m_Size = _filelength( _fileno( pFile ) );                    
 
                     TargetFileList *fileInfo = new TargetFileList;
@@ -1364,13 +1364,13 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                             // Override succeeded - log it.
                             //
 	                        LogMessage( "Override succeeded." );
-                            wsprintf( buf, "File handle is %X.", (unsigned int) pFile );
+                            wsprintf( buf, "File handle is %p.", pFile );
                             LogMessage( buf );
 
                             //
                             // Return file object pointer and add file to open list.
                             //
-                            pRpy->m_Handle = (unsigned int) pFile;
+                            pRpy->m_Handle = pFile;
                             pRpy->m_Size = _filelength( _fileno( pFile ) );
                         
                             TargetFileList *fileInfo = new TargetFileList;
@@ -1395,13 +1395,13 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                         {
 	                        LogMessage( "Override failed." );
                             LogMessage( "ERROR: Failed to open file on host." );
-                            pRpy->m_Handle = 0xffffffff;
+                            pRpy->m_Handle = (void*)-1;
                         }
                     }
                     else // Override disabled.
                     {
 	                    LogMessage( "ERROR: Failed to open file on host." );
-                        pRpy->m_Handle = 0xffffffff;
+                        pRpy->m_Handle = (void*)-1;
                     }
 
                 }    
@@ -1462,7 +1462,7 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
                             pCmd->m_NumBytes, pCmd->m_Position, listItem->m_FileName );
 	            LogMessage( buf );
 
-                if( stricmp( listItem->m_FileName, "bootload.cfg" ) == 0 )
+                if( _stricmp( listItem->m_FileName, "bootload.cfg" ) == 0 )
                 {
                     LogMessage( "Reading from virtual file." );
 
@@ -1786,7 +1786,7 @@ void rDebugFileServer::ProcessFileRequest( char* request, int requestSize, char*
             // HACK for bootload.cfg: Just fake it.
             //
             bool result = false;
-            if( stricmp( pCmd->m_FileName, "bootload.cfg" ) == 0 )
+            if( _stricmp( pCmd->m_FileName, "bootload.cfg" ) == 0 )
             {
                 result = true; 
             }

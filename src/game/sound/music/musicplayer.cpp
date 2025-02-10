@@ -633,7 +633,7 @@ void MusicPlayer::HandleEvent( EventEnum id, void* pEventData )
                 lastSpecialMusic = MEVENT_MOVIE;
                 // bmc: play music if just declined restarting of a mission
                 if ( GetGameplayManager()->IsSundayDrive() &&
-                    GetInteriorManager()->GetInterior() == static_cast< tUID >( 0 ) && (int)pEventData == 0 )
+                    GetInteriorManager()->GetInterior() == static_cast< tUID >( 0 ) && pEventData == nullptr )
                 {
                     startMusic();
                 }

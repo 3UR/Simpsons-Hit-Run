@@ -34,6 +34,7 @@
 #include <worldsim/character/character.h>
 #include <worldsim/character/charactertarget.h>
 #include <worldsim/redbrick/vehicle.h>
+#include <worldsim/vehiclecentral.h>
 
 #include <raddebug.hpp> // Foundation
 
@@ -322,25 +323,6 @@ void CGuiScreenMultiHud::HandleMessage
         }
 #endif
 
-        case GUI_MSG_DEATH_VOLUME_START:
-        {
-            //
-            // Need to start the transition for the death volume
-            //
-            if( g_TimeSinceLastDeathVolume > WHITE_WASH_IN_TIME + 1000.0 && GetGameFlow()->GetCurrentContext() != CONTEXT_PAUSE && GetGameFlow()->GetNextContext() != CONTEXT_PAUSE)
-            {
-                g_ResetCar.SetEventData( reinterpret_cast< void* >( param1 ) );
-                GameplayContext::GetInstance()->PauseAllButPresentation( true );
-                g_WhiteWashShow.Reset();
-                g_WhiteWashIn.Reset();
-                g_WhiteWashHide.Reset();
-                g_WhiteWashPause.Reset();
-                g_WhiteWashShow.Activate();
-                g_TimeSinceLastDeathVolume = 0.0f;
-            }
-            break;
-        }
-
         case GUI_MSG_MANUAL_RESET:
         {
             //
@@ -348,7 +330,7 @@ void CGuiScreenMultiHud::HandleMessage
             //
             if( g_TimeSinceLastDeathVolume > WHITE_WASH_IN_TIME + 1000.0 && GetGameFlow()->GetCurrentContext() != CONTEXT_PAUSE && GetGameFlow()->GetNextContext() != CONTEXT_PAUSE)
             {
-                g_ResetCar.SetVehicle( reinterpret_cast< Vehicle* >( param1 ) );
+                g_ResetCar.SetVehicle( GetVehicleCentral()->GetVehicle( param1 ) );
                 g_ResetCar.SetEventData( NULL );
                 GameplayContext::GetInstance()->PauseAllButPresentation( true );
                 g_WhiteWashShow.Reset();
@@ -370,6 +352,44 @@ void CGuiScreenMultiHud::HandleMessage
     // Propogate the message up the hierarchy.
 	//
 	CGuiScreen::HandleMessage( message, param1, param2 );
+}
+
+
+//===========================================================================
+// CGuiScreenMultiHud::HandleEvent
+//===========================================================================
+// Description: 
+//
+// Constraints:	None.
+//
+// Parameters:	None.
+//
+// Return:      N/A.
+//
+//===========================================================================
+void CGuiScreenMultiHud::HandleEvent( EventEnum id, void* pEventData )
+{
+    switch( id )
+    {
+        case EVENT_DEATH_VOLUME_START:
+        {
+            //
+            // Need to start the transition for the death volume
+            //
+            if( g_TimeSinceLastDeathVolume > WHITE_WASH_IN_TIME + 1000.0 && GetGameFlow()->GetCurrentContext() != CONTEXT_PAUSE && GetGameFlow()->GetNextContext() != CONTEXT_PAUSE )
+            {
+                g_ResetCar.SetEventData( pEventData );
+                GameplayContext::GetInstance()->PauseAllButPresentation( true );
+                g_WhiteWashShow.Reset();
+                g_WhiteWashIn.Reset();
+                g_WhiteWashHide.Reset();
+                g_WhiteWashPause.Reset();
+                g_WhiteWashShow.Activate();
+                g_TimeSinceLastDeathVolume = 0.0f;
+            }
+            break;
+        }
+    }
 }
 
 

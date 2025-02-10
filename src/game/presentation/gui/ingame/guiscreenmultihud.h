@@ -36,7 +36,9 @@ class CHudMap;
 //===========================================================================
 // Interface Definitions
 //===========================================================================
-class CGuiScreenMultiHud : public CGuiScreen
+class CGuiScreenMultiHud 
+    : public CGuiScreen,
+      public EventListener
 {
 public:
     CGuiScreenMultiHud( Scrooby::Screen* pScreen, CGuiEntity* pParent );
@@ -48,6 +50,8 @@ public:
 	virtual void HandleMessage( eGuiMessage message, 
 			                    unsigned int param1 = 0,
 								unsigned int param2 = 0 );
+
+    virtual void HandleEvent( EventEnum id, void* pEventData );
 
     virtual CHudMap* GetHudMap( unsigned int playerID ) const;
 

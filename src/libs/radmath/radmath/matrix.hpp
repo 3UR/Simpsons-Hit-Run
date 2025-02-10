@@ -35,10 +35,10 @@ public:
     void IdentityTranslation(void); // the translation (4th row)
     void IdentityProjection(void);  // the projection (4th column)
 
-    Vector&  Row(int i)              { return *(Vector*)m[i]; }
-    Vector4& Row4(int i)             { return *(Vector4*)m[i]; }
-    const Vector4& Row4(int i) const { return *(const Vector4*)m[i]; }
-    const Vector& Row(int i) const   { return *(const Vector*)m[i]; }
+    Vector&  Row(int i)              { return v[i]; }
+    Vector4& Row4(int i)             { return v[i]; }
+    const Vector4& Row4(int i) const { return v[i]; }
+    const Vector& Row(int i) const   { return v[i]; }
 
     void FillTranslate(const Vector& vector); // rotation and projection are unchanged
 
@@ -185,7 +185,11 @@ public:
     void ThereIsNoSpoon(void);
 
     // c[row][column]
-    float m[4][4];
+    union
+    {
+        Vector4 v[4];
+        float m[4][4];
+    };
 };
 
 }

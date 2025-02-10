@@ -2,6 +2,7 @@
 // Copyright (c) 2002 Radical Games Ltd.  All rights reserved.
 //=============================================================================
 
+#ifdef WIN32
 
 #ifndef _PLAT_FILEMAP_HPP
 #define _PLAT_FILEMAP_HPP
@@ -61,4 +62,4 @@ protected:
 };
 
 #endif /*_FILEMAP_HPP*/
-
+#endif // WIN32

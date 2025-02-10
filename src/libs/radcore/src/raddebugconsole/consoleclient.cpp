@@ -1360,7 +1360,7 @@ void ConsoleClient::SendCreate( DebugConsole *pConsole )
         //
         HdcpCreateCmd* pCommand = (HdcpCreateCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsCreate );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
 
         m_CurrentTxAddress += sizeof( HdcpCreateCmd );
         m_TxBytesQueued += sizeof( HdcpCreateCmd );
@@ -1413,7 +1413,7 @@ void ConsoleClient::SendDestroy( DebugConsole *pConsole )
         //
         HdcpCloseCmd* pCommand = (HdcpCloseCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsClose );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
 
         m_CurrentTxAddress += sizeof( HdcpCloseCmd );
         m_TxBytesQueued += sizeof( HdcpCloseCmd );
@@ -1466,7 +1466,7 @@ void ConsoleClient::SendTitle( DebugConsole *pConsole, const char* title )
         //
         HdcpTitleCmd* pCommand = (HdcpTitleCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsTitle );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
 
         strncpy( pCommand->m_Title, title, sizeof( pCommand->m_Title ) );
         pCommand->m_Title[ sizeof( pCommand->m_Title ) - 1 ] = '\0';
@@ -1522,7 +1522,7 @@ void ConsoleClient::SendBackgroundColor( DebugConsole *pConsole, unsigned int co
         //
         HdcpBackgroundColorCmd* pCommand = (HdcpBackgroundColorCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsBackgroundColor );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
         pCommand->m_BackgroundColor = radPlatformEndian32( color );
 
         m_CurrentTxAddress += sizeof( HdcpBackgroundColorCmd );
@@ -1575,7 +1575,7 @@ void ConsoleClient::SendClear( DebugConsole *pConsole )
         //
         HdcpClearCmd* pCommand = (HdcpClearCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsClear );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
 
         m_CurrentTxAddress += sizeof( HdcpClearCmd );
         m_TxBytesQueued += sizeof( HdcpClearCmd );
@@ -1627,7 +1627,7 @@ void ConsoleClient::SendCursorPosition( DebugConsole *pConsole, unsigned int x, 
         //
         HdcpCursorPositionCmd* pCommand = (HdcpCursorPositionCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsCursorPosition );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
         pCommand->m_XPosition = radPlatformEndian32( x );
         pCommand->m_YPosition = radPlatformEndian32( y );
     
@@ -1681,7 +1681,7 @@ void ConsoleClient::SendTextColor( DebugConsole *pConsole, unsigned int color )
         //
         HdcpTextColorCmd* pCommand = (HdcpTextColorCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsTextColor );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
         pCommand->m_TextColor = radPlatformEndian32( color );
 
         m_CurrentTxAddress += sizeof( HdcpTextColorCmd );
@@ -1734,7 +1734,7 @@ void ConsoleClient::SendTextOutAt( DebugConsole *pConsole, const char* title, in
         //
         HdcpTextOutAtCmd* pCommand = (HdcpTextOutAtCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsTextOutAt );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
         pCommand->m_XPosition = radPlatformEndian32( x );
         pCommand->m_YPosition = radPlatformEndian32( y );
 
@@ -1794,7 +1794,7 @@ void ConsoleClient::SendTextOut( DebugConsole *pConsole, const char* title )
         //
         HdcpTextOutCmd* pCommand = (HdcpTextOutCmd*) m_CurrentTxAddress;
         pCommand->m_Command = (HdcpCommand) radPlatformEndian32( HdcsTextOut );
-        pCommand->m_ConsoleId = (unsigned int )pConsole;
+        pCommand->m_ConsoleId = pConsole;
 
         rWarningMsg( strlen( title ) < sizeof( pCommand->m_Text ), "String too long\n "); 
 
@@ -1971,4 +1971,3 @@ void ConsoleClient::Dump( char* pStringBuffer, unsigned int bufferSize )
 }
 
 #endif
-

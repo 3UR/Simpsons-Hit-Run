@@ -18,7 +18,7 @@
 // Nested Includes
 //===========================================================================
 
-#include <memory/srrmemory.h> // Needed for my STL allocations to go on the right heap
+#include <memory/stlallocators.h> // Needed for my STL allocations to go on the right heap
 #include <render\DSG\breakableobjectdsg.h>
 #include <constants/breakablesenum.h>
 #include <render/culling/swaparray.h>

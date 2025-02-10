@@ -2,6 +2,7 @@
 // Copyright (c) 2002 Radical Games Ltd.  All rights reserved.
 //=============================================================================
 
+#ifdef WIN32
 
 #include <p3d/platform/win32/plat_filemap.hpp>
 #include <p3d/utility.hpp>
@@ -254,3 +255,4 @@ void tWin32FileAsync::FillBuffer(unsigned start)
     unsigned filePosition;
     */
 
+#endif // WIN32

@@ -663,7 +663,7 @@ struct IRadFile : public IRefCount
 
     virtual void SetBufferedRead( BufferedReadState state ) = 0;
 
-    virtual unsigned int GetHandle( void ) = 0;
+    virtual void* GetHandle( void ) = 0;
 };
 
 //

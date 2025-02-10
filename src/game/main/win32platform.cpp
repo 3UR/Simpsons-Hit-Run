@@ -1599,6 +1599,7 @@ void Win32Platform::InitializeContext()
 //
 //==============================================================================
 
+// TODO(3ur): this sucks, dynamic would be nicer
 void Win32Platform::TranslateResolution( Resolution res, int&x, int&y )
 {
     switch( res )
