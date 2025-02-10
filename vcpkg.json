@@ -5,6 +5,7 @@
     "openal-soft",
     "opengl",
     "sdl2",
-    "glad"
+    "glad",
+    "mesa-uwp"
   ]
 }
