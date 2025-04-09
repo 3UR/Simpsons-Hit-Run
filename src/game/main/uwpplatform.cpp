@@ -402,17 +402,6 @@ void UwpPlatform::InitializePlatform()
     InitializePure3D();
 
     //
-    // TODO(3UR): this code was written on mobioe refactor!!!
-    // probably wont render drawstring should be in a render loop
-    // 
-    p3d::pddi->DrawString(
-        "Report bugs and request features in the GitHub SRR2 reository.",
-        10 + 0, 
-        60 + 45 + 0,
-        tColour(0, 255, 0) //green rgb
-    );
-
-    //
     // Add anything here that needs to be before the drive is opened.
     //
     DisplaySplashScreen(Error); // blank screen
