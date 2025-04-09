@@ -608,6 +608,16 @@ void Game::Run()
         g_AllowDebugOutput = false;
 #endif // DEMO_MODE_PROFILER
 
+       //
+       // TODO(3UR): this code was written on mobile improve when back on pc
+       // 
+        p3d::pddi->DrawString(
+            "Report bugs and request features in the GitHub SRR2 reository.",
+            10 + 0, 
+            60 + 45 + 0,
+            pddiColour( 255, 255, 255 )
+        );
+
         END_PROFILE( "GameLoop" )
 
         END_PROFILER_FRAME();
