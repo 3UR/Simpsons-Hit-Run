@@ -31,7 +31,7 @@ If you encounter issues, please [create an issue](https://github.com/3UR/Simpson
 **NOTE:** Sadly Xbox One is not supported right now so it will just crash Xbox Series is okay and another thing to note is on UWP no matter PC or Xbox there is a memory leak and issues with the `srrmemory.cpp` file which end up causing a crash.
 
 1. Navigate to the [Releases page](https://github.com/3UR/Simpsons-Hit-Run/releases/latest).
-2. Download two files one will be named like `SRR2_UWP_X.X.X.X_x64_XXX.appx` and the other `Dependencies.zip`.
+2. Download a file that looks like `SRR2_UWP_X.X.X.X_x64_XXX.appx`.
 3. Now navigate to the Xbox dev mode portal (https://xbox:11443/ or the local IP and port the dev mode dashboard shows you) or if on PC just double click the AppX and install then run and make sure a controller is connected.
 4. Then press "Add" and drag and drop the AppX you downloaded.
 5. Once done it should run.
