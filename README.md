@@ -1,3 +1,7 @@
+# NOT MAINTAINED
+
+This is currently not maintained due to the amount of issues and just how jank it is to work with I plan to sometime in the future rework everything and fix all the issues but do not know when for now.
+
 # SRR2
 
 SRR2 is a modified fork of _The Simpsons: Hit & Run_ with lots of enhancements, including C++20 support, x64, and VCPkg for easier third-party library management. 
