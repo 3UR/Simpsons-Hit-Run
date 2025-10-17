@@ -1,7 +1,3 @@
-# NOT MAINTAINED
-
-This is currently not maintained due to the amount of issues and just how jank it is to work with I plan to sometime in the future rework everything and fix all the issues but do not know when for now.
-
 # SRR2
 
 SRR2 is a modified fork of _The Simpsons: Hit & Run_ with lots of enhancements, including C++20 support, x64, and VCPkg for easier third-party library management. 
@@ -73,11 +69,7 @@ If the setup was successful, you should now be able to build any project in the 
 
 ### Xbox
 
-[_Watch HD on YouTube_](https://www.youtube.com/watch?v=qxqnziUVz9c)
+![A](https://github.com/user-attachments/assets/9793dccf-5dd6-4bbf-beb6-a6db33521a0b)
 
-https://github.com/user-attachments/assets/9793dccf-5dd6-4bbf-beb6-a6db33521a0b
-
-[_Watch HD on YouTube_](https://www.youtube.com/watch?v=l_Ii-4Wygn8)
-
-https://github.com/user-attachments/assets/ccfdb377-10ed-418b-a81b-932aad9938e1
+![B](https://github.com/user-attachments/assets/ccfdb377-10ed-418b-a81b-932aad9938e1)
 
