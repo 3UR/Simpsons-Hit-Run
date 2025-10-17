@@ -1417,4 +1417,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <!-- VCPKG -->
+  <ItemGroup>
+    <Content Include="$(VcpkgRoot)installed\x64-uwp\bin\**\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

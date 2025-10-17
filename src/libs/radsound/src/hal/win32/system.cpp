@@ -97,6 +97,14 @@ void radSoundHalSystem::Initialize( const SystemDescription & systemDescription 
 
     m_pDevice = alcOpenDevice(NULL);
 
+    // This is required. It wasn't in earlier builds but something must have changed because
+    // even though sound works perfectly if this check is not done then alcGetError will fail
+    if (!m_pDevice)
+    {
+        rAssertMsg(false, "OpenAL device couldn't be opened.");
+        return;
+    }
+
     ALenum err = alcGetError(m_pDevice);
     rAssertMsg(err == AL_NO_ERROR, "OpenAL device couldn't be opened.");
 
