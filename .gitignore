@@ -181,3 +181,6 @@ src/libs/sim/obj/
 # For convinience
 !tools/**/*.exe
 !tools/**/*.dll
+
+# temp
+assets
