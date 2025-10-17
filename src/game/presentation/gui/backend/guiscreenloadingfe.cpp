@@ -497,11 +497,7 @@ CGuiScreenLoadingFE::GetCurrentMemoryUsage( ContextEnum currentContext ) const
 {
     float currentMemoryUsage = 0.0f;
 
-#ifdef RAD_UWP
-    int totalMemoryFree = Memory::GetTotalMemoryFree();
-#else
     int totalMemoryFree = GetTotalMemoryFreeInAllHeaps();
-#endif
 
     if( totalMemoryFree > 0 )
     {

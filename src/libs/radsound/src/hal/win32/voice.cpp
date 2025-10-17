@@ -266,12 +266,12 @@ void radSoundHalVoiceWin::SetPan( float pan )
 {
     ::radSoundVerifyAnalogPan( pan );
 
-    rWarningMsg(false, "voice::SetPan not available in win32");
+    //rWarningMsg(false, "voice::SetPan not available in win32");
 }
 
 float radSoundHalVoiceWin::GetPan( void )
 {
-    rWarningMsg(false, "voice::GetPan not available in win32");
+    //rWarningMsg(false, "voice::GetPan not available in win32");
     return 0.0f;
 }
 
@@ -283,18 +283,18 @@ radSoundAuxMode radSoundHalVoiceWin::GetAuxMode( unsigned int aux )
 
 void radSoundHalVoiceWin::SetAuxMode( unsigned int aux, radSoundAuxMode  mode )
 {
-    rWarningMsg( false, "voice::SetAuxMode not available in win32" );
+    //rWarningMsg( false, "voice::SetAuxMode not available in win32" );
 }
 
 float radSoundHalVoiceWin::GetAuxGain( unsigned int aux )
 {
-    rWarningMsg( false, "voice::GetAuxGain not available in win32" );
+    //rWarningMsg( false, "voice::GetAuxGain not available in win32" );
     return 1.0f;
 }
 
 void radSoundHalVoiceWin::SetAuxGain( unsigned int aux, float gain )
 {
-    rWarningMsg( false, "voice::SetAuxGain not available in win32" );
+    //rWarningMsg( false, "voice::SetAuxGain not available in win32" );
 }
 
 //========================================================================

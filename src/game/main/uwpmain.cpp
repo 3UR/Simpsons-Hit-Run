@@ -55,6 +55,8 @@ int SDL_main(int argc, char* argv[])
 
     if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_GAMECONTROLLER) < 0) return -1;
 
+    SDL_LogSetAllPriority(SDL_LOG_PRIORITY_WARN);
+
     // this is really verbose and not useful unless debugging so just keep it disabled for now
     #if 0
     SDL_LogSetOutputFunction(LogOutputFunction, NULL);
