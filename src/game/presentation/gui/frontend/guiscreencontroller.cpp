@@ -138,10 +138,10 @@ CGuiScreenController::CGuiScreenController
 
     // get the platform-specific Controller page
     //
-#if defined( RAD_UWP )
+    #if defined( RAD_UWP ) // this check is not technically needed since all ps2 code is stripped out but it adds support for other console platforms down the road so i guess its fine.
     pPage = m_pScroobyScreen->GetPage( "ControllerXBOX" );
-#endif
-    rAssert( pPage );
+    rAssert(pPage);
+    #endif
 #endif
 
     // and make it visible

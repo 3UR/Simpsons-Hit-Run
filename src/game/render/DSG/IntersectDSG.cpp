@@ -263,6 +263,7 @@ int IntersectDSG::mFlatTriFast
     rAssert(mTriIndices.IsSetUp());
 
     int i, j;
+    const int numPts = mTriPts.mUseSize;
 
     if(msbInScratchPad)
     {
@@ -273,6 +274,7 @@ int IntersectDSG::mFlatTriFast
             // Intentional Copy n Paste is done to ensure inlining
             //////////////////////////////////////////////////////////////////////////
             j = mTriIndices[i*3];
+            j = rmt::Clamp(j, 0, numPts-1);
             
             int* pPtFlags = &((int&)(mTriPts[j].y));//rPtFlags = Mask;
             if( *pPtFlags == IntersectDSG::UNINIT_PT )//!(rPtFlags & IntersectDSG::INIT_PT) )
@@ -287,6 +289,7 @@ int IntersectDSG::mFlatTriFast
             Mask |= (*pPtFlags);
             
             j = mTriIndices[i*3+1];
+            j = rmt::Clamp(j, 0, numPts-1);
             pPtFlags = &((int&)(mTriPts[j].y));//rPtFlags = Mask;
             if( (*pPtFlags) == IntersectDSG::UNINIT_PT )//!(rPtFlags & IntersectDSG::INIT_PT) )
             {
@@ -300,6 +303,7 @@ int IntersectDSG::mFlatTriFast
             Mask |= (*pPtFlags);
             
             j = mTriIndices[i*3+2];
+            j = rmt::Clamp(j, 0, numPts-1);
             pPtFlags = &((int&)(mTriPts[j].y));//rPtFlags = Mask;
             if( (*pPtFlags) == IntersectDSG::UNINIT_PT )//!(rPtFlags & IntersectDSG::INIT_PT) )
             {
@@ -314,9 +318,9 @@ int IntersectDSG::mFlatTriFast
 
             if(Mask==IntersectDSG::FOUND_PT)
             {
-                j=mTriIndices[i*3];   *iopTriPts      = mTriPts[j];  iopTriPts->y     = mspVertexData[j].y; 
-                j=mTriIndices[i*3+1]; *(iopTriPts+1)  = mTriPts[j];  (iopTriPts+1)->y = mspVertexData[j].y; 
-                j=mTriIndices[i*3+2]; *(iopTriPts+2)  = mTriPts[j];  (iopTriPts+2)->y = mspVertexData[j].y;
+                j=mTriIndices[i*3];   j = rmt::Clamp(j, 0, numPts-1); *iopTriPts      = mTriPts[j];  iopTriPts->y     = mspVertexData[j].y; 
+                j=mTriIndices[i*3+1]; j = rmt::Clamp(j, 0, numPts-1); *(iopTriPts+1)  = mTriPts[j];  (iopTriPts+1)->y = mspVertexData[j].y; 
+                j=mTriIndices[i*3+2]; j = rmt::Clamp(j, 0, numPts-1); *(iopTriPts+2)  = mTriPts[j];  (iopTriPts+2)->y = mspVertexData[j].y;
                 orTriNum=i;
 
                 orTriNorm = mTriNorms[orTriNum];
@@ -340,7 +344,7 @@ int IntersectDSG::mFlatTriFast
         //////////////////////////////////////////////////////////////////////////
             // Intentional Copy n Paste is done to ensure inlining
             //////////////////////////////////////////////////////////////////////////
-            j = mTriIndices[i*3];
+            j = mTriIndices[i*3]; j = rmt::Clamp(j, 0, numPts-1);
             {
                 if( mTriPts[j].x <= (posnRef.x + PT_EPSILON) )     Mask |= IntersectDSG::X_LT_PT;
                 if( mTriPts[j].x >= (posnRef.x - PT_EPSILON) )     Mask |= IntersectDSG::X_GT_PT;
@@ -348,18 +352,16 @@ int IntersectDSG::mFlatTriFast
                 if( mTriPts[j].z >= (posnRef.z - PT_EPSILON) )     Mask |= IntersectDSG::Z_GT_PT;            
             }
             
-            j = mTriIndices[i*3+1];
+            j = mTriIndices[i*3+1]; j = rmt::Clamp(j, 0, numPts-1);
             {
-                //Initialise Point; intentional overlap. See Mask.
                 if( mTriPts[j].x <= (posnRef.x + PT_EPSILON) )     Mask |= IntersectDSG::X_LT_PT;
                 if( mTriPts[j].x >= (posnRef.x - PT_EPSILON) )     Mask |= IntersectDSG::X_GT_PT;
                 if( mTriPts[j].z <= (posnRef.z + PT_EPSILON) )     Mask |= IntersectDSG::Z_LT_PT;
                 if( mTriPts[j].z >= (posnRef.z - PT_EPSILON) )     Mask |= IntersectDSG::Z_GT_PT;            
             }
  
-            j = mTriIndices[i*3+2];
+            j = mTriIndices[i*3+2]; j = rmt::Clamp(j, 0, numPts-1);
             {
-                //Initialise Point; intentional overlap. See Mask.
                 if( mTriPts[j].x <= (posnRef.x + PT_EPSILON) )     Mask |= IntersectDSG::X_LT_PT;
                 if( mTriPts[j].x >= (posnRef.x - PT_EPSILON) )     Mask |= IntersectDSG::X_GT_PT;
                 if( mTriPts[j].z <= (posnRef.z + PT_EPSILON) )     Mask |= IntersectDSG::Z_LT_PT;
@@ -368,9 +370,9 @@ int IntersectDSG::mFlatTriFast
 
             if(Mask==IntersectDSG::FOUND_PT)
             {
-                j=mTriIndices[i*3];   *iopTriPts      = mTriPts[j];  
-                j=mTriIndices[i*3+1]; *(iopTriPts+1)  = mTriPts[j];  
-                j=mTriIndices[i*3+2]; *(iopTriPts+2)  = mTriPts[j]; 
+                j=mTriIndices[i*3];   j = rmt::Clamp(j, 0, numPts-1); *iopTriPts      = mTriPts[j];  
+                j=mTriIndices[i*3+1]; j = rmt::Clamp(j, 0, numPts-1); *(iopTriPts+1)  = mTriPts[j];  
+                j=mTriIndices[i*3+2]; j = rmt::Clamp(j, 0, numPts-1); *(iopTriPts+2)  = mTriPts[j]; 
                 orTriNum=i;
 
                 orTriNorm = mTriNorms[orTriNum];
