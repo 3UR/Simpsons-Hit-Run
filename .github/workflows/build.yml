@@ -1,4 +1,3 @@
-# pretty much all copied from game-engine
 name: Build SRR2
 on:
   workflow_dispatch:
