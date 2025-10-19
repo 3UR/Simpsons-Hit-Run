@@ -226,6 +226,8 @@ class MusicPlayer : public EventListener
         void triggerMusicMissionEventByName( radKey32* key );
         
         unsigned int m_lastServiceTime;
+        int m_lastEventScriptIndex;
+        unsigned int m_lastEventTriggerTime;
 
         // Needed for polling the composition loader
         bool m_isLoadingMusic;

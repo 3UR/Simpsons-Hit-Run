@@ -23,6 +23,45 @@ using namespace ods;
 // Global Data, Local Data, Local Classes [Optional commment can be deleted]
 //-----------------------------------------------------------------------------
 
+namespace
+{
+    const unsigned int INVALID_INDEX = 0xFFFFFFFFu;
+
+    inline unsigned int select_random_from_mask( unsigned int mask )
+    {
+        rAssert( mask != 0 );
+
+        unsigned int count = 0;
+        unsigned int temp = mask;
+        while ( temp )
+        {
+            temp &= ( temp - 1 );
+            count++;
+        }
+
+        unsigned int choice = ( count > 0 ) ? ( rand() % count ) : 0;
+
+        for ( unsigned int bit = 0; bit < 32; ++bit )
+        {
+            if ( mask & ( 1u << bit ) )
+            {
+                if ( choice == 0 )
+                {
+                    return bit;
+                }
+                --choice;
+            }
+        }
+
+        return 0;
+    }
+
+    inline unsigned int full_mask_for( unsigned int count )
+    {
+        return ( count >= 32u ) ? 0xFFFFFFFFu : ( ( 1u << count ) - 1u );
+    }
+}
+
 namespace radmusic
 {
     performance * g_p_performance_list_head = 0;
@@ -51,11 +90,36 @@ performance * performance_new(
     p_performance->p_composition = p_composition;
     p_performance->p_composition->ref_count++;
     
+    unsigned int num_states = state_array_num_items(
+        comp_states( p_performance->p_composition->ptr_composition ) );
+
     p_performance->p_state_values = (unsigned char*) memory::calloc(
-        sizeof( unsigned char ) * state_array_num_items(
-            comp_states( p_performance->p_composition->ptr_composition ) ), 
+        sizeof( unsigned char ) * num_states,
                 "performance::p_state_values" );
-                
+
+    p_performance->p_state_rand_history = (unsigned int*) memory::calloc(
+        sizeof( unsigned int ) * num_states,
+                "performance::p_state_rand_history" );
+
+    unsigned int num_events = event_array_num_items(
+        comp_events( p_performance->p_composition->ptr_composition ) );
+
+    if ( num_events > 0 )
+    {
+        p_performance->p_event_last_action_index = (unsigned int*) memory::malloc(
+            sizeof( unsigned int ) * num_events,
+                "performance::p_event_last_action_index" );
+
+        for ( unsigned int event_index = 0; event_index < num_events; ++event_index )
+        {
+            p_performance->p_event_last_action_index[ event_index ] = INVALID_INDEX;
+        }
+    }
+    else
+    {
+        p_performance->p_event_last_action_index = 0;
+    }
+
     p_performance->event_queue_head = 0;
     p_performance->event_queue_num_items = 0;
     
@@ -98,6 +162,12 @@ void performance_delete( performance ** p_performance )
     performance_stop( *p_performance );
     
     memory::free( (*p_performance)->p_state_values );
+    memory::free( (*p_performance)->p_state_rand_history );
+
+    if ( (*p_performance)->p_event_last_action_index != 0 )
+    {
+        memory::free( (*p_performance)->p_event_last_action_index );
+    }
     
     resource_manager_delete( & ((*p_performance)->p_resource_manager) );
     music_engine_destroy(  & (*p_performance)->music_engine );    
@@ -324,13 +394,48 @@ void _do_action_rand_state( performance * p_performance, const rand_state_action
     if ( num_state_values > 1 )
     {
         unsigned int current_value = p_performance->p_state_values[ state_value_index ];
-        
-        unsigned int new_value;
-        do
+        unsigned int new_value = current_value;
+
+        if ( num_state_values <= 32 )
         {
-            new_value  = rand() % num_state_values;
-        } while( new_value == current_value );
-        
+            unsigned int full_mask = full_mask_for( num_state_values );
+            unsigned int used_mask = p_performance->p_state_rand_history[ state_value_index ];
+
+            used_mask |= ( 1u << current_value );
+
+            if ( used_mask == full_mask )
+            {
+                used_mask = ( 1u << current_value );
+            }
+
+            unsigned int candidate_mask = full_mask & ~used_mask;
+            candidate_mask &= ~( 1u << current_value );
+
+            if ( candidate_mask == 0 )
+            {
+                candidate_mask = full_mask & ~( 1u << current_value );
+            }
+
+            if ( candidate_mask != 0 )
+            {
+                new_value = select_random_from_mask( candidate_mask );
+            }
+            else
+            {
+                new_value = ( current_value + 1 ) % num_state_values;
+            }
+
+            used_mask |= ( 1u << new_value );
+            p_performance->p_state_rand_history[ state_value_index ] = used_mask;
+        }
+        else
+        {
+            do
+            {
+                new_value = rand() % num_state_values;
+            } while( new_value == current_value );
+        }
+
         performance_state_value( p_performance, state_value_index, new_value );
     }
 }
@@ -365,10 +470,35 @@ void _do_event_actions( performance * p_performance, unsigned int i )
         action_index = calculate_action_offset( ptr_event, d );
     }
     
+    action_ref_array_array ptr_action_array_array = event_action_arrays( ptr_event );
+    unsigned int num_action_arrays = action_ref_array_array_num_items( ptr_action_array_array );
+
+    if ( num_action_arrays == 0 )
+    {
+        return;
+    }
+
+    if ( action_index >= num_action_arrays )
+    {
+        action_index = action_index % num_action_arrays;
+    }
+
+    if ( num_action_arrays > 1 && p_performance->p_event_last_action_index != 0 )
+    {
+        unsigned int last_index = p_performance->p_event_last_action_index[ i ];
+        if ( last_index != INVALID_INDEX && last_index == action_index )
+        {
+            action_index = ( action_index + 1 ) % num_action_arrays;
+        }
+    }
+
+    if ( p_performance->p_event_last_action_index != 0 )
+    {
+        p_performance->p_event_last_action_index[ i ] = action_index;
+    }
+
     action_ref_array ptr_action_ref_array =
-        action_ref_array_array_item_at(
-            event_action_arrays( ptr_event ),
-        action_index );
+        action_ref_array_array_item_at( ptr_action_array_array, action_index );
     
     unsigned int num_actions = action_ref_array_num_items( ptr_action_ref_array );
     

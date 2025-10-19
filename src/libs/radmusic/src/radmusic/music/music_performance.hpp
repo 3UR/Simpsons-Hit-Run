@@ -42,6 +42,9 @@ struct performance
     composition * p_composition;
 
     unsigned char * p_state_values;
+
+    unsigned int * p_state_rand_history;
+    unsigned int * p_event_last_action_index;
                            
     unsigned int    event_queue[ EVENT_QUEUE_SIZE ];
     unsigned int    event_queue_head;

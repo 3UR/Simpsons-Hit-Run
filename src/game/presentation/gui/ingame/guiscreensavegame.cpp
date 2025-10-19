@@ -657,13 +657,7 @@ void CGuiScreenSaveGame::InitIntro()
 			message_index = 1; // has existing slot
 		// we have 2 group of per platform messages, gc,ps2,xbox_mu, xbox_hd
 		message_index = message_index * 4 + PLATFORM_TEXT_INDEX;
-#ifdef RAD_UWP
-		if (currentDriveIndex==0)
-		{
-			message_index++; // xbox hard disk
-		}
-#endif
-#ifdef RAD_WIN32
+#if defined(RAD_WIN32) || defined(RAD_UWP)
         message_index = 9;
 #endif
 		m_pFullText->SetIndex(message_index);
@@ -740,5 +734,9 @@ void
 CGuiScreenSaveGame::SaveGame()
 {
 	m_operation = SAVE;
+#if defined(RAD_UWP)
     m_guiManager->DisplayMessage( CGuiScreenMessage::MSG_ID_SAVING_GAME_XBOX, this );
+#elif defined(RAD_WIN32)
+    m_guiManager->DisplayMessage( CGuiScreenMessage::MSG_ID_SAVING_GAME_PC, this );
+#endif
 }

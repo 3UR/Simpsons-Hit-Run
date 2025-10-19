@@ -326,6 +326,8 @@ static int s_PostHitAndRunTimer = -99;
 //==============================================================================
 MusicPlayer::MusicPlayer( Sound::IDaSoundTuner& tuner ) :
     m_lastServiceTime( ::radTimeGetMilliseconds( ) ),
+    m_lastEventScriptIndex( NO_INDEX ),
+    m_lastEventTriggerTime( 0 ),
     m_isLoadingMusic( false ),
     m_isInCar( false ),
     m_radLoadRequest( NULL ),
@@ -497,9 +499,14 @@ void MusicPlayer::TriggerMusicEvent( MusicEventList event )
         if( ( scriptIndex != NO_INDEX )
             && ( m_musicPerformance != NULL ) )
         {
-            radmusic::performance_trigger_event(
-                m_musicPerformance,
-                scriptIndex );
+            unsigned int now = ::radTimeGetMilliseconds();
+
+            if( ( scriptIndex != m_lastEventScriptIndex ) || ( now - m_lastEventTriggerTime > 300 ) )
+            {
+                radmusic::performance_trigger_event( m_musicPerformance, scriptIndex );
+                m_lastEventScriptIndex = scriptIndex;
+                m_lastEventTriggerTime = now;
+            }
         }
     }
 }
@@ -1030,6 +1037,12 @@ void MusicPlayer::SetUpPerformance(
     }
     
     rAssert( *ppPerformance != NULL );
+
+    if( ppPerformance == &m_musicPerformance )
+    {
+        m_lastEventScriptIndex = NO_INDEX;
+        m_lastEventTriggerTime = 0;
+    }
 }
         
 //=============================================================================
@@ -1245,6 +1258,9 @@ void MusicPlayer::UnloadRadmusicScript()
 
         m_musicComposition = NULL;
     }
+
+    m_lastEventScriptIndex = NO_INDEX;
+    m_lastEventTriggerTime = 0;
 }
 
 //=============================================================================

@@ -777,10 +777,12 @@ void
 CGuiScreenAutoLoad::LoadGame()
 {
 	m_operation = LOAD;
+    rAssert(m_currentDriveIndex == 0);
 
-#if defined(RAD_WIN32) || defined(RAD_UWP)
-    rAssert( m_currentDriveIndex == 0 );
+#if defined(RAD_UWP)
     m_guiManager->DisplayMessage( CGuiScreenMessage::MSG_ID_AUTO_LOADING_GAME_XBOX, this );
+#elif defined(RAD_WIN32)
+    m_guiManager->DisplayMessage( CGuiScreenMessage::MSG_ID_AUTO_LOADING_GAME_PC, this );
 #endif
 }
 

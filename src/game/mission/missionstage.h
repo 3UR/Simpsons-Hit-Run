@@ -354,6 +354,9 @@ private:
     //
     void triggerStageDialog();
 
+    void PrepareForcedCarForWorld();
+    void FinalizeDefaultCarSwap( Vehicle* defaultVehicle );
+
     //
     // Objective (always only one per stage)
     //
@@ -511,6 +514,9 @@ private:
 
     bool mAllowMissionAbort : 1;
     int mResetCounter;
+
+    bool mForcedCarPrepared;
+    bool mPendingDefaultCarSwap;
 
 };
 

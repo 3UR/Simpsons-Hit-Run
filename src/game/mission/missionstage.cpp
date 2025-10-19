@@ -79,6 +79,13 @@
 // Global Data, Local Data, Local Classes
 //
 //******************************************************************************
+namespace
+{
+    inline bool HasValidLocatorName(const char* name)
+    {
+        return (name != NULL) && (name[0] != '\0') && (strcmp(name, "NULL") != 0);
+    }
+}
 
 //******************************************************************************
 //
@@ -132,7 +139,9 @@ MissionStage::MissionStage() :
     mNumCountdownSequenceUnits(0),
     mCountdownDialogKey(0),
     mSecondSpeakerUID(0),
-    mAllowMissionAbort(true)
+    mAllowMissionAbort(true),
+    mForcedCarPrepared(false),
+    mPendingDefaultCarSwap(false)
 {
 #ifdef RAD_DEBUG
     static int count = 0;
@@ -983,6 +992,9 @@ void MissionStage::Reset()
     int i;
 
     mResetCounter++;
+
+    mForcedCarPrepared = false;
+    mPendingDefaultCarSwap = false;
 
     //
     // call up the parent class
@@ -2279,6 +2291,84 @@ void MissionStage::SwapInDefaultCar()
     mbSwapInDefaultCar = true;
 }
 
+void MissionStage::PrepareForcedCarForWorld()
+{
+    if ( mForcedCarPrepared )
+    {
+        return;
+    }
+
+    mForcedCarPrepared = true;
+
+    if ( !GetGameplayManager()->GetCurrentMission()->IsForcedCar() )
+    {
+        return;
+    }
+
+    Vehicle* forcedVehicle = GetGameplayManager()->mVehicleSlots[ GameplayManager::eOtherCar ].mp_vehicle;
+    if ( forcedVehicle == NULL )
+    {
+        return;
+    }
+
+    forcedVehicle->SetUserDrivingCar( false );
+    forcedVehicle->TransitToAI();
+
+    Character* forcedDriver = forcedVehicle->GetDriver();
+    if ( forcedDriver != NULL )
+    {
+        forcedVehicle->SetDriver( NULL );
+        GetCharacterManager()->RemoveCharacter( forcedDriver );
+    }
+
+    if ( HasValidLocatorName( mSwapForcedCarRespawnLocatorName ) )
+    {
+        GetGameplayManager()->PlaceVehicleAtLocatorName( forcedVehicle, mSwapForcedCarRespawnLocatorName );
+    }
+}
+
+void MissionStage::FinalizeDefaultCarSwap( Vehicle* defaultVehicle )
+{
+    if ( defaultVehicle == NULL )
+    {
+        GetGameplayManager()->ManualControlFade( false );
+        mPendingDefaultCarSwap = false;
+        return;
+    }
+
+    defaultVehicle->SetUserDrivingCar( true );
+    GetVehicleCentral()->AddVehicleToActiveList( defaultVehicle );
+    GetGameplayManager()->SetCurrentVehicle( defaultVehicle );
+
+    if ( HasValidLocatorName( mSwapDefaultCarRespawnLocatorName ) )
+    {
+        GetGameplayManager()->PlaceVehicleAtLocatorName( defaultVehicle, mSwapDefaultCarRespawnLocatorName );
+    }
+
+    if ( HasValidLocatorName( mSwapPlayerRespawnLocatorName ) )
+    {
+        Avatar* avatarEntity = GetAvatarManager()->GetAvatarForPlayer( 0 );
+        if ( avatarEntity != NULL )
+        {
+            Character* avatar = avatarEntity->GetCharacter();
+            if ( avatar != NULL )
+            {
+                Locator* playerLoc = p3d::find< Locator >( mSwapPlayerRespawnLocatorName );
+                if ( playerLoc != NULL )
+                {
+                    GetGameplayManager()->PlaceCharacterAtLocator( avatar, playerLoc );
+                }
+            }
+        }
+    }
+
+    GetGameplayManager()->GetCurrentMission()->SetSwappedCarsFlag( true );
+
+    GetGameplayManager()->MDKVDU();
+    GetGameplayManager()->ManualControlFade( false );
+    mPendingDefaultCarSwap = false;
+}
+
 void MissionStage::SwapInDefaultCarStart()
 {
     Vehicle* pVehicle = NULL;
@@ -2308,14 +2398,30 @@ void MissionStage::SwapInDefaultCarStart()
         //GetGameplayManager()->DumpCurrentCar();
         GetGameplayManager()->MDKVDU();
 
-        //load the players default car
-        GetLoadingManager()->AddRequest(FILEHANDLER_PURE3D,
-            GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].filename,
-            GMA_LEVEL_MISSION,
-            GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].filename,
-            "Default",
-            this
-        );
+        PrepareForcedCarForWorld();
+
+        Vehicle* preloadedDefault = GetGameplayManager()->mVehicleSlots[ GameplayManager::eDefaultCar ].mp_vehicle;
+
+        if ( preloadedDefault != NULL )
+        {
+            FinalizeDefaultCarSwap( preloadedDefault );
+        }
+        else
+        {
+            mPendingDefaultCarSwap = true;
+
+            GetLoadingManager()->AddRequest(FILEHANDLER_PURE3D,
+                GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].filename,
+                GMA_LEVEL_MISSION,
+                GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].filename,
+                "Default",
+                this
+            );
+        }
+    }
+    else
+    {
+        GetGameplayManager()->ManualControlFade( false );
     }
 
 }
@@ -2323,48 +2429,20 @@ void MissionStage::SwapInDefaultCarStart()
 
 void MissionStage::OnProcessRequestsComplete(void* pUserData)
 {
-    //changed the forced car to an AI type car and so its locked from player
-    if (GetGameplayManager()->GetCurrentMission()->IsForcedCar())
+    if ( !mPendingDefaultCarSwap )
     {
-        Character* pCharacter = NULL;
-
-        GetGameplayManager()->mVehicleSlots[GameplayManager::eOtherCar].mp_vehicle->SetUserDrivingCar(false);
-        GetGameplayManager()->mVehicleSlots[GameplayManager::eOtherCar].mp_vehicle->TransitToAI();
-
-        //removed the NPC character driver.
-        pCharacter = GetGameplayManager()->mVehicleSlots[GameplayManager::eOtherCar].mp_vehicle->GetDriver();
-        if (pCharacter != NULL)
-        {
-            GetGameplayManager()->mVehicleSlots[GameplayManager::eOtherCar].mp_vehicle->SetDriver(NULL);
-            GetCharacterManager()->RemoveCharacter(pCharacter);
-        }
-        GetGameplayManager()->PlaceVehicleAtLocatorName(
-            GetGameplayManager()->mVehicleSlots[GameplayManager::eOtherCar].mp_vehicle,
-            mSwapForcedCarRespawnLocatorName);
+        GetGameplayManager()->ManualControlFade( false );
+        return;
     }
 
-    //init the vehicle
-    Vehicle* vehicle;
+    PrepareForcedCarForWorld();
+
+    Vehicle* vehicle = NULL;
     char conName[64];
-    sprintf(conName, "%s.con", GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].name);
-    vehicle = GetGameplayManager()->AddLevelVehicle(GetGameplayManager()->mVehicleSlots[GameplayManager::eDefaultCar].name, GameplayManager::eDefaultCar, conName);
-    GetGameplayManager()->SetCurrentVehicle(vehicle);
+    sprintf( conName, "%s.con", GetGameplayManager()->mVehicleSlots[ GameplayManager::eDefaultCar ].name );
+    vehicle = GetGameplayManager()->AddLevelVehicle( GetGameplayManager()->mVehicleSlots[ GameplayManager::eDefaultCar ].name, GameplayManager::eDefaultCar, conName );
 
-    //place at the default car right locator.
-
-    GetGameplayManager()->PlaceVehicleAtLocatorName(vehicle, mSwapDefaultCarRespawnLocatorName);
-    //GetGameplayManager()->PlaceCharacterAtLocator( player, mPlayerRestart );
-
-    //update the mission so we dont reload default car since it being done in this method
-    GetGameplayManager()->GetCurrentMission()->SetSwappedCarsFlag(true);
-
-
-
-    //cleanup any cars lying around while we are in an iris state.
-    GetGameplayManager()->MDKVDU();
-
-    //open fade
-    GetGameplayManager()->ManualControlFade(false);
+    FinalizeDefaultCarSwap( vehicle );
 
 };
 
