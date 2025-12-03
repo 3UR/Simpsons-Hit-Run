@@ -1,21 +1,36 @@
-# SRR2
+# The Simpsons: Hit & Run
 
-SRR2 is a modified fork of _The Simpsons: Hit & Run_ with lots of enhancements, including C++20 support, x64, and VCPkg for easier third-party library management. 
+This repository contains the source code for _The Simpsons: Hit & Run_ with quite a few enhancements done to it, Such as C++ 20 & x64 Builds, VCPkg for easier third-party 
+library management, UWP Builds & more. 
 
-## Fair Use Disclaimer
-
-This repository and or build distributations contains a modified version of _The Simpsons: Hit & Run_, using its original source code and assets strictly for non-commercial, educational, and archival purposes under fair use. There is no intent to cause harm to the original work or its market.
-
-- **End-User Restrictions: (YOU)** You are not permitted to sell or commercially distribute this project in any form. Anyone attempting to do so will be blocked if found and reported to wherever it is distributed.
-- **Purpose:** Enhancement, preservation, and research.
-- **Use of Copyrighted Material:** Assets and source code are used strictly for modifications and improvements.
-- **No Commercial Intent:** This project is not sold, monetized, or distributed for profit. Donations are not accepted.
 
 ## Issues
 
 If you encounter issues, please [create an issue](https://github.com/3UR/Simpsons-Hit-Run/issues/new).
 
+## Contributing
+
+If you would like to contribute to this project please create a fork and then open a pull request.
+
+## Known Issues
+
+- Memory Leak (Should be easier to debug with the new Visual Studio 2026 profiling tools but sadly we can't build for VS 2026 as of right now.)
+- Asset missing with the current released builds (I have assets that are good to go just need to some how slim them down and fit them into the repo & update the release)
+
+## Fair Use Disclaimer
+
+This repository and build distributations contains a modified version of _The Simpsons: Hit & Run_, using its original source code and assets strictly for non-commercial, educational, and archival purposes under fair use. There is no intent to cause harm to the original work or its market or make money of it.
+
+- **Restrictions [If you are using this source or the builds]:** You are not allowed to sell or commercially distribute this in any form. Anyone attempting to do so will be blocked if found and reported to wherever it is distributed.
+- **Purpose:** Enhancement, preservation, and research.
+- **Use of Copyrighted Material:** Assets and source code are used strictly for modifications and improvements.
+- **No Commercial Intent:** This project is not sold, monetized, or distributed for profit. Donations are not accepted.
+
+
 ## Installation
+
+> [!WARNING]  
+> There is a chance you will encounter memory leaks and (if you want to build the source) build issues with Visual Studio 2026 these will eventually be actively worked on but I currently don't have the time to work on this project.
 
 ### Quick Installation (Pre-built)
 
@@ -26,25 +41,24 @@ If you encounter issues, please [create an issue](https://github.com/3UR/Simpson
 3. Navigate to the extracted folder and locate `SRR2.exe`.
 4. You can now run the game. (Note: The game will crash without the required assets)
 
-### Xbox (Will work on Windows too but requires controller for input; note - it will also act as the console version because it is)
+### Xbox Series S|X
 
-**NOTE:** Sadly Xbox One is not supported right now so it will just crash Xbox Series is okay and another thing to note is on UWP no matter PC or Xbox there is a memory leak and issues with the `srrmemory.cpp` file which end up causing a crash.
+> [!NOTE]  
+> Xbox One is currently not supported and will crash Xbox Series S|X is fine.
 
 1. Navigate to the [Releases page](https://github.com/3UR/Simpsons-Hit-Run/releases/latest).
 2. Download a file that looks like `SRR2_UWP_X.X.X.X_x64_XXX.appx`.
-3. Now navigate to the Xbox dev mode portal (https://xbox:11443/ or the local IP and port the dev mode dashboard shows you) or if on PC just double click the AppX and install then run and make sure a controller is connected.
+3. Now navigate to the Xbox dev mode portal (https://xbox:11443/ or the local IP and port the dev mode dashboard shows you).
 4. Then press "Add" and drag and drop the AppX you downloaded.
 5. Once done it should run.
 
 ### Developer Installation (Building from Source)
 
-To work with the source code, ensure you have the following:
+When working with the source you will need these installed:
 
-When working on the code you must have some things
-
-- Visual Studio (Install from Microsoft if not already present)
+- Visual Studio (2022 Preferred)
 - C++ Language Support (In the Visual Studio installer, select the `Desktop development with C++` and `Universal Windows Platform development` options)
-- VCPkg support (When selecting `Desktop development with C++`, ensure `vcpkg package manager` is checked on the right side)
+- VCPkg support (When selecting `Desktop development with C++`, make sure `vcpkg package manager` is selected on the right side)
 
 #### Setup
 
@@ -56,7 +70,7 @@ When working on the code you must have some things
 
 #### Building
 
-If the setup was successful, you should now be able to build any project in the solution. When building for UWP don't forget to change the config! e.g if it's `ReleaseWindows` make it `ReleaseUwp`.
+If the setup was successful, you should now be able to build any project in the solution. When building for UWP don't forget to change the config! (example: if it's `ReleaseWindows` make it `ReleaseUwp`).
 
 ## Media
 
