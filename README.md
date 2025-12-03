@@ -83,7 +83,11 @@ If the setup was successful, you should now be able to build any project in the 
 
 ### Xbox
 
-![A](https://github.com/user-attachments/assets/9793dccf-5dd6-4bbf-beb6-a6db33521a0b)
+[_Watch HD on YouTube_](https://www.youtube.com/watch?v=qxqnziUVz9c)
 
-![B](https://github.com/user-attachments/assets/ccfdb377-10ed-418b-a81b-932aad9938e1)
+https://github.com/user-attachments/assets/9793dccf-5dd6-4bbf-beb6-a6db33521a0b
+
+[_Watch HD on YouTube_](https://www.youtube.com/watch?v=l_Ii-4Wygn8)
+
+https://github.com/user-attachments/assets/ccfdb377-10ed-418b-a81b-932aad9938e1
 
