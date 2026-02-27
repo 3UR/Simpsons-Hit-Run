@@ -17,6 +17,9 @@
 #include "radsoundwin.hpp"
 #include "../../common/radsoundupdatableobject.hpp"
 
+#include <AL/efx.h>
+#include <AL/alext.h>
+
 //============================================================================
 // Definitiona
 //============================================================================
@@ -43,6 +46,7 @@ class radSoundHalSystem
         virtual unsigned int GetNumAuxSends( );
 	    virtual void SetOutputMode( radSoundOutputMode mode );
 	    virtual radSoundOutputMode GetOutputMode( void );
+        virtual void RecoverDevice( void );
         virtual void Service( void );
         virtual void ServiceOncePerFrame( void );
         virtual void GetStats( IRadSoundHalSystem::Stats * pStats );
@@ -70,11 +74,13 @@ class radSoundHalSystem
         radRef< IRadSoundHalEffect >      m_refIRadSoundHalEffect[ RSD_SYSTEM_MAX_AUX_SENDS ];
 
         unsigned int    m_LastServiceTime;
+        ALCint          m_SamplingRate;
 
         LPALGENAUXILIARYEFFECTSLOTS alGenAuxiliaryEffectSlots;
         LPALDELETEAUXILIARYEFFECTSLOTS alDeleteAuxiliaryEffectSlots;
         LPALAUXILIARYEFFECTSLOTF alAuxiliaryEffectSlotf;
         LPALGETAUXILIARYEFFECTSLOTF alGetAuxiliaryEffectSlotf;
+        LPALCRESETDEVICESOFT alcResetDeviceSOFT;
 };
 
 #endif // SOUND_HAL_WIN32_SYSTEM_HPP

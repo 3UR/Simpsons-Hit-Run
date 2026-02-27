@@ -22,17 +22,35 @@
     <Filter Include="src\radsound">
       <UniqueIdentifier>{b6f9f918-1e83-4760-bf1c-82f905245744}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\common|">
-      <UniqueIdentifier>{287694a2-fe50-49f2-a67c-11f4ff09a131}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\math">
       <UniqueIdentifier>{34625407-2039-437a-b015-07a5c73af372}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\common">
+      <UniqueIdentifier>{287694a2-fe50-49f2-a67c-11f4ff09a131}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\common">
+      <UniqueIdentifier>{95967e8c-a190-4b6a-a86e-c4a58a8a1e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\hal">
+      <UniqueIdentifier>{a2c9b4d0-bcd2-481c-a096-8a3f334dde10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\hal\common">
+      <UniqueIdentifier>{a363ce9f-7989-463b-8efd-e0def92588b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\hal\win32">
+      <UniqueIdentifier>{fb6eaa7c-5c69-4e0e-b0c9-93475d49ace8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\math">
+      <UniqueIdentifier>{8d56d5c3-8319-45cb-aeb7-d4196fb6b360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\pch">
+      <UniqueIdentifier>{ad9b09aa-7747-47a1-8c30-37550bbc73e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\radsound">
+      <UniqueIdentifier>{a2833579-e1b1-47ae-9826-75aab688f597}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\radsound.hpp">
-      <Filter>inc</Filter>
-    </ClInclude>
     <ClInclude Include="include\radsound_hal.hpp">
       <Filter>inc</Filter>
     </ClInclude>
@@ -42,86 +60,89 @@
     <ClInclude Include="include\radsoundfile.hpp">
       <Filter>inc</Filter>
     </ClInclude>
-    <ClInclude Include="include\radsoundmath.hpp">
-      <Filter>inc</Filter>
-    </ClInclude>
-    <ClInclude Include="src\pch\pch.hpp">
-      <Filter>src\pch</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\common\audioformat.hpp">
-      <Filter>src\hal\common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\common\banner.hpp">
-      <Filter>src\hal\common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\common\memoryregion.hpp">
-      <Filter>src\hal\common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\common\rolloff.hpp">
-      <Filter>src\hal\common</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\buffer.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\bufferloader.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\effect.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\listener.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\positionalgroup.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\radsoundwin.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\system.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\hal\win32\voice.hpp">
-      <Filter>src\hal\win32</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\buffereddatasource.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\clip.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\clipplayer.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\datacache.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\memorydatasource.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\memoryspaceobject.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\radicaladpcm.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\rsdfiledatasource.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\stitcheddatasource.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
-    <ClInclude Include="src\radsound\streamplayer.hpp">
-      <Filter>src\radsound</Filter>
-    </ClInclude>
     <ClInclude Include="src\common\radsoundobject.hpp">
-      <Filter>src\common|</Filter>
+      <Filter>inc\common</Filter>
     </ClInclude>
     <ClInclude Include="src\common\radsoundupdatableobject.hpp">
-      <Filter>src\common|</Filter>
+      <Filter>inc\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\common\audioformat.hpp">
+      <Filter>inc\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\common\banner.hpp">
+      <Filter>inc\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\common\memoryregion.hpp">
+      <Filter>inc\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\common\rolloff.hpp">
+      <Filter>inc\hal\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\buffer.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\bufferloader.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\effect.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\listener.hpp">
+      <Filter>inc\hal\win32</Filter>
     </ClInclude>
     <ClInclude Include="src\hal\win32\radinprogext.hpp">
-      <Filter>src\hal\win32</Filter>
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\positionalgroup.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\radsoundwin.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\system.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hal\win32\voice.hpp">
+      <Filter>inc\hal\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radsoundmath.hpp">
+      <Filter>inc\math</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch\pch.hpp">
+      <Filter>inc\pch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\buffereddatasource.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\clip.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\clipplayer.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\datacache.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\memorydatasource.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\memoryspaceobject.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\radicaladpcm.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\rsdfiledatasource.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\stitcheddatasource.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radsound\streamplayer.hpp">
+      <Filter>inc\radsound</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radsound.hpp">
+      <Filter>inc</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -198,16 +219,13 @@
       <Filter>src\radsound</Filter>
     </ClCompile>
     <ClCompile Include="src\common\radsoundobject.cpp">
-      <Filter>src\common|</Filter>
+      <Filter>src\common</Filter>
     </ClCompile>
     <ClCompile Include="src\common\radsoundupdatableobject.cpp">
-      <Filter>src\common|</Filter>
+      <Filter>src\common</Filter>
     </ClCompile>
     <ClCompile Include="src\math\radsoundmath.cpp">
       <Filter>src\math</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="releasenotes.txt" />
   </ItemGroup>
 </Project>

@@ -10,7 +10,6 @@
 #include "../common/banner.hpp"
 #include "../common/memoryregion.hpp"
 #include <radplatform.hpp>
-#include <AL/efx.h>
 #include "radinprogext.h"
 
 LPALBUFFERSTORAGESOFT radBufferStorageSOFT;
@@ -70,11 +69,7 @@ radSoundHalSystem::~radSoundHalSystem( void )
     s_pRsdSystem = NULL;
 }
 
-typedef void (AL_APIENTRY*ALDEBUGPROCEXT)(ALenum source, ALenum type, ALuint id, ALenum severity, ALsizei length, const ALchar *message, void *userParam);
-
-typedef void (AL_APIENTRY*LPALDEBUGMESSAGECALLBACKEXT)(ALDEBUGPROCEXT callback, void *userParam);
-
-void AL_APIENTRY PrintOpenALErrors(ALenum source, ALenum type, ALuint id, ALenum severity, ALsizei length, const ALchar *message, void *userParam)
+void AL_APIENTRY PrintOpenALErrors(ALenum source, ALenum type, ALuint id, ALenum severity, ALsizei length, const ALchar *message, void *userParam) noexcept
 {
     (void)length;
     (void)userParam;
@@ -92,6 +87,7 @@ void radSoundHalSystem::Initialize( const SystemDescription & systemDescription 
         "to the highest sampling rate required by your program (probably 48000Hz)" );
 
     m_NumAuxSends = systemDescription.m_NumAuxSends;
+    m_SamplingRate = systemDescription.m_SamplingRate;
 
     // Initialize OpenAL
 
@@ -137,10 +133,12 @@ void radSoundHalSystem::Initialize( const SystemDescription & systemDescription 
             // enable debug messages, as of OpenAL-Soft v1.23.1 this extension has not been released yet
             if (alIsExtensionPresent("AL_EXT_debug"))
             {
-                auto const AL_DEBUG_OUTPUT_EXT = alGetEnumValue("AL_DEBUG_OUTPUT_EXT");
                 auto const alDebugMessageCallbackEXT = (LPALDEBUGMESSAGECALLBACKEXT)alGetProcAddress("alDebugMessageCallbackEXT");
-                alEnable(AL_DEBUG_OUTPUT_EXT);
-                alDebugMessageCallbackEXT(PrintOpenALErrors, /*userParam*/nullptr);
+                if (alDebugMessageCallbackEXT)
+                {
+                    alEnable(AL_DEBUG_OUTPUT_EXT);
+                    alDebugMessageCallbackEXT(PrintOpenALErrors, /*userParam*/nullptr);
+                }
             }
 
             if (m_NumAuxSends > 0 && alcIsExtensionPresent(m_pDevice, "ALC_EXT_EFX"))
@@ -156,6 +154,12 @@ void radSoundHalSystem::Initialize( const SystemDescription & systemDescription 
             else
             {
                 m_NumAuxSends = 0;
+            }
+
+            if (alcIsExtensionPresent(m_pDevice, "ALC_EXT_disconnect") && 
+                alcIsExtensionPresent(m_pDevice, "ALC_SOFT_HRTF"))
+            {
+                alcResetDeviceSOFT = (LPALCRESETDEVICESOFT)alcGetProcAddress(m_pDevice, "alcResetDeviceSOFT");
             }
         }
     }
@@ -218,6 +222,35 @@ radSoundOutputMode radSoundHalSystem::GetOutputMode( void )
 }
 
 //============================================================================
+// radSoundHalSystem::RecoverDevice
+//============================================================================
+
+void radSoundHalSystem::RecoverDevice( void )
+{
+    if (m_pDevice && alcResetDeviceSOFT)
+    {
+        ALCint connected;
+        alcGetIntegerv(m_pDevice, ALC_CONNECTED, 1, &connected);
+
+        if (!connected)
+        {
+            ALCint attr[] = {
+                ALC_FREQUENCY, m_SamplingRate,
+                ALC_MAX_AUXILIARY_SENDS, m_NumAuxSends,
+                0
+            };
+
+            // TODO(3UR): bail out eventually?
+            // alcResetDeviceSOFT also blows us up with exceptions when it fails
+            if (!alcResetDeviceSOFT(m_pDevice, attr))
+                rDebugString( "radSoundHalSystem: RecoverDevice() recovered a disconnected device\n" );
+            else
+                rDebugString( "radSoundHalSystem: RecoverDevice() failed to recover a disconnected device\n" );
+        }
+    }
+}
+
+//============================================================================
 // radSoundHalSystem::Service
 //============================================================================
 
@@ -226,6 +259,7 @@ void radSoundHalSystem::Service( void )
     unsigned int now = ::radTimeGetMilliseconds( );
 
     radSoundUpdatableObject::UpdateAll( now - m_LastServiceTime );
+    radSoundHalSystem::RecoverDevice();
 
     m_LastServiceTime = now;
 }
