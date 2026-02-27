@@ -3,6 +3,10 @@
 This repository contains the source code for _The Simpsons: Hit & Run_ with quite a few enhancements done to it, Such as C++ 20 & x64 Builds, Vcpkg for easier third-party 
 library management, UWP Builds & more. 
 
+## Commit History
+
+All previous commit history has been archived in [this branch](https://github.com/3UR/Simpsons-Hit-Run/tree/commit-history-archive). This was done because of how messy and inconsistent the commit messages were.
+
 ## Disclaimer
 
 This repository contains modified source code and references to original game assets for preservation, and enhancement purposes only.
@@ -30,8 +34,6 @@ If you would like to contribute to this project please [create a fork](https://g
 <!-- TODO: Clean up this section and improve instructions. -->
 
 ### Desktop
-> [!NOTE]  
-> You can also run the UWP build on Windows but it is **not recommended** as that has Xbox specific stuff.
 
 1. Download the latest build from the [Releases page](https://github.com/3UR/Simpsons-Hit-Run/releases/latest).
 2. Extract the contents of the zip file to your desired location.
@@ -39,7 +41,7 @@ If you would like to contribute to this project please [create a fork](https://g
 4. You can now run the game.
 
 ### Xbox Series S|X
-> [!NOTE]  
+> [!WARNING]  
 > Xbox One is currently not supported and will crash Xbox Series S|X is fine.
 
 1. Navigate to the [Releases page](https://github.com/3UR/Simpsons-Hit-Run/releases/latest).
@@ -69,8 +71,6 @@ When working with the source you will need these installed:
 If the setup was successful, you should now be able to build any project in the solution. When building for UWP don't forget to change the config! (example: if it's `ReleaseWindows` make it `ReleaseUwp`).
 
 ## Media
-> [!NOTE]
-> All builds previewed in the media are built using the source on this repository.
 
 ### Windows
 ![Screenshot 2025-02-10 092453](https://github.com/user-attachments/assets/7b5c9c6a-259d-4e5d-bd07-e429bd2f54bb)
