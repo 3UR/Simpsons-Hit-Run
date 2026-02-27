@@ -177,6 +177,7 @@ src/libs/sim/obj/
 
 # Allow these deps (Required for UWP)
 !deps/**/*.dll
+!deps/**/*.lib
 
 # For convinience
 !tools/**/*.exe
