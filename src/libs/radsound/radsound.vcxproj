@@ -811,9 +811,6 @@
     <ClCompile Include="src\radsound\stitcheddatasource.cpp" />
     <ClCompile Include="src\radsound\streamplayer.cpp" />
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="releasenotes.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
