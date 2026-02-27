@@ -1,0 +1,1624 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="DebugWindows|Win32">
+      <Configuration>DebugWindows</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="DebugWindows|x64">
+      <Configuration>DebugWindows</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWindows|Win32">
+      <Configuration>ReleaseWindows</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseWindows|x64">
+      <Configuration>ReleaseWindows</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="TuneWindows|Win32">
+      <Configuration>TuneWindows</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="TuneWindows|x64">
+      <Configuration>TuneWindows</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <SccProjectName>Perforce Project</SccProjectName>
+    <SccAuxPath />
+    <SccLocalPath>..\..</SccLocalPath>
+    <SccProvider>MSSCCI:Perforce SCM</SccProvider>
+    <ProjectGuid>{4759F797-EA05-4642-832A-A8BB580C577B}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>17.0.35309.182</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'">
+    <OutDir>..\..\build\bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'">
+    <OutDir>..\..\build\WINDOWS-bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\WINDOWS-obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'">
+    <OutDir>..\..\build\bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'">
+    <OutDir>..\..\build\WINDOWS-bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\WINDOWS-obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'">
+    <OutDir>..\..\build\bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'">
+    <OutDir>..\..\build\WINDOWS-bin-$(Platform)-$(Configuration)\</OutDir>
+    <IntDir>..\..\build\WINDOWS-obj-$(Platform)-$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg">
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'">
+    <VcpkgTriplet>x86-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'" Label="Vcpkg">
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'">
+    <VcpkgTriplet>x86-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'" Label="Vcpkg">
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Label="Vcpkg" Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'">
+    <VcpkgTriplet>x86-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'" Label="Vcpkg">
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;RAD_DEBUG;WIN32;_WINDOWS;RAD_WIN32;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/fixed:no %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;RAD_DEBUG;WIN64;_WINDOWS;RAD_WIN32;_CRT_SECURE_NO_WARNINGS;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions>/fixed:no %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;RAD_RELEASE;WIN32;_WINDOWS;RAD_WIN32;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;RAD_RELEASE;WIN64;_WINDOWS;RAD_WIN32;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OmitFramePointers>false</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalOptions>/machine:X64</AdditionalOptions>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RAD_TUNE;WIN32;_WINDOWS;RAD_WIN32;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;wsock32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'">
+    <ClCompile>
+      <Optimization>Full</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <EnableFiberSafeOptimizations>true</EnableFiberSafeOptimizations>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>RAD_TUNE;WIN64;_WINDOWS;RAD_WIN32;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS;WIN32_EXTRA_LEAN;WIN32_LEAN_AND_MEAN</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>pchsrr2.h</PrecompiledHeaderFile>
+      <BrowseInformation>true</BrowseInformation>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <CompileAs>Default</CompileAs>
+      <ForcedIncludeFiles>pchsrr2.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)SRR2.exe</OutputFile>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateMapFile>true</GenerateMapFile>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <ForceFileOutput>
+      </ForceFileOutput>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <AdditionalLibraryDirectories>..\..\deps\lib</AdditionalLibraryDirectories>
+    </Link>
+    <Midl>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0409</Culture>
+    </ResourceCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\game\ai\actionbuttonhandler.h" />
+    <ClInclude Include="..\game\ai\actionbuttonmanager.h" />
+    <ClInclude Include="..\game\ai\actionlist.h" />
+    <ClInclude Include="..\game\ai\actionnames.h" />
+    <ClInclude Include="..\game\ai\actor\actor.h" />
+    <ClInclude Include="..\game\ai\actor\actoranimation.h" />
+    <ClInclude Include="..\game\ai\actor\ActorAnimationUFO.h" />
+    <ClInclude Include="..\game\ai\actor\actoranimationwasp.h" />
+    <ClInclude Include="..\game\ai\actor\actordsg.h" />
+    <ClInclude Include="..\game\ai\actor\actormanager.h" />
+    <ClInclude Include="..\game\ai\actor\attackbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\attractionbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\behaviour.h" />
+    <ClInclude Include="..\game\ai\actor\cutcambehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\evasionbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\flyingactor.h" />
+    <ClInclude Include="..\game\ai\actor\intersectionlist.h" />
+    <ClInclude Include="..\game\ai\actor\projectile.h" />
+    <ClInclude Include="..\game\ai\actor\projectiledsg.h" />
+    <ClInclude Include="..\game\ai\actor\spawnpoint.h" />
+    <ClInclude Include="..\game\ai\actor\stunnedbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\ufoattackbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\ufobeamalwaysonbehaviour.h" />
+    <ClInclude Include="..\game\ai\actor\ufobehaviour.h" />
+    <ClInclude Include="..\game\ai\automaticdoor.h" />
+    <ClInclude Include="..\game\ai\playanimonce.h" />
+    <ClInclude Include="..\game\ai\sequencer\action.h" />
+    <ClInclude Include="..\game\ai\sequencer\actioncontroller.h" />
+    <ClInclude Include="..\game\ai\sequencer\sequencer.h" />
+    <ClInclude Include="..\game\ai\sequencer\task.h" />
+    <ClInclude Include="..\game\ai\state.h" />
+    <ClInclude Include="..\game\ai\statemanager.h" />
+    <ClInclude Include="..\game\ai\vehicle\chaseai.h" />
+    <ClInclude Include="..\game\ai\vehicle\potentialfield.h" />
+    <ClInclude Include="..\game\ai\vehicle\potentials.h" />
+    <ClInclude Include="..\game\ai\vehicle\trafficai.h" />
+    <ClInclude Include="..\game\ai\vehicle\vehicleai.h" />
+    <ClInclude Include="..\game\ai\vehicle\vehicleairender.h" />
+    <ClInclude Include="..\game\ai\vehicle\waypointai.h" />
+    <ClInclude Include="..\game\atc\atcloader.h" />
+    <ClInclude Include="..\game\atc\atcmanager.h" />
+    <ClInclude Include="..\game\camera\animatedcam.h" />
+    <ClInclude Include="..\game\camera\bumpercam.h" />
+    <ClInclude Include="..\game\camera\bumpercamdata.h" />
+    <ClInclude Include="..\game\camera\chasecam.h" />
+    <ClInclude Include="..\game\camera\chasecamdata.h" />
+    <ClInclude Include="..\game\camera\conversationcam.h" />
+    <ClInclude Include="..\game\camera\conversationcamdata.h" />
+    <ClInclude Include="..\game\camera\debugcam.h" />
+    <ClInclude Include="..\game\camera\firstpersoncam.h" />
+    <ClInclude Include="..\game\camera\followcam.h" />
+    <ClInclude Include="..\game\camera\followcamdata.h" />
+    <ClInclude Include="..\game\camera\followcamdatachunk.h" />
+    <ClInclude Include="..\game\camera\frustrumdrawable.h" />
+    <ClInclude Include="..\game\camera\icamerashaker.h" />
+    <ClInclude Include="..\game\camera\isupercamtarget.h" />
+    <ClInclude Include="..\game\camera\kullcam.h" />
+    <ClInclude Include="..\game\camera\pccam.h" />
+    <ClInclude Include="..\game\camera\railcam.h" />
+    <ClInclude Include="..\game\camera\relativeanimatedcam.h" />
+    <ClInclude Include="..\game\camera\reversecam.h" />
+    <ClInclude Include="..\game\camera\sinecosshaker.h" />
+    <ClInclude Include="..\game\camera\snapshotcam.h" />
+    <ClInclude Include="..\game\camera\staticcam.h" />
+    <ClInclude Include="..\game\camera\supercam.h" />
+    <ClInclude Include="..\game\camera\supercamcentral.h" />
+    <ClInclude Include="..\game\camera\supercamconstants.h" />
+    <ClInclude Include="..\game\camera\supercamcontroller.h" />
+    <ClInclude Include="..\game\camera\supercammanager.h" />
+    <ClInclude Include="..\game\camera\supersprintcam.h" />
+    <ClInclude Include="..\game\camera\surveillancecam.h" />
+    <ClInclude Include="..\game\camera\trackercam.h" />
+    <ClInclude Include="..\game\camera\trackercamdata.h" />
+    <ClInclude Include="..\game\camera\walkercam.h" />
+    <ClInclude Include="..\game\camera\walkercamdata.h" />
+    <ClInclude Include="..\game\camera\walkercamdatachunk.h" />
+    <ClInclude Include="..\game\camera\wrecklesscam.h" />
+    <ClInclude Include="..\game\camera\wrecklesseventlistener.h" />
+    <ClInclude Include="..\game\cards\bonuscard.h" />
+    <ClInclude Include="..\game\cards\card.h" />
+    <ClInclude Include="..\game\cards\cardgallery.h" />
+    <ClInclude Include="..\game\cards\cards.h" />
+    <ClInclude Include="..\game\cards\cardsdb.h" />
+    <ClInclude Include="..\game\cards\collectorcard.h" />
+    <ClInclude Include="..\game\cheats\cheatinputhandler.h" />
+    <ClInclude Include="..\game\cheats\cheatinputs.h" />
+    <ClInclude Include="..\game\cheats\cheatinputsystem.h" />
+    <ClInclude Include="..\game\cheats\cheats.h" />
+    <ClInclude Include="..\game\console\console.h" />
+    <ClInclude Include="..\game\console\debugconsolecallback.h" />
+    <ClInclude Include="..\game\console\fbstricmp.h" />
+    <ClInclude Include="..\game\console\nameinsensitive.h" />
+    <ClInclude Include="..\game\console\upcase.h" />
+    <ClInclude Include="..\game\constants\actorenum.h" />
+    <ClInclude Include="..\game\constants\blobshadownames.h" />
+    <ClInclude Include="..\game\constants\breakablesenum.h" />
+    <ClInclude Include="..\game\constants\characterenum.h" />
+    <ClInclude Include="..\game\constants\directionalarrowenum.h" />
+    <ClInclude Include="..\game\constants\maxnpccharacters.h" />
+    <ClInclude Include="..\game\constants\maxplayers.h" />
+    <ClInclude Include="..\game\constants\movienames.h" />
+    <ClInclude Include="..\game\constants\particleenum.h" />
+    <ClInclude Include="..\game\constants\physprop.h" />
+    <ClInclude Include="..\game\constants\srrchunks.h" />
+    <ClInclude Include="..\game\constants\statepropenum.h" />
+    <ClInclude Include="..\game\constants\vehicleenum.h" />
+    <ClInclude Include="..\game\contexts\bootupcontext.h" />
+    <ClInclude Include="..\game\contexts\context.h" />
+    <ClInclude Include="..\game\contexts\contextenum.h" />
+    <ClInclude Include="..\game\contexts\demo\democontext.h" />
+    <ClInclude Include="..\game\contexts\demo\loadingdemocontext.h" />
+    <ClInclude Include="..\game\contexts\entrycontext.h" />
+    <ClInclude Include="..\game\contexts\exitcontext.h" />
+    <ClInclude Include="..\game\contexts\frontendcontext.h" />
+    <ClInclude Include="..\game\contexts\gameplay\gameplaycontext.h" />
+    <ClInclude Include="..\game\contexts\gameplay\loadinggameplaycontext.h" />
+    <ClInclude Include="..\game\contexts\loadingcontext.h" />
+    <ClInclude Include="..\game\contexts\pausecontext.h" />
+    <ClInclude Include="..\game\contexts\playingcontext.h" />
+    <ClInclude Include="..\game\contexts\supersprint\loadingsupersprintcontext.h" />
+    <ClInclude Include="..\game\contexts\supersprint\supersprintcontext.h" />
+    <ClInclude Include="..\game\contexts\supersprint\supersprintfecontext.h" />
+    <ClInclude Include="..\game\data\config\configstring.h" />
+    <ClInclude Include="..\game\data\config\gameconfig.h" />
+    <ClInclude Include="..\game\data\config\gameconfigmanager.h" />
+    <ClInclude Include="..\game\data\gamedata.h" />
+    <ClInclude Include="..\game\data\gamedatamanager.h" />
+    <ClInclude Include="..\game\data\memcard\memorycardmanager.h" />
+    <ClInclude Include="..\game\data\PersistentWorldManager.h" />
+    <ClInclude Include="..\game\data\savegameinfo.h" />
+    <ClInclude Include="..\game\debug\debuginfo.h" />
+    <ClInclude Include="..\game\debug\profiler.h" />
+    <ClInclude Include="..\game\debug\section.h" />
+    <ClInclude Include="..\game\events\eventdata.h" />
+    <ClInclude Include="..\game\events\eventenum.h" />
+    <ClInclude Include="..\game\events\eventlistener.h" />
+    <ClInclude Include="..\game\events\eventmanager.h" />
+    <ClInclude Include="..\game\font\defaultfont.h" />
+    <ClInclude Include="..\game\gameflow\gameflow.h" />
+    <ClInclude Include="..\game\input\basedamper.h" />
+    <ClInclude Include="..\game\input\button.h" />
+    <ClInclude Include="..\game\input\constanteffect.h" />
+    <ClInclude Include="..\game\input\controller.h" />
+    <ClInclude Include="..\game\input\FEMouse.h" />
+    <ClInclude Include="..\game\input\forceeffect.h" />
+    <ClInclude Include="..\game\input\Gamepad.h" />
+    <ClInclude Include="..\game\input\inputmanager.h" />
+    <ClInclude Include="..\game\input\inputPointList.h" />
+    <ClInclude Include="..\game\input\Keyboard.h" />
+    <ClInclude Include="..\game\input\mappable.h" />
+    <ClInclude Include="..\game\input\mapper.h" />
+    <ClInclude Include="..\game\input\Mouse.h" />
+    <ClInclude Include="..\game\input\MouseCursor.h" />
+    <ClInclude Include="..\game\input\RealController.h" />
+    <ClInclude Include="..\game\input\rumbleeffect.h" />
+    <ClInclude Include="..\game\input\steeringspring.h" />
+    <ClInclude Include="..\game\input\SteeringWheel.h" />
+    <ClInclude Include="..\game\input\usercontrollerWin32.h" />
+    <ClInclude Include="..\game\input\virtualinputs.hpp" />
+    <ClInclude Include="..\game\input\wheeldefines.h" />
+    <ClInclude Include="..\game\input\wheelrumble.h" />
+    <ClInclude Include="..\game\interiors\interiormanager.h" />
+    <ClInclude Include="..\game\loading\cameradataloader.h" />
+    <ClInclude Include="..\game\loading\cementfilehandler.h" />
+    <ClInclude Include="..\game\loading\choreofilehandler.h" />
+    <ClInclude Include="..\game\loading\consolefilehandler.h" />
+    <ClInclude Include="..\game\loading\filehandler.h" />
+    <ClInclude Include="..\game\loading\filehandlerenum.h" />
+    <ClInclude Include="..\game\loading\filehandlerfactory.h" />
+    <ClInclude Include="..\game\loading\iconfilehandler.h" />
+    <ClInclude Include="..\game\loading\intersectionloader.h" />
+    <ClInclude Include="..\game\loading\loadingmanager.h" />
+    <ClInclude Include="..\game\loading\locatorloader.h" />
+    <ClInclude Include="..\game\loading\p3dfilehandler.h" />
+    <ClInclude Include="..\game\loading\pathloader.h" />
+    <ClInclude Include="..\game\loading\roaddatasegmentloader.h" />
+    <ClInclude Include="..\game\loading\roadloader.h" />
+    <ClInclude Include="..\game\loading\scroobyfilehandler.h" />
+    <ClInclude Include="..\game\loading\soundfilehandler.h" />
+    <ClInclude Include="..\game\main\commandlineoptions.h" />
+    <ClInclude Include="..\game\main\errorsWIN32.h" />
+    <ClInclude Include="..\game\main\game.h" />
+    <ClInclude Include="..\game\main\globaltypes.h" />
+    <ClInclude Include="..\game\main\pchsrr2.h" />
+    <ClInclude Include="..\game\main\platform.h" />
+    <ClInclude Include="..\game\main\singletons.h" />
+    <ClInclude Include="..\game\main\tuidunaligned.h" />
+    <ClInclude Include="..\game\main\win32platform.h" />
+    <ClInclude Include="..\game\memory\allocpool.h" />
+    <ClInclude Include="..\game\memory\classsizetracker.h" />
+    <ClInclude Include="..\game\memory\createheap.h" />
+    <ClInclude Include="..\game\memory\leakdetection.h" />
+    <ClInclude Include="..\game\memory\map.h" />
+    <ClInclude Include="..\game\memory\memorypool.h" />
+    <ClInclude Include="..\game\memory\memoryutilities.h" />
+    <ClInclude Include="..\game\memory\propstats.h" />
+    <ClInclude Include="..\game\memory\srrmemory.h" />
+    <ClInclude Include="..\game\memory\stlallocators.h" />
+    <ClInclude Include="..\game\meta\actioneventlocator.h" />
+    <ClInclude Include="..\game\meta\carstartlocator.h" />
+    <ClInclude Include="..\game\meta\directionallocator.h" />
+    <ClInclude Include="..\game\meta\eventlocator.h" />
+    <ClInclude Include="..\game\meta\fovlocator.h" />
+    <ClInclude Include="..\game\meta\interiorentrancelocator.h" />
+    <ClInclude Include="..\game\meta\locator.h" />
+    <ClInclude Include="..\game\meta\locatorevents.h" />
+    <ClInclude Include="..\game\meta\locatortypes.h" />
+    <ClInclude Include="..\game\meta\occlusionlocator.h" />
+    <ClInclude Include="..\game\meta\pedgrouplocator.h" />
+    <ClInclude Include="..\game\meta\recttriggervolume.h" />
+    <ClInclude Include="..\game\meta\scriptlocator.h" />
+    <ClInclude Include="..\game\meta\spheretriggervolume.h" />
+    <ClInclude Include="..\game\meta\splinelocator.h" />
+    <ClInclude Include="..\game\meta\staticcamlocator.h" />
+    <ClInclude Include="..\game\meta\triggerlocator.h" />
+    <ClInclude Include="..\game\meta\triggervolume.h" />
+    <ClInclude Include="..\game\meta\triggervolumetracker.h" />
+    <ClInclude Include="..\game\meta\zoneeventlocator.h" />
+    <ClInclude Include="..\game\mission\animatedicon.h" />
+    <ClInclude Include="..\game\mission\bonusmissioninfo.h" />
+    <ClInclude Include="..\game\mission\bonusobjective.h" />
+    <ClInclude Include="..\game\mission\boss.h" />
+    <ClInclude Include="..\game\mission\charactersheet\charactersheet.h" />
+    <ClInclude Include="..\game\mission\charactersheet\charactersheetmanager.h" />
+    <ClInclude Include="..\game\mission\conditions\damagecondition.h" />
+    <ClInclude Include="..\game\mission\conditions\followcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\getoutofcarcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\keepbarrelcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\leaveinteriorcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\missioncondition.h" />
+    <ClInclude Include="..\game\mission\conditions\notabductedcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\outofboundscondition.h" />
+    <ClInclude Include="..\game\mission\conditions\positioncondition.h" />
+    <ClInclude Include="..\game\mission\conditions\racecondition.h" />
+    <ClInclude Include="..\game\mission\conditions\timeoutcondition.h" />
+    <ClInclude Include="..\game\mission\conditions\vehiclecarryingstateprop.h" />
+    <ClInclude Include="..\game\mission\conditions\vehiclecondition.h" />
+    <ClInclude Include="..\game\mission\gameplaymanager.h" />
+    <ClInclude Include="..\game\mission\haspresentationinfo.h" />
+    <ClInclude Include="..\game\mission\mission.h" />
+    <ClInclude Include="..\game\mission\missionmanager.h" />
+    <ClInclude Include="..\game\mission\missionscriptloader.h" />
+    <ClInclude Include="..\game\mission\missionstage.h" />
+    <ClInclude Include="..\game\mission\nocopbonusobjective.h" />
+    <ClInclude Include="..\game\mission\nodamagebonusobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\buycarobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\buyskinobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\coinobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\collectdumpedobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\collectibleobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\deliveryobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\destroybossobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\destroyobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\dialogueobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\fmvobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\followobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\getinobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\gooutsideobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\gotoobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\interiorobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\loadvehicleobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\loseobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\missionobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\pickupitemobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\raceobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\talktoobjective.h" />
+    <ClInclude Include="..\game\mission\objectives\timerobjective.h" />
+    <ClInclude Include="..\game\mission\racepositionbonusobjective.h" />
+    <ClInclude Include="..\game\mission\respawnmanager\respawnentity.h" />
+    <ClInclude Include="..\game\mission\respawnmanager\respawnmanager.h" />
+    <ClInclude Include="..\game\mission\rewards\merchandise.h" />
+    <ClInclude Include="..\game\mission\rewards\reward.h" />
+    <ClInclude Include="..\game\mission\rewards\rewardsmanager.h" />
+    <ClInclude Include="..\game\mission\safezone\safezone.h" />
+    <ClInclude Include="..\game\mission\statepropcollectible.h" />
+    <ClInclude Include="..\game\mission\timeremainbonusobjective.h" />
+    <ClInclude Include="..\game\mission\ufo\tractorbeam.h" />
+    <ClInclude Include="..\game\mission\ufo\ufo.h" />
+    <ClInclude Include="..\game\mission\ufo\weapon.h" />
+    <ClInclude Include="..\game\pedpaths\path.h" />
+    <ClInclude Include="..\game\pedpaths\pathmanager.h" />
+    <ClInclude Include="..\game\pedpaths\pathsegment.h" />
+    <ClInclude Include="..\game\presentation\animplayer.h" />
+    <ClInclude Include="..\game\presentation\blinker.h" />
+    <ClInclude Include="..\game\presentation\cameraplayer.h" />
+    <ClInclude Include="..\game\presentation\fmvplayer\fmvplayer.h" />
+    <ClInclude Include="..\game\presentation\fmvplayer\fmvuserinputhandler.h" />
+    <ClInclude Include="..\game\presentation\gui\backend\guiloadingbar.h" />
+    <ClInclude Include="..\game\presentation\gui\backend\guimanagerbackend.h" />
+    <ClInclude Include="..\game\presentation\gui\backend\guiscreendemo.h" />
+    <ClInclude Include="..\game\presentation\gui\backend\guiscreenloading.h" />
+    <ClInclude Include="..\game\presentation\gui\backend\guiscreenloadingfe.h" />
+    <ClInclude Include="..\game\presentation\gui\bootup\guimanagerbootup.h" />
+    <ClInclude Include="..\game\presentation\gui\bootup\guimanagerlanguage.h" />
+    <ClInclude Include="..\game\presentation\gui\bootup\guiscreenbootupload.h" />
+    <ClInclude Include="..\game\presentation\gui\bootup\guiscreenlanguage.h" />
+    <ClInclude Include="..\game\presentation\gui\bootup\guiscreenlicense.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guimanagerfrontend.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreencardgallery.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreencontrollerWin32.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreendisplay.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenloadgame.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenmainmenu.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenmissiongallery.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenoptions.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenplaymovie.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenscrapbook.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenscrapbookcontents.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenscrapbookstats.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenskingallery.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreensound.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreensplash.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenvehiclegallery.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenviewcredits.h" />
+    <ClInclude Include="..\game\presentation\gui\frontend\guiscreenviewmovies.h" />
+    <ClInclude Include="..\game\presentation\gui\guientity.h" />
+    <ClInclude Include="..\game\presentation\gui\guimanager.h" />
+    <ClInclude Include="..\game\presentation\gui\guimenu.h" />
+    <ClInclude Include="..\game\presentation\gui\guimenuitem.h" />
+    <ClInclude Include="..\game\presentation\gui\guiscreen.h" />
+    <ClInclude Include="..\game\presentation\gui\guiscreenmemcardcheck.h" />
+    <ClInclude Include="..\game\presentation\gui\guiscreenmemorycard.h" />
+    <ClInclude Include="..\game\presentation\gui\guiscreenmessage.h" />
+    <ClInclude Include="..\game\presentation\gui\guiscreenprompt.h" />
+    <ClInclude Include="..\game\presentation\gui\guisystem.h" />
+    <ClInclude Include="..\game\presentation\gui\guitextbible.h" />
+    <ClInclude Include="..\game\presentation\gui\guiuserinputhandler.h" />
+    <ClInclude Include="..\game\presentation\gui\guiwindow.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guihudtextbox.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guimanageringame.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreencreditspostfmv.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenhastransitions.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenhud.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreeniriswipe.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenletterbox.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenlevelend.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenlevelstats.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmissionbase.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmissionload.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmissionover.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmissionselect.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmissionsuccess.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenmultihud.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpause.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausecontroller.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausedisplay.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausemission.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpauseoptions.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausesettings.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausesound.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpausesunday.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenphonebooth.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenpurchaserewards.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenrewards.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreensavegame.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreentutorial.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\guiscreenviewcards.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudcardcollected.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudcoincollected.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudcountdown.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudeventhandler.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudhitnrun.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\huditemdropped.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudmissionobjective.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudmissionprogress.h" />
+    <ClInclude Include="..\game\presentation\gui\ingame\hudevents\hudwaspdestroyed.h" />
+    <ClInclude Include="..\game\presentation\gui\minigame\guimanagerminigame.h" />
+    <ClInclude Include="..\game\presentation\gui\minigame\guiscreenminihud.h" />
+    <ClInclude Include="..\game\presentation\gui\minigame\guiscreenminimenu.h" />
+    <ClInclude Include="..\game\presentation\gui\minigame\guiscreenminipause.h" />
+    <ClInclude Include="..\game\presentation\gui\minigame\guiscreenminisummary.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\colourutility.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\hudmap.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\hudmapcam.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\numerictext.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\scrollingtext.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\slider.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\specialfx.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\teletypetext.h" />
+    <ClInclude Include="..\game\presentation\gui\utility\transitions.h" />
+    <ClInclude Include="..\game\presentation\language.h" />
+    <ClInclude Include="..\game\presentation\mouthflapper.h" />
+    <ClInclude Include="..\game\presentation\nisplayer.h" />
+    <ClInclude Include="..\game\presentation\playerdrawable.h" />
+    <ClInclude Include="..\game\presentation\presentation.h" />
+    <ClInclude Include="..\game\presentation\presentationanimator.h" />
+    <ClInclude Include="..\game\presentation\presevents\fmvevent.h" />
+    <ClInclude Include="..\game\presentation\presevents\nisevent.h" />
+    <ClInclude Include="..\game\presentation\presevents\presentationevent.h" />
+    <ClInclude Include="..\game\presentation\presevents\transevent.h" />
+    <ClInclude Include="..\game\presentation\simpleanimationplayer.h" />
+    <ClInclude Include="..\game\presentation\transitionplayer.h" />
+    <ClInclude Include="..\game\presentation\tutorialmanager.h" />
+    <ClInclude Include="..\game\presentation\tutorialmode.h" />
+    <ClInclude Include="..\game\render\animentitydsgmanager\animentitydsgmanager.h" />
+    <ClInclude Include="..\game\render\breakables\breakablesmanager.h" />
+    <ClInclude Include="..\game\render\Culling\BlockCoord.h" />
+    <ClInclude Include="..\game\render\Culling\Bounds.h" />
+    <ClInclude Include="..\game\render\Culling\BoxPts.h" />
+    <ClInclude Include="..\game\render\Culling\Cell.h" />
+    <ClInclude Include="..\game\render\Culling\CellBlock.h" />
+    <ClInclude Include="..\game\render\Culling\ContiguousBinNode.h" />
+    <ClInclude Include="..\game\render\Culling\CoordSubList.h" />
+    <ClInclude Include="..\game\render\Culling\CullData.h" />
+    <ClInclude Include="..\game\render\Culling\FixedArray.h" />
+    <ClInclude Include="..\game\render\Culling\FloatFuncs.h" />
+    <ClInclude Include="..\game\render\Culling\HexahedronP.h" />
+    <ClInclude Include="..\game\render\Culling\ISpatialProxy.h" />
+    <ClInclude Include="..\game\render\Culling\Matrix3f.h" />
+    <ClInclude Include="..\game\render\Culling\NodeFLL.h" />
+    <ClInclude Include="..\game\render\Culling\OctTreeConst.h" />
+    <ClInclude Include="..\game\render\Culling\OctTreeData.h" />
+    <ClInclude Include="..\game\render\Culling\OctTreeNode.h" />
+    <ClInclude Include="..\game\render\Culling\OctTreeParams.h" />
+    <ClInclude Include="..\game\render\Culling\Plane3f.h" />
+    <ClInclude Include="..\game\render\Culling\Point3f.h" />
+    <ClInclude Include="..\game\render\Culling\ReserveArray.h" />
+    <ClInclude Include="..\game\render\Culling\ScratchArray.h" />
+    <ClInclude Include="..\game\render\Culling\SpatialNode.h" />
+    <ClInclude Include="..\game\render\Culling\SpatialTree.h" />
+    <ClInclude Include="..\game\render\Culling\SpatialTreeFactory.h" />
+    <ClInclude Include="..\game\render\Culling\SpatialTreeIter.h" />
+    <ClInclude Include="..\game\render\Culling\SphereSP.h" />
+    <ClInclude Include="..\game\render\Culling\srrRenderTypes.h" />
+    <ClInclude Include="..\game\render\Culling\SwapArray.h" />
+    <ClInclude Include="..\game\render\Culling\UseArray.h" />
+    <ClInclude Include="..\game\render\Culling\Vector3f.h" />
+    <ClInclude Include="..\game\render\Culling\Vector3i.h" />
+    <ClInclude Include="..\game\render\Culling\VectorLib.h" />
+    <ClInclude Include="..\game\render\Culling\WorldScene.h" />
+    <ClInclude Include="..\game\render\DSG\animcollisionentitydsg.h" />
+    <ClInclude Include="..\game\render\DSG\animentitydsg.h" />
+    <ClInclude Include="..\game\render\DSG\breakableobjectdsg.h" />
+    <ClInclude Include="..\game\render\DSG\collisionentitydsg.h" />
+    <ClInclude Include="..\game\render\DSG\DSGFactory.h" />
+    <ClInclude Include="..\game\render\DSG\DynaLoadListDSG.h" />
+    <ClInclude Include="..\game\render\DSG\DynaPhysDSG.h" />
+    <ClInclude Include="..\game\render\DSG\FenceEntityDSG.h" />
+    <ClInclude Include="..\game\render\DSG\IEntityDSG.h" />
+    <ClInclude Include="..\game\render\DSG\InstAnimDynaPhysDSG.h" />
+    <ClInclude Include="..\game\render\DSG\InstDynaPhysDSG.h" />
+    <ClInclude Include="..\game\render\DSG\InstStatEntityDSG.h" />
+    <ClInclude Include="..\game\render\DSG\InstStatPhysDSG.h" />
+    <ClInclude Include="..\game\render\DSG\IntersectDSG.h" />
+    <ClInclude Include="..\game\render\DSG\LensFlareDSG.h" />
+    <ClInclude Include="..\game\render\DSG\StatePropDSG.h" />
+    <ClInclude Include="..\game\render\DSG\StaticEntityDSG.h" />
+    <ClInclude Include="..\game\render\DSG\StaticPhysDSG.h" />
+    <ClInclude Include="..\game\render\DSG\TriStripDSG.h" />
+    <ClInclude Include="..\game\render\DSG\WorldSphereDSG.h" />
+    <ClInclude Include="..\game\render\Enums\RenderEnums.h" />
+    <ClInclude Include="..\game\render\IntersectManager\IntersectManager.h" />
+    <ClInclude Include="..\game\render\Loaders\AllWrappers.h" />
+    <ClInclude Include="..\game\render\Loaders\AnimCollLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\AnimDSGLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\AnimDynaPhysLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\BillboardWrappedLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\breakableobjectloader.h" />
+    <ClInclude Include="..\game\render\Loaders\ChunkListenerCallback.h" />
+    <ClInclude Include="..\game\render\Loaders\DynaPhysLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\FenceLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\GeometryWrappedLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\instparticlesystemloader.h" />
+    <ClInclude Include="..\game\render\Loaders\InstStatEntityLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\InstStatPhysLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\IntersectLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\IWrappedLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\LensFlareLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\StaticEntityLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\StaticPhysLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\TreeDSGLoader.h" />
+    <ClInclude Include="..\game\render\Loaders\WorldSphereLoader.h" />
+    <ClInclude Include="..\game\render\Particles\particlemanager.h" />
+    <ClInclude Include="..\game\render\Particles\particlesystemdsg.h" />
+    <ClInclude Include="..\game\render\Particles\vehicleparticleemitter.h" />
+    <ClInclude Include="..\game\render\RenderFlow\renderflow.h" />
+    <ClInclude Include="..\game\render\RenderManager\FrontEndRenderLayer.h" />
+    <ClInclude Include="..\game\render\RenderManager\RenderLayer.h" />
+    <ClInclude Include="..\game\render\RenderManager\RenderManager.h" />
+    <ClInclude Include="..\game\render\RenderManager\WorldRenderLayer.h" />
+    <ClInclude Include="..\game\roads\geometry.h" />
+    <ClInclude Include="..\game\roads\intersection.h" />
+    <ClInclude Include="..\game\roads\lane.h" />
+    <ClInclude Include="..\game\roads\road.h" />
+    <ClInclude Include="..\game\roads\roadmanager.h" />
+    <ClInclude Include="..\game\roads\roadrendertest.h" />
+    <ClInclude Include="..\game\roads\roadsegment.h" />
+    <ClInclude Include="..\game\roads\roadsegmentdata.h" />
+    <ClInclude Include="..\game\roads\trafficcontrol.h" />
+    <ClInclude Include="..\game\sound\avatar\avatarsoundplayer.h" />
+    <ClInclude Include="..\game\sound\avatar\carsoundparameters.h" />
+    <ClInclude Include="..\game\sound\avatar\icarsoundparameters.h" />
+    <ClInclude Include="..\game\sound\avatar\soundavatar.h" />
+    <ClInclude Include="..\game\sound\avatar\vehiclesounddebugpage.h" />
+    <ClInclude Include="..\game\sound\avatar\vehiclesoundplayer.h" />
+    <ClInclude Include="..\game\sound\dialog\conversation.h" />
+    <ClInclude Include="..\game\sound\dialog\conversationmatcher.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogcoordinator.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogline.h" />
+    <ClInclude Include="..\game\sound\dialog\dialoglist.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogpriorityqueue.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogqueueelement.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogqueuetype.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogselectiongroup.h" />
+    <ClInclude Include="..\game\sound\dialog\dialogsounddebugpage.h" />
+    <ClInclude Include="..\game\sound\dialog\playabledialog.h" />
+    <ClInclude Include="..\game\sound\dialog\selectabledialog.h" />
+    <ClInclude Include="..\game\sound\dialog\selectabledialoglist.h" />
+    <ClInclude Include="..\game\sound\listener.h" />
+    <ClInclude Include="..\game\sound\movingpositional\actorplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\aivehiclesoundplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\animobjsoundplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\avatarvehicleposnplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\movingsoundmanager.h" />
+    <ClInclude Include="..\game\sound\movingpositional\platformsoundplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\trafficsoundplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\vehicleposnsoundplayer.h" />
+    <ClInclude Include="..\game\sound\movingpositional\waspsoundplayer.h" />
+    <ClInclude Include="..\game\sound\music\musicplayer.h" />
+    <ClInclude Include="..\game\sound\nisenum.h" />
+    <ClInclude Include="..\game\sound\nis\nissoundplayer.h" />
+    <ClInclude Include="..\game\sound\positionalsoundplayer.h" />
+    <ClInclude Include="..\game\sound\simpsonssoundplayer.h" />
+    <ClInclude Include="..\game\sound\soundcluster.h" />
+    <ClInclude Include="..\game\sound\soundclusternameenum.h" />
+    <ClInclude Include="..\game\sound\soundcollisiondata.h" />
+    <ClInclude Include="..\game\sound\sounddebug\sounddebugdisplay.h" />
+    <ClInclude Include="..\game\sound\sounddebug\sounddebugpage.h" />
+    <ClInclude Include="..\game\sound\soundfx\ipositionalsoundsettings.h" />
+    <ClInclude Include="..\game\sound\soundfx\ireverbsettings.h" />
+    <ClInclude Include="..\game\sound\soundfx\positionalsoundsettings.h" />
+    <ClInclude Include="..\game\sound\soundfx\reverbcontroller.h" />
+    <ClInclude Include="..\game\sound\soundfx\reverbsettings.h" />
+    <ClInclude Include="..\game\sound\soundfx\soundeffectplayer.h" />
+    <ClInclude Include="..\game\sound\soundfx\soundfxfrontendlogic.h" />
+    <ClInclude Include="..\game\sound\soundfx\soundfxgameplaylogic.h" />
+    <ClInclude Include="..\game\sound\soundfx\soundfxlogic.h" />
+    <ClInclude Include="..\game\sound\soundfx\soundfxpauselogic.h" />
+    <ClInclude Include="..\game\sound\soundfx\win32reverbcontroller.h" />
+    <ClInclude Include="..\game\sound\soundloader.h" />
+    <ClInclude Include="..\game\sound\soundmanager.h" />
+    <ClInclude Include="..\game\sound\soundrenderercallback.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\dasoundgroup.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\fader.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\idasoundresource.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\idasoundtuner.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\musicsoundplayer.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\playermanager.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundallocatedresource.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundconstants.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\sounddynaload.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundnucleus.hpp" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundplayer.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundrenderingmanager.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundresource.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundresourcemanager.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundsystem.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\soundtuner.h" />
+    <ClInclude Include="..\game\sound\soundrenderer\tunerdebugpage.h" />
+    <ClInclude Include="..\game\sound\tuning\globalsettings.h" />
+    <ClInclude Include="..\game\sound\tuning\iglobalsettings.h" />
+    <ClInclude Include="..\game\stateprop\stateprop.hpp" />
+    <ClInclude Include="..\game\stateprop\statepropdata.hpp" />
+    <ClInclude Include="..\game\stateprop\statepropdatatypes.hpp" />
+    <ClInclude Include="..\game\supersprint\supersprintdata.h" />
+    <ClInclude Include="..\game\supersprint\supersprintdrawable.h" />
+    <ClInclude Include="..\game\supersprint\supersprintmanager.h" />
+    <ClInclude Include="..\game\worldsim\avatar.h" />
+    <ClInclude Include="..\game\worldsim\avatarmanager.h" />
+    <ClInclude Include="..\game\worldsim\character\aicharactercontroller.h" />
+    <ClInclude Include="..\game\worldsim\character\character.h" />
+    <ClInclude Include="..\game\worldsim\character\charactercontroller.h" />
+    <ClInclude Include="..\game\worldsim\character\charactermanager.h" />
+    <ClInclude Include="..\game\worldsim\character\charactermappable.h" />
+    <ClInclude Include="..\game\worldsim\character\characterrenderable.h" />
+    <ClInclude Include="..\game\worldsim\character\charactertarget.h" />
+    <ClInclude Include="..\game\worldsim\character\controllereventhandler.h" />
+    <ClInclude Include="..\game\worldsim\character\footprint\footprint.h" />
+    <ClInclude Include="..\game\worldsim\character\footprint\footprintmanager.h" />
+    <ClInclude Include="..\game\worldsim\coins\coinmanager.h" />
+    <ClInclude Include="..\game\worldsim\coins\sparkle.h" />
+    <ClInclude Include="..\game\worldsim\groundplanepool.h" />
+    <ClInclude Include="..\game\worldsim\harass\chasemanager.h" />
+    <ClInclude Include="..\game\worldsim\hitnrunmanager.h" />
+    <ClInclude Include="..\game\worldsim\huskpool.h" />
+    <ClInclude Include="..\game\worldsim\parkedcars\parkedcarmanager.h" />
+    <ClInclude Include="..\game\worldsim\ped\pedestrian.h" />
+    <ClInclude Include="..\game\worldsim\ped\pedestrianmanager.h" />
+    <ClInclude Include="..\game\worldsim\physicsairef.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\geometryvehicle.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\physicslocomotion.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\redbrickcollisionsolveragent.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\rootmatrixdriver.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\suspensionjointdriver.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\trafficbodydrawable.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\trafficlocomotion.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehicle.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehiclecontroller\aivehiclecontroller.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehiclecontroller\humanvehiclecontroller.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehiclecontroller\vehiclecontroller.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehiclecontroller\vehiclemappable.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehicleeventlistener.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\vehiclelocomotion.h" />
+    <ClInclude Include="..\game\worldsim\redbrick\wheel.h" />
+    <ClInclude Include="..\game\worldsim\skidmarks\skidmark.h" />
+    <ClInclude Include="..\game\worldsim\skidmarks\SkidMarkGenerator.h" />
+    <ClInclude Include="..\game\worldsim\skidmarks\skidmarkmanager.h" />
+    <ClInclude Include="..\game\worldsim\spawn\spawnmanager.h" />
+    <ClInclude Include="..\game\worldsim\traffic\trafficmanager.h" />
+    <ClInclude Include="..\game\worldsim\traffic\trafficmodelgroup.h" />
+    <ClInclude Include="..\game\worldsim\traffic\trafficvehicle.h" />
+    <ClInclude Include="..\game\worldsim\vehiclecentral.h" />
+    <ClInclude Include="..\game\worldsim\worldcollisionsolveragent.h" />
+    <ClInclude Include="..\game\worldsim\worldobject.h" />
+    <ClInclude Include="..\game\worldsim\worldphysicsmanager.h" />
+    <ClInclude Include="afxres.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SRR2.rc" />
+    <Image Include="Simpsons.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libs\choreo\choreo.vcxproj">
+      <Project>{d3d85ef1-6e12-478e-85f8-95974c430774}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\poser\poser.vcxproj">
+      <Project>{c38a04b6-53b9-4731-8be5-396d0d356097}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\pure3d\Pure3D.vcxproj">
+      <Project>{67904e19-de3b-4707-8f96-13aa64dbf58a}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radcontent\radcontent.vcxproj">
+      <Project>{b5c1c3a8-11bc-4d82-a7eb-a85b22db74ea}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radcore\radcore.vcxproj">
+      <Project>{3772a735-0353-433a-a8a2-eb45c84f9139}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radmath\radmath.vcxproj">
+      <Project>{906e914f-eb63-4b12-9f07-00a727472080}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radmovie\radmovie.vcxproj">
+      <Project>{dfaabd95-d93e-4ade-85ed-e75989e95419}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radmusic\radmusic.vcxproj">
+      <Project>{fd6569ba-9760-436f-8a03-6570bc25f2e4}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radscript\radscript.vcxproj">
+      <Project>{e5114613-e9f3-42f5-bbd7-2c6606a36be2}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\radsound\radsound.vcxproj">
+      <Project>{274d5705-b0a2-4629-8bcf-03ed96a7c9d0}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\scrooby\ScroobyLib.vcxproj">
+      <Project>{60778b7d-0909-46d2-896f-8805097224a3}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+    <ProjectReference Include="..\libs\sim\sim.vcxproj">
+      <Project>{9dcf328b-47fd-4e70-8617-2256ef09ff62}</Project>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\game\ai\actionbuttonhandler.cpp" />
+    <ClCompile Include="..\game\ai\actionbuttonmanager.cpp" />
+    <ClCompile Include="..\game\ai\actor\actor.cpp" />
+    <ClCompile Include="..\game\ai\actor\ActorAnimationUFO.cpp" />
+    <ClCompile Include="..\game\ai\actor\actoranimationwasp.cpp" />
+    <ClCompile Include="..\game\ai\actor\actordsg.cpp" />
+    <ClCompile Include="..\game\ai\actor\actormanager.cpp" />
+    <ClCompile Include="..\game\ai\actor\attackbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\attractionbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\cutcambehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\evasionbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\flyingactor.cpp" />
+    <ClCompile Include="..\game\ai\actor\intersectionlist.cpp" />
+    <ClCompile Include="..\game\ai\actor\projectile.cpp" />
+    <ClCompile Include="..\game\ai\actor\projectiledsg.cpp" />
+    <ClCompile Include="..\game\ai\actor\spawnpoint.cpp" />
+    <ClCompile Include="..\game\ai\actor\stunnedbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\ufoattackbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\ufobeamalwaysonbehaviour.cpp" />
+    <ClCompile Include="..\game\ai\actor\ufobehaviour.cpp" />
+    <ClCompile Include="..\game\ai\automaticdoor.cpp" />
+    <ClCompile Include="..\game\ai\playanimonce.cpp" />
+    <ClCompile Include="..\game\ai\sequencer\action.cpp" />
+    <ClCompile Include="..\game\ai\sequencer\actioncontroller.cpp" />
+    <ClCompile Include="..\game\ai\sequencer\sequencer.cpp" />
+    <ClCompile Include="..\game\ai\sequencer\task.cpp" />
+    <ClCompile Include="..\game\ai\state.cpp" />
+    <ClCompile Include="..\game\ai\statemanager.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\chaseai.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\potentialfield.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\potentials.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\trafficai.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\vehicleai.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\vehicleairender.cpp" />
+    <ClCompile Include="..\game\ai\vehicle\waypointai.cpp" />
+    <ClCompile Include="..\game\atc\atcloader.cpp" />
+    <ClCompile Include="..\game\atc\atcmanager.cpp" />
+    <ClCompile Include="..\game\camera\animatedcam.cpp" />
+    <ClCompile Include="..\game\camera\bumpercam.cpp" />
+    <ClCompile Include="..\game\camera\chasecam.cpp" />
+    <ClCompile Include="..\game\camera\conversationcam.cpp" />
+    <ClCompile Include="..\game\camera\debugcam.cpp" />
+    <ClCompile Include="..\game\camera\firstpersoncam.cpp" />
+    <ClCompile Include="..\game\camera\followcam.cpp" />
+    <ClCompile Include="..\game\camera\kullcam.cpp" />
+    <ClCompile Include="..\game\camera\pccam.cpp" />
+    <ClCompile Include="..\game\camera\railcam.cpp" />
+    <ClCompile Include="..\game\camera\relativeanimatedcam.cpp" />
+    <ClCompile Include="..\game\camera\reversecam.cpp" />
+    <ClCompile Include="..\game\camera\sinecosshaker.cpp" />
+    <ClCompile Include="..\game\camera\snapshotcam.cpp" />
+    <ClCompile Include="..\game\camera\staticcam.cpp" />
+    <ClCompile Include="..\game\camera\supercam.cpp" />
+    <ClCompile Include="..\game\camera\supercamcentral.cpp" />
+    <ClCompile Include="..\game\camera\supercamcontroller.cpp" />
+    <ClCompile Include="..\game\camera\supercammanager.cpp" />
+    <ClCompile Include="..\game\camera\supersprintcam.cpp" />
+    <ClCompile Include="..\game\camera\surveillancecam.cpp" />
+    <ClCompile Include="..\game\camera\trackercam.cpp" />
+    <ClCompile Include="..\game\camera\walkercam.cpp" />
+    <ClCompile Include="..\game\camera\wrecklesscam.cpp" />
+    <ClCompile Include="..\game\camera\wrecklesseventlistener.cpp" />
+    <ClCompile Include="..\game\cards\bonuscard.cpp" />
+    <ClCompile Include="..\game\cards\card.cpp" />
+    <ClCompile Include="..\game\cards\cardgallery.cpp" />
+    <ClCompile Include="..\game\cards\cardsdb.cpp" />
+    <ClCompile Include="..\game\cards\collectorcard.cpp" />
+    <ClCompile Include="..\game\cheats\cheatinputhandler.cpp" />
+    <ClCompile Include="..\game\cheats\cheatinputsystem.cpp" />
+    <ClCompile Include="..\game\cheats\cheats.cpp" />
+    <ClCompile Include="..\game\console\console.cpp" />
+    <ClCompile Include="..\game\console\debugconsolecallback.cpp" />
+    <ClCompile Include="..\game\console\fbstricmp.cpp" />
+    <ClCompile Include="..\game\console\nameinsensitive.cpp" />
+    <ClCompile Include="..\game\console\upcase.cpp" />
+    <ClCompile Include="..\game\contexts\bootupcontext.cpp" />
+    <ClCompile Include="..\game\contexts\context.cpp" />
+    <ClCompile Include="..\game\contexts\demo\democontext.cpp" />
+    <ClCompile Include="..\game\contexts\demo\loadingdemocontext.cpp" />
+    <ClCompile Include="..\game\contexts\entrycontext.cpp" />
+    <ClCompile Include="..\game\contexts\exitcontext.cpp" />
+    <ClCompile Include="..\game\contexts\frontendcontext.cpp" />
+    <ClCompile Include="..\game\contexts\gameplay\gameplaycontext.cpp" />
+    <ClCompile Include="..\game\contexts\gameplay\loadinggameplaycontext.cpp" />
+    <ClCompile Include="..\game\contexts\loadingcontext.cpp" />
+    <ClCompile Include="..\game\contexts\pausecontext.cpp" />
+    <ClCompile Include="..\game\contexts\playingcontext.cpp" />
+    <ClCompile Include="..\game\contexts\supersprint\loadingsupersprintcontext.cpp" />
+    <ClCompile Include="..\game\contexts\supersprint\supersprintcontext.cpp" />
+    <ClCompile Include="..\game\contexts\supersprint\supersprintfecontext.cpp" />
+    <ClCompile Include="..\game\data\config\configstring.cpp" />
+    <ClCompile Include="..\game\data\config\gameconfigmanager.cpp" />
+    <ClCompile Include="..\game\data\gamedatamanager.cpp" />
+    <ClCompile Include="..\game\data\memcard\memorycardmanager.cpp" />
+    <ClCompile Include="..\game\data\PersistentWorldManager.cpp" />
+    <ClCompile Include="..\game\data\savegameinfo.cpp" />
+    <ClCompile Include="..\game\debug\debuginfo.cpp" />
+    <ClCompile Include="..\game\debug\profiler.cpp" />
+    <ClCompile Include="..\game\debug\section.cpp" />
+    <ClCompile Include="..\game\events\eventlistener.cpp" />
+    <ClCompile Include="..\game\events\eventmanager.cpp" />
+    <ClCompile Include="..\game\font\defaultfont.cpp" />
+    <ClCompile Include="..\game\gameflow\gameflow.cpp" />
+    <ClCompile Include="..\game\input\basedamper.cpp" />
+    <ClCompile Include="..\game\input\button.cpp" />
+    <ClCompile Include="..\game\input\constanteffect.cpp" />
+    <ClCompile Include="..\game\input\FEMouse.cpp" />
+    <ClCompile Include="..\game\input\forceeffect.cpp" />
+    <ClCompile Include="..\game\input\Gamepad.cpp" />
+    <ClCompile Include="..\game\input\inputmanager.cpp" />
+    <ClCompile Include="..\game\input\Keyboard.cpp" />
+    <ClCompile Include="..\game\input\mappable.cpp" />
+    <ClCompile Include="..\game\input\mapper.cpp" />
+    <ClCompile Include="..\game\input\Mouse.cpp" />
+    <ClCompile Include="..\game\input\MouseCursor.cpp" />
+    <ClCompile Include="..\game\input\RealController.cpp" />
+    <ClCompile Include="..\game\input\rumbleeffect.cpp" />
+    <ClCompile Include="..\game\input\rumblewin32.cpp" />
+    <ClCompile Include="..\game\input\steeringspring.cpp" />
+    <ClCompile Include="..\game\input\SteeringWheel.cpp" />
+    <ClCompile Include="..\game\input\usercontrollerWin32.cpp" />
+    <ClCompile Include="..\game\input\virtualinputs.cpp" />
+    <ClCompile Include="..\game\input\wheelrumble.cpp" />
+    <ClCompile Include="..\game\interiors\interiormanager.cpp" />
+    <ClCompile Include="..\game\loading\cameradataloader.cpp" />
+    <ClCompile Include="..\game\loading\cementfilehandler.cpp" />
+    <ClCompile Include="..\game\loading\choreofilehandler.cpp" />
+    <ClCompile Include="..\game\loading\consolefilehandler.cpp" />
+    <ClCompile Include="..\game\loading\filehandlerfactory.cpp" />
+    <ClCompile Include="..\game\loading\iconfilehandler.cpp" />
+    <ClCompile Include="..\game\loading\intersectionloader.cpp" />
+    <ClCompile Include="..\game\loading\loadingmanager.cpp" />
+    <ClCompile Include="..\game\loading\locatorloader.cpp" />
+    <ClCompile Include="..\game\loading\p3dfilehandler.cpp" />
+    <ClCompile Include="..\game\loading\pathloader.cpp" />
+    <ClCompile Include="..\game\loading\roaddatasegmentloader.cpp" />
+    <ClCompile Include="..\game\loading\roadloader.cpp" />
+    <ClCompile Include="..\game\loading\scroobyfilehandler.cpp" />
+    <ClCompile Include="..\game\loading\soundfilehandler.cpp" />
+    <ClCompile Include="..\game\main\commandlineoptions.cpp" />
+    <ClCompile Include="..\game\main\game.cpp" />
+    <ClCompile Include="..\game\main\pchsrr2.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugWindows|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TuneWindows|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugWindows|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='TuneWindows|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseWindows|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="..\game\main\singletons.cpp" />
+    <ClCompile Include="..\game\main\tuidunaligned.cpp" />
+    <ClCompile Include="..\game\main\win32main.cpp" />
+    <ClCompile Include="..\game\main\win32platform.cpp" />
+    <ClCompile Include="..\game\memory\classsizetracker.cpp" />
+    <ClCompile Include="..\game\memory\createheap.cpp" />
+    <ClCompile Include="..\game\memory\leakdetection.cpp" />
+    <ClCompile Include="..\game\memory\memorypool.cpp" />
+    <ClCompile Include="..\game\memory\memoryutilities.cpp" />
+    <ClCompile Include="..\game\memory\propstats.cpp" />
+    <ClCompile Include="..\game\memory\srrmemory.cpp" />
+    <ClCompile Include="..\game\meta\actioneventlocator.cpp" />
+    <ClCompile Include="..\game\meta\carstartlocator.cpp" />
+    <ClCompile Include="..\game\meta\directionallocator.cpp" />
+    <ClCompile Include="..\game\meta\eventlocator.cpp" />
+    <ClCompile Include="..\game\meta\fovlocator.cpp" />
+    <ClCompile Include="..\game\meta\interiorentrancelocator.cpp" />
+    <ClCompile Include="..\game\meta\locator.cpp" />
+    <ClCompile Include="..\game\meta\occlusionlocator.cpp" />
+    <ClCompile Include="..\game\meta\recttriggervolume.cpp" />
+    <ClCompile Include="..\game\meta\scriptlocator.cpp" />
+    <ClCompile Include="..\game\meta\spheretriggervolume.cpp" />
+    <ClCompile Include="..\game\meta\splinelocator.cpp" />
+    <ClCompile Include="..\game\meta\staticcamlocator.cpp" />
+    <ClCompile Include="..\game\meta\triggerlocator.cpp" />
+    <ClCompile Include="..\game\meta\triggervolume.cpp" />
+    <ClCompile Include="..\game\meta\triggervolumetracker.cpp" />
+    <ClCompile Include="..\game\meta\zoneeventlocator.cpp" />
+    <ClCompile Include="..\game\mission\animatedicon.cpp" />
+    <ClCompile Include="..\game\mission\bonusmissioninfo.cpp" />
+    <ClCompile Include="..\game\mission\charactersheet\charactersheetmanager.cpp" />
+    <ClCompile Include="..\game\mission\conditions\damagecondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\followcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\getoutofcarcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\keepbarrelcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\leaveinteriorcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\missioncondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\notabductedcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\outofboundscondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\positioncondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\racecondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\timeoutcondition.cpp" />
+    <ClCompile Include="..\game\mission\conditions\vehiclecarryingstateprop.cpp" />
+    <ClCompile Include="..\game\mission\conditions\vehiclecondition.cpp" />
+    <ClCompile Include="..\game\mission\gameplaymanager.cpp" />
+    <ClCompile Include="..\game\mission\haspresentationinfo.cpp" />
+    <ClCompile Include="..\game\mission\mission.cpp" />
+    <ClCompile Include="..\game\mission\missionmanager.cpp" />
+    <ClCompile Include="..\game\mission\missionscriptloader.cpp" />
+    <ClCompile Include="..\game\mission\missionstage.cpp" />
+    <ClCompile Include="..\game\mission\nocopbonusobjective.cpp" />
+    <ClCompile Include="..\game\mission\nodamagebonusobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\buycarobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\buyskinobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\coinobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\collectdumpedobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\collectibleobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\deliveryobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\destroybossobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\destroyobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\dialogueobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\fmvobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\followobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\getinobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\gooutsideobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\gotoobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\interiorobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\loadvehicleobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\loseobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\missionobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\pickupitemobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\raceobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\talktoobjective.cpp" />
+    <ClCompile Include="..\game\mission\objectives\timerobjective.cpp" />
+    <ClCompile Include="..\game\mission\racepositionbonusobjective.cpp" />
+    <ClCompile Include="..\game\mission\respawnmanager\respawnentity.cpp" />
+    <ClCompile Include="..\game\mission\respawnmanager\respawnmanager.cpp" />
+    <ClCompile Include="..\game\mission\rewards\merchandise.cpp" />
+    <ClCompile Include="..\game\mission\rewards\reward.cpp" />
+    <ClCompile Include="..\game\mission\rewards\rewardsmanager.cpp" />
+    <ClCompile Include="..\game\mission\safezone\safezone.cpp" />
+    <ClCompile Include="..\game\mission\statepropcollectible.cpp" />
+    <ClCompile Include="..\game\mission\timeremainbonusobjective.cpp" />
+    <ClCompile Include="..\game\mission\ufo\tractorbeam.cpp" />
+    <ClCompile Include="..\game\mission\ufo\ufo.cpp" />
+    <ClCompile Include="..\game\pedpaths\path.cpp" />
+    <ClCompile Include="..\game\pedpaths\pathmanager.cpp" />
+    <ClCompile Include="..\game\pedpaths\pathsegment.cpp" />
+    <ClCompile Include="..\game\presentation\animplayer.cpp" />
+    <ClCompile Include="..\game\presentation\blinker.cpp" />
+    <ClCompile Include="..\game\presentation\cameraplayer.cpp" />
+    <ClCompile Include="..\game\presentation\fmvplayer\fmvplayer.cpp" />
+    <ClCompile Include="..\game\presentation\fmvplayer\fmvuserinputhandler.cpp" />
+    <ClCompile Include="..\game\presentation\gui\backend\guimanagerbackend.cpp" />
+    <ClCompile Include="..\game\presentation\gui\backend\guiscreendemo.cpp" />
+    <ClCompile Include="..\game\presentation\gui\backend\guiscreenloading.cpp" />
+    <ClCompile Include="..\game\presentation\gui\backend\guiscreenloadingfe.cpp" />
+    <ClCompile Include="..\game\presentation\gui\bootup\guimanagerbootup.cpp" />
+    <ClCompile Include="..\game\presentation\gui\bootup\guimanagerlanguage.cpp" />
+    <ClCompile Include="..\game\presentation\gui\bootup\guiscreenbootupload.cpp" />
+    <ClCompile Include="..\game\presentation\gui\bootup\guiscreenlanguage.cpp" />
+    <ClCompile Include="..\game\presentation\gui\bootup\guiscreenlicense.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guimanagerfrontend.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreencardgallery.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreencontrollerWin32.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreendisplay.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenloadgame.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenmainmenu.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenmissiongallery.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenoptions.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenplaymovie.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenscrapbook.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenscrapbookcontents.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenscrapbookstats.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenskingallery.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreensound.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreensplash.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenvehiclegallery.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenviewcredits.cpp" />
+    <ClCompile Include="..\game\presentation\gui\frontend\guiscreenviewmovies.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guientity.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guimanager.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guimenu.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guimenuitem.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiscreen.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiscreenmemcardcheck.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiscreenmemorycard.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiscreenmessage.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiscreenprompt.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guisystem.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guitextbible.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiuserinputhandler.cpp" />
+    <ClCompile Include="..\game\presentation\gui\guiwindow.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guimanageringame.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreencreditspostfmv.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenhastransitions.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenhud.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreeniriswipe.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenletterbox.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenlevelend.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenlevelstats.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmissionbase.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmissionload.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmissionover.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmissionselect.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmissionsuccess.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenmultihud.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpause.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausecontroller.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausedisplay.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausemission.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpauseoptions.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausesettings.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausesound.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpausesunday.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenphonebooth.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenpurchaserewards.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenrewards.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreensavegame.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreentutorial.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\guiscreenviewcards.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudcardcollected.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudcoincollected.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudcountdown.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudeventhandler.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudhitnrun.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\huditemdropped.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudmissionobjective.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudmissionprogress.cpp" />
+    <ClCompile Include="..\game\presentation\gui\ingame\hudevents\hudwaspdestroyed.cpp" />
+    <ClCompile Include="..\game\presentation\gui\minigame\guimanagerminigame.cpp" />
+    <ClCompile Include="..\game\presentation\gui\minigame\guiscreenminihud.cpp" />
+    <ClCompile Include="..\game\presentation\gui\minigame\guiscreenminimenu.cpp" />
+    <ClCompile Include="..\game\presentation\gui\minigame\guiscreenminipause.cpp" />
+    <ClCompile Include="..\game\presentation\gui\minigame\guiscreenminisummary.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\hudmap.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\hudmapcam.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\numerictext.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\scrollingtext.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\slider.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\specialfx.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\teletypetext.cpp" />
+    <ClCompile Include="..\game\presentation\gui\utility\transitions.cpp" />
+    <ClCompile Include="..\game\presentation\language.cpp" />
+    <ClCompile Include="..\game\presentation\mouthflapper.cpp" />
+    <ClCompile Include="..\game\presentation\nisplayer.cpp" />
+    <ClCompile Include="..\game\presentation\playerdrawable.cpp" />
+    <ClCompile Include="..\game\presentation\presentation.cpp" />
+    <ClCompile Include="..\game\presentation\presentationanimator.cpp" />
+    <ClCompile Include="..\game\presentation\presevents\fmvevent.cpp" />
+    <ClCompile Include="..\game\presentation\presevents\nisevent.cpp" />
+    <ClCompile Include="..\game\presentation\presevents\presentationevent.cpp" />
+    <ClCompile Include="..\game\presentation\presevents\transevent.cpp" />
+    <ClCompile Include="..\game\presentation\simpleanimationplayer.cpp" />
+    <ClCompile Include="..\game\presentation\transitionplayer.cpp" />
+    <ClCompile Include="..\game\presentation\tutorialmanager.cpp" />
+    <ClCompile Include="..\game\render\animentitydsgmanager\animentitydsgmanager.cpp" />
+    <ClCompile Include="..\game\render\breakables\breakablesmanager.cpp" />
+    <ClCompile Include="..\game\render\Culling\BoxPts.cpp" />
+    <ClCompile Include="..\game\render\Culling\Cell.cpp" />
+    <ClCompile Include="..\game\render\Culling\CellBlock.cpp" />
+    <ClCompile Include="..\game\render\Culling\CoordSubList.cpp" />
+    <ClCompile Include="..\game\render\Culling\CullData.cpp" />
+    <ClCompile Include="..\game\render\Culling\HexahedronP.cpp" />
+    <ClCompile Include="..\game\render\Culling\ISpatialProxy.cpp" />
+    <ClCompile Include="..\game\render\Culling\OctTreeData.cpp" />
+    <ClCompile Include="..\game\render\Culling\OctTreeNode.cpp" />
+    <ClCompile Include="..\game\render\Culling\SpatialTree.cpp" />
+    <ClCompile Include="..\game\render\Culling\SpatialTreeIter.cpp" />
+    <ClCompile Include="..\game\render\Culling\SphereSP.cpp" />
+    <ClCompile Include="..\game\render\Culling\VectorLib.cpp" />
+    <ClCompile Include="..\game\render\Culling\WorldScene.cpp" />
+    <ClCompile Include="..\game\render\DSG\animcollisionentitydsg.cpp" />
+    <ClCompile Include="..\game\render\DSG\animentitydsg.cpp" />
+    <ClCompile Include="..\game\render\DSG\breakableobjectdsg.cpp" />
+    <ClCompile Include="..\game\render\DSG\collisionentitydsg.cpp" />
+    <ClCompile Include="..\game\render\DSG\DSGFactory.cpp" />
+    <ClCompile Include="..\game\render\DSG\DynaPhysDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\FenceEntityDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\IEntityDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\InstAnimDynaPhysDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\InstDynaPhysDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\InstStatEntityDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\InstStatPhysDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\IntersectDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\LensFlareDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\StatePropDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\StaticEntityDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\StaticPhysDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\TriStripDSG.cpp" />
+    <ClCompile Include="..\game\render\DSG\WorldSphereDSG.cpp" />
+    <ClCompile Include="..\game\render\IntersectManager\IntersectManager.cpp" />
+    <ClCompile Include="..\game\render\Loaders\AllWrappers.cpp" />
+    <ClCompile Include="..\game\render\Loaders\AnimCollLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\AnimDSGLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\AnimDynaPhysLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\BillboardWrappedLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\breakableobjectloader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\DynaPhysLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\FenceLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\GeometryWrappedLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\instparticlesystemloader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\InstStatEntityLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\InstStatPhysLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\IntersectLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\LensFlareLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\StaticEntityLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\StaticPhysLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\TreeDSGLoader.cpp" />
+    <ClCompile Include="..\game\render\Loaders\WorldSphereLoader.cpp" />
+    <ClCompile Include="..\game\render\Particles\particlemanager.cpp" />
+    <ClCompile Include="..\game\render\Particles\particlesystemdsg.cpp" />
+    <ClCompile Include="..\game\render\Particles\vehicleparticleemitter.cpp" />
+    <ClCompile Include="..\game\render\RenderFlow\renderflow.cpp" />
+    <ClCompile Include="..\game\render\RenderManager\FrontEndRenderLayer.cpp" />
+    <ClCompile Include="..\game\render\RenderManager\RenderLayer.cpp" />
+    <ClCompile Include="..\game\render\RenderManager\RenderManager.cpp" />
+    <ClCompile Include="..\game\render\RenderManager\WorldRenderLayer.cpp" />
+    <ClCompile Include="..\game\roads\geometry.cpp" />
+    <ClCompile Include="..\game\roads\intersection.cpp" />
+    <ClCompile Include="..\game\roads\lane.cpp" />
+    <ClCompile Include="..\game\roads\road.cpp" />
+    <ClCompile Include="..\game\roads\roadmanager.cpp" />
+    <ClCompile Include="..\game\roads\roadrender.cpp" />
+    <ClCompile Include="..\game\roads\roadrendertest.cpp" />
+    <ClCompile Include="..\game\roads\roadsegment.cpp" />
+    <ClCompile Include="..\game\roads\roadsegmentdata.cpp" />
+    <ClCompile Include="..\game\roads\trafficcontrol.cpp" />
+    <ClCompile Include="..\game\sound\avatar\avatarsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\avatar\carsoundparameters.cpp" />
+    <ClCompile Include="..\game\sound\avatar\soundavatar.cpp" />
+    <ClCompile Include="..\game\sound\avatar\vehiclesounddebugpage.cpp" />
+    <ClCompile Include="..\game\sound\avatar\vehiclesoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\dialog\conversation.cpp" />
+    <ClCompile Include="..\game\sound\dialog\conversationmatcher.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogcoordinator.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogline.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialoglist.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogpriorityqueue.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogqueueelement.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogselectiongroup.cpp" />
+    <ClCompile Include="..\game\sound\dialog\dialogsounddebugpage.cpp" />
+    <ClCompile Include="..\game\sound\dialog\playabledialog.cpp" />
+    <ClCompile Include="..\game\sound\dialog\selectabledialog.cpp" />
+    <ClCompile Include="..\game\sound\listener.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\actorplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\aivehiclesoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\animobjsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\avatarvehicleposnplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\movingsoundmanager.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\platformsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\trafficsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\vehicleposnsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\movingpositional\waspsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\music\musicplayer.cpp" />
+    <ClCompile Include="..\game\sound\nis\nissoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\positionalsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\simpsonssoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\soundcluster.cpp" />
+    <ClCompile Include="..\game\sound\sounddebug\sounddebugdisplay.cpp" />
+    <ClCompile Include="..\game\sound\sounddebug\sounddebugpage.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\positionalsoundsettings.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\reverbcontroller.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\reverbsettings.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\soundeffectplayer.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\soundfxfrontendlogic.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\soundfxgameplaylogic.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\soundfxlogic.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\soundfxpauselogic.cpp" />
+    <ClCompile Include="..\game\sound\soundfx\win32reverbcontroller.cpp" />
+    <ClCompile Include="..\game\sound\soundloader.cpp" />
+    <ClCompile Include="..\game\sound\soundmanager.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderercallback.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\dasoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\fader.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\musicsoundplayer.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\playermanager.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\apu.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\bart.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\cars.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\effects.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\english.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\homer.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\levels.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\lisa.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\marge.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\scripts\tuning.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundallocatedresource.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\sounddynaload.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundnucleus.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundrenderingmanager.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundresource.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundresourcemanager.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\soundtuner.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\tunerdebugpage.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\wireplayers.cpp" />
+    <ClCompile Include="..\game\sound\soundrenderer\wiresystem.cpp" />
+    <ClCompile Include="..\game\sound\tuning\globalsettings.cpp" />
+    <ClCompile Include="..\game\stateprop\stateprop.cpp" />
+    <ClCompile Include="..\game\stateprop\statepropdata.cpp" />
+    <ClCompile Include="..\game\supersprint\supersprintdata.cpp" />
+    <ClCompile Include="..\game\supersprint\supersprintmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\avatar.cpp" />
+    <ClCompile Include="..\game\worldsim\avatarmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\character\aicharactercontroller.cpp" />
+    <ClCompile Include="..\game\worldsim\character\character.cpp" />
+    <ClCompile Include="..\game\worldsim\character\charactercontroller.cpp" />
+    <ClCompile Include="..\game\worldsim\character\charactermanager.cpp" />
+    <ClCompile Include="..\game\worldsim\character\charactermappable.cpp" />
+    <ClCompile Include="..\game\worldsim\character\characterrenderable.cpp" />
+    <ClCompile Include="..\game\worldsim\character\charactertarget.cpp" />
+    <ClCompile Include="..\game\worldsim\character\footprint\footprint.cpp" />
+    <ClCompile Include="..\game\worldsim\character\footprint\footprintmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\coins\coinmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\coins\sparkle.cpp" />
+    <ClCompile Include="..\game\worldsim\groundplanepool.cpp" />
+    <ClCompile Include="..\game\worldsim\harass\chasemanager.cpp" />
+    <ClCompile Include="..\game\worldsim\hitnrunmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\huskpool.cpp" />
+    <ClCompile Include="..\game\worldsim\parkedcars\parkedcarmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\ped\pedestrian.cpp" />
+    <ClCompile Include="..\game\worldsim\ped\pedestrianmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\geometryvehicle.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\physicslocomotion.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\physicslocomotioncontrollerforces.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\redbrickcollisionsolveragent.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\rootmatrixdriver.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\suspensionjointdriver.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\trafficbodydrawable.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\trafficlocomotion.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehicle.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehiclecontroller\aivehiclecontroller.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehiclecontroller\humanvehiclecontroller.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehiclecontroller\vehiclecontroller.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehiclecontroller\vehiclemappable.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehicleeventlistener.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehicleinit.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\vehiclelocomotion.cpp" />
+    <ClCompile Include="..\game\worldsim\redbrick\wheel.cpp" />
+    <ClCompile Include="..\game\worldsim\skidmarks\skidmark.cpp" />
+    <ClCompile Include="..\game\worldsim\skidmarks\SkidMarkGenerator.cpp" />
+    <ClCompile Include="..\game\worldsim\skidmarks\skidmarkmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\spawn\spawnmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\traffic\trafficmanager.cpp" />
+    <ClCompile Include="..\game\worldsim\vehiclecentral.cpp" />
+    <ClCompile Include="..\game\worldsim\worldcollisionsolveragent.cpp" />
+    <ClCompile Include="..\game\worldsim\worldobject.cpp" />
+    <ClCompile Include="..\game\worldsim\worldphysicsmanager.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

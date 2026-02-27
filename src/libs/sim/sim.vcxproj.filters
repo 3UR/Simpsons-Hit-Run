@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="SimCollision Headers">
+      <UniqueIdentifier>{6b427364-8c5e-47a0-8d03-d7ba848c3c74}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="SimCollision Sources">
+      <UniqueIdentifier>{bfe5847b-1bfb-4ce2-9053-0d8f7d88f85b}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="SimCommon Sources">
+      <UniqueIdentifier>{8b59d5e9-558b-41dd-a785-c73bf3c9a74d}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="SimCommon Headers">
+      <UniqueIdentifier>{c2041a92-f744-4b69-aa19-b982a2dc1944}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="SimPhysics Sources">
+      <UniqueIdentifier>{fa7de32c-0b22-4ed1-bba8-71214c2dfc33}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="SimPhysics Headers">
+      <UniqueIdentifier>{9f899553-6225-4b89-9a85-005053c9b348}</UniqueIdentifier>
+      <Extensions>hpp</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="simcollision\collision.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalyser.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalyserdata.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalyserdataUID.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalyserevent.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalyserinfo.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionanalysertranslator.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisiondetector.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisiondisplay.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionmanager.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionobject.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\collisionvolume.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\impulsebasedcollisionsolver.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\proximitydetection.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcollision\subcollisiondetector.hpp">
+      <Filter>SimCollision Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\arraymath.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\dline2.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\impulselink.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\kalmann.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\largesymmetricmatrix.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\miscdriver.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\physicsproperties.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\sbmatrix.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simconstraint.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simenvironment.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simlistinitsize.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simmath.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simstate.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simstatearticulated.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simstateflexible.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simstatetarget.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simtarget.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simulatedobject.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simutility.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\simwind.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\skeletoninfo.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\symmatrix.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\tarray.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\tlist.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\trackerjointmodifier.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simcommon\trajectoryextrapolator.hpp">
+      <Filter>SimCommon Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simphysics\articulatedphysicsobject.hpp">
+      <Filter>SimPhysics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simphysics\physicsjoint.hpp">
+      <Filter>SimPhysics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simphysics\physicsobject.hpp">
+      <Filter>SimPhysics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simphysics\restingdetector.hpp">
+      <Filter>SimPhysics Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="simphysics\virtualcm.hpp">
+      <Filter>SimPhysics Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="simcollision\collision.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalyser.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalyserdata.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalyserdataUID.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalyserevent.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalyserinfo.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionanalysertranslator.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisiondetector.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisiondisplay.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionmanager.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionobject.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\collisionvolume.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\impulsebasedcollisionsolver.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\proximitydetection.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcollision\subcollisiondetector.cpp">
+      <Filter>SimCollision Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\arraymath.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\dline2.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\impulselink.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\kalmann.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\largesymmetricmatrix.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\physicsproperties.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\sbmatrix.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simconstraint.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simenvironment.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simmath.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simstate.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simstatearticulated.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simstateflexible.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simstatetarget.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simtarget.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simulatedobject.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\simutility.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\skeletoninfo.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\symmatrix.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\tlist.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\trackerjointmodifier.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simcommon\trajectoryextrapolator.cpp">
+      <Filter>SimCommon Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simphysics\articulatedphysicsobject.cpp">
+      <Filter>SimPhysics Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simphysics\physicsjoint.cpp">
+      <Filter>SimPhysics Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simphysics\physicsobject.cpp">
+      <Filter>SimPhysics Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simphysics\restingdetector.cpp">
+      <Filter>SimPhysics Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="simphysics\virtualcm.cpp">
+      <Filter>SimPhysics Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

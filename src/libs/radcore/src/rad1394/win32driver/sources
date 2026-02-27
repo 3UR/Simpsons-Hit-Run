@@ -1,0 +1,14 @@
+TARGETNAME=rad1394
+TARGETPATH=obj
+TARGETTYPE=DRIVER
+DRIVERTYPE=WDM
+
+C_DEFINES=-DDRIVER
+
+SOURCES= \
+        rad1394.rc \
+		rad1394driver.c \
+		rad1394power.c \
+		rad1394qpnp.c
+
+

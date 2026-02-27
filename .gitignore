@@ -1,0 +1,186 @@
+# Visual Studio files
+.vs/
+*.vcxproj.user
+enc_temp_folder/
+
+# VCPKG files
+vcpkg_installed/
+
+# Prerequisites
+*.d
+*.log
+*.tlog
+*.pdb
+*.APS
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Project Build Files - lol probably can do wildcard here but whatever
+
+# Game
+build/
+
+# Game UWP
+src/srr2_uwp/Generated Files/
+src/srr2_uwp/BundleArtifacts/
+AppPackages/
+
+# I hate all these configs too everything was nicer with just 3 configs but whatever we need RAD_UWP defined in libs
+
+## Choreo
+src/libs/choreo/[Rr]elease[Ww]indows
+src/libs/choreo/[Rr]elease[Uu]wp
+src/libs/choreo/[Dd]ebug[Ww]indows
+src/libs/choreo/[Dd]ebug[Uu]wp
+src/libs/choreo/[Tt]une[Ww]indows
+src/libs/choreo/[Tt]une[Uu]wp
+src/libs/choreo/lib/
+src/libs/choreo/obj/
+
+# Poser
+src/libs/poser/[Rr]elease[Ww]indows
+src/libs/poser/[Rr]elease[Uu]wp
+src/libs/poser/[Dd]ebug[Ww]indows
+src/libs/poser/[Dd]ebug[Uu]wp
+src/libs/poser/[Tt]une[Ww]indows
+src/libs/poser/[Tt]une[Uu]wp
+src/libs/poser/lib/
+src/libs/poser/obj/
+
+# Pure3D
+src/libs/pure3d/[Rr]elease[Ww]indows
+src/libs/pure3d/[Rr]elease[Uu]wp
+src/libs/pure3d/[Dd]ebug[Ww]indows
+src/libs/pure3d/[Dd]ebug[Uu]wp
+src/libs/pure3d/[Tt]une[Ww]indows
+src/libs/pure3d/[Tt]une[Uu]wp
+src/libs/pure3d/lib/
+src/libs/pure3d/obj/
+
+# RadContent
+src/libs/radcontent/[Rr]elease[Ww]indows
+src/libs/radcontent/[Rr]elease[Uu]wp
+src/libs/radcontent/[Dd]ebug[Ww]indows
+src/libs/radcontent/[Dd]ebug[Uu]wp
+src/libs/radcontent/[Tt]une[Ww]indows
+src/libs/radcontent/[Tt]une[Uu]wp
+src/libs/radcontent/lib/
+src/libs/radcontent/obj/
+
+# RadCore
+src/libs/radcore/[Rr]elease[Ww]indows
+src/libs/radcore/[Rr]elease[Uu]wp
+src/libs/radcore/[Dd]ebug[Ww]indows
+src/libs/radcore/[Dd]ebug[Uu]wp
+src/libs/radcore/[Tt]une[Ww]indows
+src/libs/radcore/[Tt]une[Uu]wp
+src/libs/radcore/lib/
+src/libs/radcore/obj/
+
+# RadMath
+src/libs/radmath/[Rr]elease[Ww]indows
+src/libs/radmath/[Rr]elease[Uu]wp
+src/libs/radmath/[Dd]ebug[Ww]indows
+src/libs/radmath/[Dd]ebug[Uu]wp
+src/libs/radmath/[Tt]une[Ww]indows
+src/libs/radmath/[Tt]une[Uu]wp
+src/libs/radmath/lib/
+src/libs/radmath/obj/
+
+# RadMovie
+src/libs/radmovie/[Rr]elease[Ww]indows
+src/libs/radmovie/[Rr]elease[Uu]wp
+src/libs/radmovie/[Dd]ebug[Ww]indows
+src/libs/radmovie/[Dd]ebug[Uu]wp
+src/libs/radmovie/[Tt]une[Ww]indows
+src/libs/radmovie/[Tt]une[Uu]wp
+src/libs/radmovie/lib/
+src/libs/radmovie/obj/
+
+# RadMusic
+src/libs/radmusic/[Rr]elease[Ww]indows
+src/libs/radmusic/[Rr]elease[Uu]wp
+src/libs/radmusic/[Dd]ebug[Ww]indows
+src/libs/radmusic/[Dd]ebug[Uu]wp
+src/libs/radmusic/[Tt]une[Ww]indows
+src/libs/radmusic/[Tt]une[Uu]wp
+src/libs/radmusic/lib/
+src/libs/radmusic/obj/
+
+# RadScript
+src/libs/radscript/[Rr]elease[Ww]indows
+src/libs/radscript/[Rr]elease[Uu]wp
+src/libs/radscript/[Dd]ebug[Ww]indows
+src/libs/radscript/[Dd]ebug[Uu]wp
+src/libs/radscript/[Tt]une[Ww]indows
+src/libs/radscript/[Tt]une[Uu]wp
+src/libs/radscript/lib/
+src/libs/radscript/obj/
+
+# RadSound
+src/libs/radsound/[Rr]elease[Ww]indows
+src/libs/radsound/[Rr]elease[Uu]wp
+src/libs/radsound/[Dd]ebug[Ww]indows
+src/libs/radsound/[Dd]ebug[Uu]wp
+src/libs/radsound/[Tt]une[Ww]indows
+src/libs/radsound/[Tt]une[Uu]wp
+src/libs/radsound/lib/
+src/libs/radsound/obj/
+
+# Scrooby
+src/libs/scrooby/[Rr]elease[Ww]indows
+src/libs/scrooby/[Rr]elease[Uu]wp
+src/libs/scrooby/[Dd]ebug[Ww]indows
+src/libs/scrooby/[Dd]ebug[Uu]wp
+src/libs/scrooby/[Tt]une[Ww]indows
+src/libs/scrooby/[Tt]une[Uu]wp
+src/libs/scrooby/lib/
+src/libs/scrooby/obj/
+
+# Sim
+src/libs/sim/[Rr]elease[Ww]indows
+src/libs/sim/[Rr]elease[Uu]wp
+src/libs/sim/[Dd]ebug[Ww]indows
+src/libs/sim/[Dd]ebug[Uu]wp
+src/libs/sim/[Tt]une[Ww]indows
+src/libs/sim/[Tt]une[Uu]wp
+src/libs/sim/lib/
+src/libs/sim/obj/
+
+# Allow these deps (Required for UWP)
+!deps/**/*.dll
+
+# For convinience
+!tools/**/*.exe
+!tools/**/*.dll
+
+# temp
+assets

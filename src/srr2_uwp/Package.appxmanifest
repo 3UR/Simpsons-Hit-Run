@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="f1e514bc-23b5-40c7-a7cf-c250f424d377"
+    Publisher="CN=3UR"
+    Version="1.0.7.0" />
+
+  <mp:PhoneIdentity PhoneProductId="f1e514bc-23b5-40c7-a7cf-c250f424d377" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>The Simpsons: Hit &amp; Run</DisplayName>
+    <PublisherDisplayName>3UR</PublisherDisplayName>
+    <Logo>resources\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="uwp.App">
+      <uap:VisualElements
+        DisplayName="The Simpsons: Hit &amp; Run"
+        Square150x150Logo="resources\Square150x150Logo.png"
+        Square44x44Logo="resources\Square44x44Logo.png"
+        Description="The Simpsons: Hit &amp; Run ported to Xbox UWP"
+        BackgroundColor="transparent">
+        <uap:DefaultTile/>
+        <uap:SplashScreen Image="resources\SplashScreen.png"/>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <rescap:Capability Name="runFullTrust"/>
+    <rescap:Capability Name="broadFileSystemAccess" />
+    <rescap:Capability Name="expandedResources" />
+    <Capability Name="internetClient" />
+    <uap:Capability Name="removableStorage"/>
+    <Capability Name="codeGeneration"/>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="privateNetworkClientServer"/>
+  </Capabilities>
+</Package>

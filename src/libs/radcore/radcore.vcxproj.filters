@@ -1,0 +1,563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{ca67c8e9-d612-4a10-8d55-29ef72a44fec}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="src\pch">
+      <UniqueIdentifier>{61cc8e33-6836-4000-8d90-aac80eba7a98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raddebug">
+      <UniqueIdentifier>{79f62fbc-a57d-4e9a-a6a1-ebfa4b0f22a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radobject">
+      <UniqueIdentifier>{8235990a-13d7-4d9b-bdb9-4e7dc5be37bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raddispatch">
+      <UniqueIdentifier>{6c239887-ef1c-4fe5-9a8a-661aa875269a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radtime">
+      <UniqueIdentifier>{fb93f541-dfc1-4f92-ba7c-88bdafd13641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radmemory">
+      <UniqueIdentifier>{394304ff-bfca-4053-b1c9-1d43744d30d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radstring">
+      <UniqueIdentifier>{d93309f8-b46c-467e-949e-f00587588659}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radplatform">
+      <UniqueIdentifier>{357a88e6-b9a0-4c07-b12c-3c30d31dece2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radobjectlist">
+      <UniqueIdentifier>{3b2a8b74-19cd-4702-9ebd-02911b8f67f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raddebugconsole">
+      <UniqueIdentifier>{10f7ebf2-152c-4001-bfe5-30601aa3f998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radprotocols">
+      <UniqueIdentifier>{48e3dff2-7f03-4e7e-a915-bc2dae889d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raddebugwatch">
+      <UniqueIdentifier>{9bb5987b-56d4-41f2-b8cf-484a5b98f6c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radremotecommand">
+      <UniqueIdentifier>{e53885ca-20fd-4a61-a81b-843e775373e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radcontroller">
+      <UniqueIdentifier>{872f2d67-4d27-456a-b9f5-612c7a69f5f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radfile">
+      <UniqueIdentifier>{dabb05f7-b436-4b1c-a285-469b54f85c56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radfile\common">
+      <UniqueIdentifier>{ecd5b334-a108-4ec7-a0c6-3bbd78e93b44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radfile\win">
+      <UniqueIdentifier>{14a9153e-b83e-4ed2-8c55-7d0767c8792c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radthread">
+      <UniqueIdentifier>{b2618da4-c9c1-4394-8dce-7e112713bd90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radobjectbtree">
+      <UniqueIdentifier>{67fa865e-a3d3-4294-9fa2-ed0df590b4f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radstacktrace">
+      <UniqueIdentifier>{684b9340-8a41-494d-a2d4-8cf41cab9598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radstacktrace\win32">
+      <UniqueIdentifier>{65a100ba-2a95-487f-b664-21603465b93d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raddebugfileserver">
+      <UniqueIdentifier>{89db8a81-6c06-4ac5-a881-4337ded7c645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radstats">
+      <UniqueIdentifier>{470e4c7a-edfe-4e2c-8a12-70f29d604012}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radtextdisplay">
+      <UniqueIdentifier>{bd49f88c-1244-489a-a5dc-d1f939670c58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radmemorymonitor">
+      <UniqueIdentifier>{41722aea-2f0e-4429-9e61-93b3ac2a6fe7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radprofiler">
+      <UniqueIdentifier>{f6cb703c-f888-4a82-a39e-f1fe391cf9dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\radkey">
+      <UniqueIdentifier>{d6abf42e-a78f-43d2-bf3c-9a86b848b534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc">
+      <UniqueIdentifier>{8f1f808f-d9c4-4e91-b7b4-f441c4c16dbc}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="src\raddebugcommunication">
+      <UniqueIdentifier>{091b5f60-20d0-416f-b34b-351b096081eb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\pch\pch.cpp">
+      <Filter>src\pch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebug\debug.cpp">
+      <Filter>src\raddebug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobject\object.cpp">
+      <Filter>src\radobject</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddispatch\dispatcher.cpp">
+      <Filter>src\raddispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radtime\stopwatch.cpp">
+      <Filter>src\radtime</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radtime\time.cpp">
+      <Filter>src\radtime</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\align.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\binallocator.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\dlheap.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\externalmemoryheap.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\externalmemoryobject.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\memorymanager.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\memoryobject.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\memorypool.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\memoryspacewin32.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\platalloc.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\staticheap.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\trackingheap.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemory\twowayallocator.cpp">
+      <Filter>src\radmemory</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radstring\string.cpp">
+      <Filter>src\radstring</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radplatform\platform.cpp">
+      <Filter>src\radplatform</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectlist\dynamicarray.cpp">
+      <Filter>src\radobjectlist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectlist\objectlist.cpp">
+      <Filter>src\radobjectlist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectlist\weakcallbackwrapper.cpp">
+      <Filter>src\radobjectlist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectlist\weakinterfacewrapper.cpp">
+      <Filter>src\radobjectlist</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugconsole\consoleclient.cpp">
+      <Filter>src\raddebugconsole</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugwatch\watchclient.cpp">
+      <Filter>src\raddebugwatch</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radremotecommand\functionlist.cpp">
+      <Filter>src\radremotecommand</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radremotecommand\remotecommandserver.cpp">
+      <Filter>src\radremotecommand</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radremotecommand\remotecommandtarget.cpp">
+      <Filter>src\radremotecommand</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\cementer.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\drive.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\drivethread.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\file.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\filecache.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\filesystem.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\instancedrive.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\platformdrives.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\radfile.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\remotedrive.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\common\requests.cpp">
+      <Filter>src\radfile\common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radfile\win32\win32drive.cpp">
+      <Filter>src\radfile\win</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radthread\mutex.cpp">
+      <Filter>src\radthread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radthread\semaphore.cpp">
+      <Filter>src\radthread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radthread\system.cpp">
+      <Filter>src\radthread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radthread\thread.cpp">
+      <Filter>src\radthread</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectbtree\objectavltree.cpp">
+      <Filter>src\radobjectbtree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radobjectbtree\objectbtree.cpp">
+      <Filter>src\radobjectbtree</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radstacktrace\win32\stacktrace.cpp">
+      <Filter>src\radstacktrace\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugfileserver\fileserver.cpp">
+      <Filter>src\raddebugfileserver</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radstats\simplestat.cpp">
+      <Filter>src\radstats</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radstats\statmanager.cpp">
+      <Filter>src\radstats</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radtextdisplay\textdisplay.cpp">
+      <Filter>src\radtextdisplay</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemorymonitor\memmonitorclient.cpp">
+      <Filter>src\radmemorymonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radmemorymonitor\memmonitorclienthelp.cpp">
+      <Filter>src\radmemorymonitor</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radprofiler\profiler.cpp">
+      <Filter>src\radprofiler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radprofiler\profiler2.cpp">
+      <Filter>src\radprofiler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radprofiler\profilesample.cpp">
+      <Filter>src\radprofiler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radkey\radkey.cpp">
+      <Filter>src\radkey</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radprofiler\microprofile.cpp">
+      <Filter>src\radprofiler</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radcontroller\directinputcontroller.cpp">
+      <Filter>src\radcontroller</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radcontroller\sdlcontroller.cpp">
+      <Filter>src\radcontroller</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugcommunication\host.cpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugcommunication\hostchannel.cpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugcommunication\targetconnection.cpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugcommunication\targetsocketchannel.cpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClCompile>
+    <ClCompile Include="src\raddebugcommunication\targetx.cpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\raddispatch\dispatcher.hpp">
+      <Filter>src\raddispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radtime\stopwatch.hpp">
+      <Filter>src\radtime</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radtime\time.hpp">
+      <Filter>src\radtime</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\binallocator.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\externalmemoryheap.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\externalmemoryobject.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\memory.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\memoryspacewin32.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\platalloc.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\staticheap.h">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\trackingheap.h">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemory\twowayallocator.hpp">
+      <Filter>src\radmemory</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugconsole\consoleclient.hpp">
+      <Filter>src\raddebugconsole</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprotocols\debugconsoleprotocol.hpp">
+      <Filter>src\radprotocols</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprotocols\debugwatchprotocol.hpp">
+      <Filter>src\radprotocols</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprotocols\fileprotocol.hpp">
+      <Filter>src\radprotocols</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprotocols\memorymonitorprotocol.hpp">
+      <Filter>src\radprotocols</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprotocols\remotecommandprotocol.hpp">
+      <Filter>src\radprotocols</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugwatch\watchclient.hpp">
+      <Filter>src\raddebugwatch</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radremotecommand\remotecommand.hpp">
+      <Filter>src\radremotecommand</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\cementLibrary.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\cementer.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\drive.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\drivethread.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\file.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\filecache.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\filesystem.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\instancedrive.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\platformdrives.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\remotedrive.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\requests.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\common\saferefobject.hpp">
+      <Filter>src\radfile\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radfile\win32\win32drive.hpp">
+      <Filter>src\radfile\win</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radthread\mutex.hpp">
+      <Filter>src\radthread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radthread\semaphore.hpp">
+      <Filter>src\radthread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radthread\system.hpp">
+      <Filter>src\radthread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radthread\thread.hpp">
+      <Filter>src\radthread</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radobjectbtree\objectavltree.hpp">
+      <Filter>src\radobjectbtree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radobjectbtree\objectbtree.hpp">
+      <Filter>src\radobjectbtree</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugfileserver\fileserver.hpp">
+      <Filter>src\raddebugfileserver</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radstats\simplestat.hpp">
+      <Filter>src\radstats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radstats\statmanager.hpp">
+      <Filter>src\radstats</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radtextdisplay\textdisplay.hpp">
+      <Filter>src\radtextdisplay</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radmemorymonitor\memmonitorclient.hpp">
+      <Filter>src\radmemorymonitor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprofiler\profiler.hpp">
+      <Filter>src\radprofiler</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprofiler\profilesample.hpp">
+      <Filter>src\radprofiler</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radcontroller.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddebug.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddebugcommunication.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddebugconsole.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddebugfileserver.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddebugwatch.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\raddispatch.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radfile.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radkey.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radlinkedclass.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radmemory.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radmemorymonitor.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radobject.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radobjectbtree.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radobjectlist.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radoptions.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radplatform.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radprofiler.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radremotecommand.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radstacktrace.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radstats.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radstring.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radtextdisplay.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radthread.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radtime.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\pch.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radtextdisplay\font.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="include\microprofile.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprofiler\microprofile_html.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radprofiler\stb\stb_sprintf.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\decitypes.h">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\hioshared.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\host.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\hostchannel.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\netmp.h">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\protocol.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\socket.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\targetconnection.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\targetsocketchannel.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+    <ClInclude Include="src\raddebugcommunication\targetx.hpp">
+      <Filter>src\raddebugcommunication</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\..\releasenotes.txt" />
+  </ItemGroup>
+</Project>

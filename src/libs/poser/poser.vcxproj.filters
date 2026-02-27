@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{d372770f-b33d-432a-a64e-1a000ee10817}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\poser\constants.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\joint.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\pose.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\posedriver.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\poseengine.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\priority.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\poser\transform.hpp">
+      <Filter>core</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\joint.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pose.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\posedriver.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\poseengine.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transform.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

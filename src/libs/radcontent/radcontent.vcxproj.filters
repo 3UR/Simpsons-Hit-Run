@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="radload">
+      <UniqueIdentifier>{db077ed8-84da-4144-9ce4-233cbef1b68a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="radload\src">
+      <UniqueIdentifier>{45253398-d9de-4c66-8b8d-6663fa502063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="radload\include">
+      <UniqueIdentifier>{5628e536-16b1-4a6e-997f-e5a854ed7708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="radload\include\utility">
+      <UniqueIdentifier>{85beb7a7-c0a7-4baf-a7e8-387412ce2d26}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\radload\loader.hpp">
+      <Filter>radload\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\radload.hpp">
+      <Filter>radload\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\radloadconfig.hpp">
+      <Filter>radload\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\utility\hashtable.hpp">
+      <Filter>radload\include\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\utility\inventory.hpp">
+      <Filter>radload\include\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\utility\object.hpp">
+      <Filter>radload\include\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\utility\queue.hpp">
+      <Filter>radload\include\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="include\radload\utility\stream.hpp">
+      <Filter>radload\include\utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\radload\manager.hpp">
+      <Filter>radload\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch\pch.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\radload\hashtable.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\inventory.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\manager.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\object.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\queue.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\request.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\radload\stream.cpp">
+      <Filter>radload\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch\pch.cpp" />
+  </ItemGroup>
+</Project>

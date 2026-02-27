@@ -1,0 +1,30 @@
+ERRORS: how to translate radFile errors to the platform for TRCs.
+-------
+
+radFileError (all functions except cancel, drive open, file/drive close and GetMediaInfo) :
+
+    Success,                    // No Error
+    FileNotFound,               // File not found
+    ShellOpen,                  // NOT SUPPORTED
+    WrongMedia,                 // Card was pulled out
+    NoMedia,                    // No card
+    MediaNotFormatted,          // Card not formatted
+    MediaCorrupt,               // Physically damaged
+    NoFreeSpace,                // Out of disk space
+    HardwareFailure,            // Fatal error
+    MediaEncodingErr,           // Card formatted for the wrong market
+    MediaWrongType,             // Wrong sector size
+    MediaInvalid,               // Not a memory card
+    DataCorrupt                 // Save game is corrupt
+
+MediaInfo (Initialize and GetMediaInfo):
+
+    MediaPresent,               // Card is present
+    MediaNotPresent,            // No card
+    MediaNotFormatted,          // Card is not formatted
+    MediaInvalid,               // Not a memory card
+    MediaWrongType,             // Bad sector size
+    MediaEncodingErr,           // Formatted for a different market
+    MediaDamaged                // Physically damaged
+
+Volume Name: serial number

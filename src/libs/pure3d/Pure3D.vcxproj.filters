@@ -1,0 +1,811 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core Source">
+      <UniqueIdentifier>{0c51b16f-6d34-48b8-a028-7945aa0924df}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Core Headers">
+      <UniqueIdentifier>{4e9b9492-3078-4f11-b452-880f4de8d3bf}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Core Win32 Source">
+      <UniqueIdentifier>{8be41d41-2c65-4e00-be8b-37c1a8e5b7c9}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Core Win32 Headers">
+      <UniqueIdentifier>{6477c490-951c-4dcf-9497-466d9b5a921f}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Anim Source">
+      <UniqueIdentifier>{a42ad7ab-b731-4e90-9239-e464a468291a}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Anim Headers">
+      <UniqueIdentifier>{a22792b5-1be0-4122-a479-23bbae00a4d6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Effects Source">
+      <UniqueIdentifier>{d93077dc-78b6-4c38-b3df-776612fc109b}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Effects Headers">
+      <UniqueIdentifier>{2e0c8f3d-7eba-42e0-9496-160afa7cd244}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Scenegraph Source">
+      <UniqueIdentifier>{d1452e9f-0ad5-4b1b-9858-d7058aec1cb1}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Scenegraph Headers">
+      <UniqueIdentifier>{31cc8700-a1f4-4f34-964e-d92d31581747}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Constants">
+      <UniqueIdentifier>{434cb02c-0357-4b83-a8bb-2572d6d56857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shadow">
+      <UniqueIdentifier>{134363b3-6862-4bfd-a443-cf1b6f2232f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shadow\implementation">
+      <UniqueIdentifier>{a676b9fe-4a0d-4e58-a14a-21ab93dc80ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Headers">
+      <UniqueIdentifier>{2ceaddf9-f7ec-4588-93ef-1bd83cb7ef49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Source">
+      <UniqueIdentifier>{b554b21c-714c-42ec-91ec-9b32fbf8ac75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Source\base">
+      <UniqueIdentifier>{b5a5ced4-40c2-4a39-b425-81c64c2884a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Headers\base">
+      <UniqueIdentifier>{b7141d44-b2da-45d3-a700-744ed9a200b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Source\gl">
+      <UniqueIdentifier>{ce648793-27fe-4f37-b5eb-f3589e043ccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Headers\gl">
+      <UniqueIdentifier>{f35bb267-cc9c-49e5-88ff-834a8f763337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Source\gl\display_win32">
+      <UniqueIdentifier>{3dfb4ef4-c3ca-47bd-96dc-63ab756bca9e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pddi Headers\gl\display_win32">
+      <UniqueIdentifier>{2dc3f221-583d-43c0-9424-ba6b773c872d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="p3d\anim\animate.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\animatedobject.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\billboardobjectanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\cameraanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\channel.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\compositedrawable.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\drawablepose.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\event.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\eventanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\expression.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\expressionanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\expressionoffsets.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\instancedgeometry.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\lightanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\multicontroller.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\polyskin.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\pose.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\poseanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\sequencer.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\shaderanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\skeleton.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\textureanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\vertexanimcontroller.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\vertexanimkey.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\vertexanimobject.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\vertexoffsetexpression.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\anim\visibilityanimation.cpp">
+      <Filter>Anim Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\transitionmanager.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\effect.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\optic.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\opticlensflare.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\opticloader.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particlearray.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particleemitter.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particlegenerator.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particleloader.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particlepool.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particlesystem.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particletype.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\effects\particleutility.cpp">
+      <Filter>Effects Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\scenegraph\scenegraph.cpp">
+      <Filter>Scenegraph Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\scenegraph\nodeanimation.cpp">
+      <Filter>Scenegraph Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\platform\win32\plat_filemap.cpp">
+      <Filter>Core Win32 Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\platform\win32\platform.cpp">
+      <Filter>Core Win32 Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\view.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\ambientlight.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\billboardobject.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\bmp.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\camera.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\cameraloader.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\chunkfile.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\context.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\debugdraw.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\directionallight.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\displaylist.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\drawable.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\dxtn.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\entity.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\error.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\file.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\fileftt.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\font.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\gameattr.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\geometry.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\image.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\imageconverter.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\imagefactory.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\imagefont.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\inventory.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\light.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\lightloader.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\lightschooser.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\loaders.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\loadmanager.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\locator.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\lzr.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\matrixstack.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\memheap.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\memory.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\memorysection.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\mipmapfilter.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\png.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\pointcamera.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\pointlight.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\primgroup.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\rawimage.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\refcounted.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\shader.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\spotlight.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\sprite.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\table.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\targa.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\textdataparser.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\textstring.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\texture.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\texturefont.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\unicode.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\utility.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\vectorcamera.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="p3d\vertexlist.cpp">
+      <Filter>Core Source</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\base\basecontext.cpp">
+      <Filter>Pddi Source\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\base\baseshader.cpp">
+      <Filter>Pddi Source\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\base\base_font.cpp">
+      <Filter>Pddi Source\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\base\pddiobj.cpp">
+      <Filter>Pddi Source\base</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\glcon.cpp">
+      <Filter>Pddi Source\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\gldev.cpp">
+      <Filter>Pddi Source\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\glmat.cpp">
+      <Filter>Pddi Source\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\gltex.cpp">
+      <Filter>Pddi Source\gl</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\display_win32\gldisplay.cpp">
+      <Filter>Pddi Source\gl\display_win32</Filter>
+    </ClCompile>
+    <ClCompile Include="pddi\gl\decompress.cpp">
+      <Filter>Pddi Source\gl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="p3d\anim\animatedobject.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\billboardobjectanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\cameraanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\channel.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\compositedrawable.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\drawablepose.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\event.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\eventanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\expression.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\expressionanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\expressionoffsets.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\instancedgeometry.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\lightanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\multicontroller.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\polyskin.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\pose.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\poseanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\sequencer.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\shaderanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\skeleton.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\textureanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\vertexanimcontroller.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\vertexanimkey.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\vertexanimobject.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\vertexoffsetexpression.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\visibilityanimation.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\anim\animate.hpp">
+      <Filter>Anim Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="constants\atenum.hpp">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="constants\chunkids.hpp">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="constants\chunks.h">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="constants\psenum.hpp">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="constants\version.hpp">
+      <Filter>Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\opticlensflare.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\opticloader.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particlearray.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particleconstants.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particleemitter.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particlegenerator.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particleloader.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particlepool.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particlesystem.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particletype.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\particleutility.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\transitionmanager.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\effect.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\optic.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\effects\opticconstants.hpp">
+      <Filter>Effects Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\scenegraph\nodeanimation.hpp">
+      <Filter>Scenegraph Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\scenegraph\scenegraph.hpp">
+      <Filter>Scenegraph Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\platform\win32\plat_filemap.hpp">
+      <Filter>Core Win32 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\platform\win32\plat_types.hpp">
+      <Filter>Core Win32 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\platform\win32\platform.hpp">
+      <Filter>Core Win32 Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\billboardobject.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\bmp.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\buildconfig.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\buildconfig_debug.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\buildconfig_release.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\buildconfig_tune.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\camera.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\chunkfile.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\context.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\debugdraw.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\directionallight.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\displaylist.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\drawable.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\dxtn.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\entity.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\entitytable.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\error.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\file.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\fileftt.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\font.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\gameattr.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\geometry.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\ignoreloader.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\image.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\imageconverter.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\imagefactory.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\imagefont.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\inventory.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\light.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\lightschooser.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\loadmanager.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\locator.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\lzr.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\matrixstack.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\memheap.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\memory.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\memorysection.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\mipmapfilter.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\p3dtypes.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\plat_filemap.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\plat_types.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\platform.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\png.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\pointcamera.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\pointlight.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\primgroup.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\pure3d.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\queue.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\rawimage.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\refcounted.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\safecast.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\shader.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\spotlight.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\sprite.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\stack.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\table.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\targa.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\textdataparser.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\textparser.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\textstring.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\texture.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\texturefont.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\unicode.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\utility.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\vectorcamera.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\vertexlist.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\view.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\ambientlight.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="p3d\array.hpp">
+      <Filter>Core Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\basecontext.hpp">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\baseshader.hpp">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\basetype.hpp">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\debug.hpp">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\base_font.hpp">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\base\romans.h">
+      <Filter>Pddi Headers\base</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\glcon.hpp">
+      <Filter>Pddi Headers\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\gldev.hpp">
+      <Filter>Pddi Headers\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\glmat.hpp">
+      <Filter>Pddi Headers\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\gltex.hpp">
+      <Filter>Pddi Headers\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\decompress.h">
+      <Filter>Pddi Headers\gl</Filter>
+    </ClInclude>
+    <ClInclude Include="pddi\gl\display_win32\resource.h">
+      <Filter>Pddi Headers\gl\display_win32</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

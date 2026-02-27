@@ -1,0 +1,156 @@
+name: Build SRR2
+on:
+  workflow_dispatch:
+    inputs:
+      configuration:
+        description: 'Build configuration'
+        required: true
+        default: 'DebugUwp'
+        type: choice
+        options:
+          - DebugWindows
+          - ReleaseWindows
+          - TuneWindows
+          - DebugUwp
+          - ReleaseUwp
+          - TuneUwp
+      platform:
+        description: 'Build platform (x86 will not work with UWP)'
+        required: true
+        default: 'x64'
+        type: choice
+        options:
+          - x86
+          - x64
+      # dont care right now shouldnt have to have this its terrible because we should check based on the configuration input
+      is_uwp_build:
+        description: 'Check this if your using a UWP configuration'
+        required: false
+        default: true
+        type: boolean
+        
+permissions:
+  contents: write
+  
+env:
+  VCPKG_BINARY_SOURCES: 'clear;x-gha,readwrite'
+  VCPKG_COMMIT_ID: '5f8c424e267b7360d451df406eeefb3767985b17' # just sync with vcpkg-configuration.json baseline
+
+jobs:     
+  build:
+    runs-on: windows-2022
+
+    steps:
+    # https://learn.microsoft.com/en-us/vcpkg/consume/binary-caching-github-actions-cache
+    - name: Export GitHub Actions cache environment variables
+      uses: actions/github-script@v7
+      with:
+        script: |
+          core.exportVariable('ACTIONS_CACHE_URL', process.env.ACTIONS_CACHE_URL || '');
+          core.exportVariable('ACTIONS_RUNTIME_TOKEN', process.env.ACTIONS_RUNTIME_TOKEN || '');
+    
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        ref: ${{ github.sha }}
+        lfs: true
+        submodules: recursive
+    - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2.4
+      with:
+        sdk-version: 22621
+        
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.1
+      with:
+        vs-version: 'latest'
+        
+    - name: Setup VCPKG
+      uses: lukka/run-vcpkg@v10.0
+      with:
+        vcpkgDirectory: 'vcpkg'
+        vcpkgGitCommitId: ${{ env.VCPKG_COMMIT_ID }}
+        doNotCache: false
+
+    - name: Install Dependencies (VCPKG) (Non-UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'false' }}
+      run: .\vcpkg\vcpkg.exe install
+    - name: Install Dependencies (VCPKG) (UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'true' }}
+      run: .\vcpkg\vcpkg.exe install --triplet x64-uwp --allow-unsupported
+    - name: Integrate (VCPKG)
+      run: |
+        .\vcpkg\vcpkg.exe integrate install
+
+    - name: Build SRR2 (Non-UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'false' }}
+      run: msbuild.exe src/srr2/SRR2.vcxproj /p:Configuration=${{ github.event.inputs.configuration }} /p:Platform=${{ github.event.inputs.platform }} /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0 /m /clp:PerformanceSummary /p:SolutionDir=${{ github.workspace }}
+    - name: Build SRR2 (UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'true' }}
+      run: msbuild.exe src/srr2_uwp/SRR2_UWP.vcxproj /p:Configuration=${{ github.event.inputs.configuration }} /p:Platform=${{ github.event.inputs.platform }} /p:PlatformToolset=v143 /p:WindowsTargetPlatformVersion=10.0 /m /clp:PerformanceSummary /p:SolutionDir=${{ github.workspace }}
+      
+    - name: Generate Release Version
+      id: release_version
+      shell: pwsh
+      run: |
+        $DATE = Get-Date -Format "yyyy.MM.dd-HH.mm.ss"
+        $RELEASE_VERSION = "SRR2-${{ github.event.inputs.configuration }}-${{ github.event.inputs.platform }}-$DATE-$(${env:GITHUB_SHA}.Substring(0,7))"
+        echo release_version=$RELEASE_VERSION >> $env:GITHUB_OUTPUT
+
+    # from https://github.com/XboxEmulationHub/XBSX2/blob/dev/.github/workflows/buildwinrt.yml#L27
+    - name: Extract appx version from AppxManifest
+      if: ${{ github.event.inputs.is_uwp_build == 'true' }}
+      id: appx_version
+      run: |
+        $MANIFEST = [xml](Get-Content src\srr2_uwp\Package.appxmanifest)
+        $APPX_VERSION = $MANIFEST.Package.Identity.Version
+        echo $APPX_VERSION
+        echo appx_version=$APPX_VERSION >> $env:GITHUB_OUTPUT
+
+    # so we can get the tag before we do a new release and then we can use generate_release_notes
+    - name: Get Previous Tag
+      id: get_previous_tag
+      shell: pwsh
+      run: |
+        $LATEST_TAG = git describe --tags (git rev-list --tags --max-count=1)
+        "previous_tag=$LATEST_TAG" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+    - name: Create Release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: ${{ github.event.inputs.configuration != 'Release' && github.event.inputs.configuration != 'ReleaseUwp'  }}
+        release_name: ${{ steps.release_version.outputs.release_version }}
+        tag_name: ${{ steps.release_version.outputs.release_version }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # https://docs.github.com/en/actions/security-for-github-actions/security-guides/automatic-token-authentication#about-the-github_token-secret
+
+    # pretty much the upload build step but it makes a zip of build folder
+    # TODO(3ur): jank jank jank why the hell does this have the version inside the zip but no extension ? instead of just a zip with bin and obj folders
+    - name: Zip Build (Non-UWP) # doesnt happen on uwp. we just upload appx directly
+      if: ${{ github.event.inputs.is_uwp_build == 'false' }}
+      run: |
+        tar -czf ${{ github.workspace }}/${{ steps.release_version.outputs.release_version }}.zip -C build .
+
+    # nasty boilerplate n duplicated code but im rushing this since i got half a screen and its still dying more 
+    - name: Upload Build (Non-UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'false' }}
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        asset_path: ${{ github.workspace }}/${{ steps.release_version.outputs.release_version }}.zip
+        asset_name: ${{ steps.release_version.outputs.release_version }}.zip
+        asset_content_type: application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload Build (UWP)
+      if: ${{ github.event.inputs.is_uwp_build == 'true' }}
+      uses: actions/upload-release-asset@v1
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+        asset_path: build/UWP-bin-${{ github.event.inputs.platform }}-${{ github.event.inputs.configuration }}/SRR2_UWP_${{ steps.appx_version.outputs.appx_version }}_${{ github.event.inputs.platform }}_${{ github.event.inputs.configuration }}.appx
+        asset_name: SRR2_UWP_${{ steps.appx_version.outputs.appx_version }}_${{ github.event.inputs.platform }}_${{ github.event.inputs.configuration }}.appx
+        asset_content_type: application/vnd.ms-appx
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
