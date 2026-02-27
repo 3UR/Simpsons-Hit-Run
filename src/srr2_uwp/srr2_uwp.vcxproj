@@ -108,7 +108,7 @@
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SupportJustMyCode>true</SupportJustMyCode>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RAD_DEBUG;WIN64;_WINDOWS;RAD_UWP;RAD_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -122,10 +122,11 @@
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)SRR2_UWP.exe</OutputFile>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;sdl2.lib;opengl32.lib;z.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalLibraryDirectories>..\..\deps\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
       <Command>echo "https://stackoverflow.com/questions/46186041/uwp-deploy-assets-from-arbitrary-path"</Command>
@@ -143,7 +144,7 @@
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SupportJustMyCode>true</SupportJustMyCode>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;RAD_DEBUG;WIN64;_WINDOWS;RAD_UWP;RAD_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -158,10 +159,11 @@
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;sdl2.lib;opengl32.lib;z.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateMapFile>true</GenerateMapFile>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalLibraryDirectories>..\..\deps\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
       <Command>echo "https://stackoverflow.com/questions/46186041/uwp-deploy-assets-from-arbitrary-path"</Command>
@@ -179,7 +181,7 @@
       <AdditionalOptions>/bigobj %(AdditionalOptions)</AdditionalOptions>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.;..\game;..\libs\radcore\include;..\libs\radmovie\include;..\libs\radsound\include;..\libs\radscript\include;..\libs\radmusic\include;..\libs\pure3d;..\libs\scrooby\include;..\libs\scrooby\src;..\libs\radmath;..\libs\sim;..\libs\poser\include;..\libs\choreo\include;..\libs\radcontent\include;..\libs\radcontent;..\..\deps\include;$(ProjectDir);$(GeneratedFilesDir);$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;RAD_RELEASE;WIN64;_WINDOWS;RAD_UWP;RAD_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -193,10 +195,11 @@
     </ClCompile>
     <Link>
       <OutputFile>$(OutDir)SRR2_UWP.exe</OutputFile>
-      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>odbc32.lib;odbccp32.lib;dsound.lib;dxguid.lib;winmm.lib;dinput8.lib;ws2_32.lib;sdl2.lib;opengl32.lib;z.lib;WindowsApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+      <AdditionalLibraryDirectories>..\..\deps\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <CustomBuildStep>
       <Command>echo "https://stackoverflow.com/questions/46186041/uwp-deploy-assets-from-arbitrary-path"</Command>

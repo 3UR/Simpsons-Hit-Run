@@ -62,8 +62,8 @@ When working with the source you will need these installed:
 1. Open command prompt and navigate to a directory where you want to store the source and run `git clone --recurse-submodules https://github.com/3UR/Simpsons-Hit-Run`
 2. When done you can open `SRR2.sln` with Visual Studio.
 3. Once in Visual Studio press `Tools -> Command Line -> Developer Command Prompt`
-4. A Developer Command Prompt will open enter the following `Vcpkg.exe install`
-5. Once that is done you may need to run `Vcpkg integrate install`
+4. A Developer Command Prompt will open enter the following `cd tools/vcpkg` and then `./bootstrap-vcpkg.bat`
+5. Once that is done run `./vcpkg integrate install`
 
 #### Building
 If the setup was successful, you should now be able to build any project in the solution. When building for UWP don't forget to change the config! (example: if it's `ReleaseWindows` make it `ReleaseUwp`).

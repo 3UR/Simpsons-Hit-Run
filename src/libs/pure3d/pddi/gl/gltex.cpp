@@ -32,8 +32,8 @@ static inline GLenum PickPixelFormat(pddiPixelFormat format)
     case PDDI_PIXEL_ARGB8888: return GL_SRGB8_ALPHA8;
     case PDDI_PIXEL_PAL8: return GL_RGB8;
     case PDDI_PIXEL_PAL4: return GL_RGB8;
-    case PDDI_PIXEL_LUM8: return GL_LUMINANCE8;
-    case PDDI_PIXEL_DUDV88: return GL_LUMINANCE8_ALPHA8;
+    case PDDI_PIXEL_LUM8: return GL_R8;
+    case PDDI_PIXEL_DUDV88: return GL_RG8;
     case PDDI_PIXEL_DXT1: return GL_COMPRESSED_RGBA_BPTC_UNORM;
     case PDDI_PIXEL_DXT3: return GL_COMPRESSED_RGBA_BPTC_UNORM;
     case PDDI_PIXEL_DXT5: return GL_COMPRESSED_SRGB_ALPHA_BPTC_UNORM;
@@ -112,7 +112,7 @@ void pglTexture::SetGLState(void)
             GLenum internalFormat = lock.format == PDDI_PIXEL_DXT5 ? GL_COMPRESSED_RGBA_S3TC_DXT5_EXT :
                 lock.format == PDDI_PIXEL_DXT3 ? GL_COMPRESSED_RGBA_S3TC_DXT3_EXT : GL_COMPRESSED_RGBA_S3TC_DXT1_EXT;
             glCompressedTexImage2D(GL_TEXTURE_2D, 0, internalFormat, xSize,
-                ySize, 0, ceil(xSize/4.0)*ceil(ySize/4.0)*blocksize, (GLvoid*)bits[0]);
+                ySize, 0, (int)(ceil(xSize/4.0)*ceil(ySize/4.0)*blocksize), (GLvoid*)bits[0]);
         }
         else
         {
@@ -180,7 +180,7 @@ bool pglTexture::Create(int x, int y, int bpp, int alphaDepth, int nMip, pddiTex
     {
         unsigned int blocksize = type == PDDI_TEXTYPE_DXT1 ? 8 : 16;
         for(int i = 0; i < nMipMap+1; i++)
-            bits[i] = (char*)radMemoryAllocAligned(radMemoryGetCurrentAllocator(), size_t(ceil(double(xSize>>i)/4)*ceil(double(ySize>>i)/4)*blocksize), 16);
+            bits[i] = (char*)radMemoryAllocAligned(radMemoryGetCurrentAllocator(), (size_t)(ceil(double(xSize>>i)/4)*ceil(double(ySize>>i)/4)*blocksize), 16);
     }
     else
     {
@@ -289,7 +289,7 @@ pddiLockInfo* pglTexture::Lock(int mipMap, pddiRect* rect)
     if (lock.format == PDDI_PIXEL_DXT1 || lock.format == PDDI_PIXEL_DXT3 || lock.format == PDDI_PIXEL_DXT5)
     {
         unsigned int blocksize = lock.format == PDDI_PIXEL_DXT1 ? 8 : 16;
-        lock.pitch = ceil( double( xSize >> mipMap ) / 4 ) * blocksize;
+        lock.pitch = (int)ceil( double( xSize >> mipMap ) / 4 ) * blocksize;
         lock.bits = bits[mipMap];
     }
     else if (lock.format == PDDI_PIXEL_YUV)
