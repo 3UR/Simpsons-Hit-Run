@@ -3,10 +3,6 @@
 This repository contains the source code for _The Simpsons: Hit & Run_ with quite a few enhancements done to it, Such as C++ 20 & x64 Builds, Vcpkg for easier third-party 
 library management, UWP Builds & more. 
 
-## Commit History
-
-All previous commit history has been archived in [this branch](https://github.com/3UR/Simpsons-Hit-Run/tree/commit-history-archive). This was done because of how messy and inconsistent the commit messages were.
-
 ## Disclaimer
 
 This repository contains modified source code and references to original game assets for preservation, and enhancement purposes only.
@@ -18,15 +14,20 @@ This repository contains modified source code and references to original game as
 
 _The Simpsons: Hit & Run_ and all related characters, assets, audio, trademarks, and branding remain the property of their respective rights holders.
 
+## Contributing
+
+I currently don't have the time to actively work on this as much so contributations help everyone! There are some pretty bad bugs that need fixing such as the UWP memory leak.
+
+If you would like to contribute to this project please [create a fork](https://github.com/3UR/Simpsons-Hit-Run/fork) and then [open a pull request](https://github.com/3UR/Simpsons-Hit-Run/pulls).
+
 ## Issues
+
 If you encounter issues, please [create an issue](https://github.com/3UR/Simpsons-Hit-Run/issues/new).
 
 ### Known Bugs
+
 - Memory Corruption
 - Assets (Need a good way to include them)
-
-## Contributing
-If you would like to contribute to this project please [create a fork](https://github.com/3UR/Simpsons-Hit-Run/fork) and then [open a pull request](https://github.com/3UR/Simpsons-Hit-Run/pulls).
 
 ## Installation
 
