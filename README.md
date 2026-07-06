@@ -29,6 +29,10 @@ If you encounter issues, please [create an issue](https://github.com/3UR/Simpson
 - Memory Corruption
 - Assets (Need a good way to include them)
 
+## Commit History
+
+All previous commit history has been archived in [this branch](https://github.com/3UR/Simpsons-Hit-Run/tree/commit-history-archive). This was done because of how messy and inconsistent the commit messages were.
+
 ## Installation
 
 ### Quick Installation (Pre-built Binaries)
